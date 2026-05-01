@@ -1,6 +1,6 @@
 <template>
   <EditorToolbarBox text="Paper Size" icon="i-majesticons:paper-fold-line">
-    <SharedUiCombobox
+    <Combobox
       id="paper-size"
       class="capitalize"
       :items="items"
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import SharedUiCombobox from "~/components/shared/ui/Combobox.vue";
+import Combobox from "~/components/common/Combobox.vue";
 import type { ValidPaperSize } from "~/composables/constant";
 import { useConstant } from "~/composables/constant";
 import { useStyleStore } from "~/composables/stores/style";

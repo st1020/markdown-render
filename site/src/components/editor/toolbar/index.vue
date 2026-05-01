@@ -6,13 +6,13 @@
   >
     <template v-for="(tool, i) in tools" :key="tool.id">
       <component :is="tool.component" :id="`toolbar-${tool.id}`" />
-      <UiSeparator v-if="i < tools.length - 1" class="w-[calc(100%-32px)] mx-auto" />
+      <Separator v-if="i < tools.length - 1" class="w-[calc(100%-32px)] mx-auto" />
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import UiSeparator from "~/components/ui/separator/Separator.vue";
+import Separator from "~/components/ui/separator/Separator.vue";
 import EditorToolbarFile from "./file/index.vue";
 import EditorToolbarFontFamily from "./FontFamily.vue";
 import EditorToolbarMargins from "./Margins.vue";

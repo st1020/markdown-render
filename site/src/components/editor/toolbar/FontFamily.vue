@@ -1,26 +1,26 @@
 <template>
   <EditorToolbarBox text="Font Family" icon="i-material-symbols:font-download-outline">
     <div class="w-full hstack gap-x-2 mb-2">
-      <SharedUiCombobox
+      <Combobox
         v-if="loaded"
         id="font-cjk"
         class="flex-1"
         :items="localCjk.concat(gfCjk)"
         :default-value="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
-      <UiSkeleton v-else class="flex-1 h-9" />
+      <Skeleton v-else class="flex-1 h-9" />
       <span w-13>CJK</span>
     </div>
 
     <div class="hstack gap-x-2 w-full">
-      <SharedUiCombobox
+      <Combobox
         v-if="loaded"
         id="font-en"
         class="flex-1"
         :items="localEn.concat(gfEn)"
         :default-value="styles.fontEN.fontFamily || styles.fontEN.name"
       />
-      <UiSkeleton v-else class="flex-1 h-9" />
+      <Skeleton v-else class="flex-1 h-9" />
       <span w-13>English</span>
     </div>
   </EditorToolbarBox>
@@ -28,9 +28,9 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
-import type { ComboboxItem } from "~/components/shared/ui/Combobox.vue";
-import SharedUiCombobox from "~/components/shared/ui/Combobox.vue";
-import UiSkeleton from "~/components/ui/skeleton/Skeleton.vue";
+import type { ComboboxItem } from "~/components/common/Combobox.vue";
+import Combobox from "~/components/common/Combobox.vue";
+import Skeleton from "~/components/ui/skeleton/Skeleton.vue";
 import { useConstant } from "~/composables/constant";
 import { useStyleStore } from "~/composables/stores/style";
 import { googleFontsService } from "~/utils/font";

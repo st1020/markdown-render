@@ -1,5 +1,5 @@
 <template>
-  <UiButton
+  <Button
     class="gap-x-1.5 w-full h-8 justify-start"
     variant="ghost"
     size="sm"
@@ -7,9 +7,9 @@
   >
     <span i-mdi:file-pdf text-base />
     Export PDF
-  </UiButton>
+  </Button>
 
-  <UiButton
+  <Button
     class="gap-x-1.5 w-full h-8 justify-start"
     variant="ghost"
     size="sm"
@@ -17,13 +17,13 @@
   >
     <span i-ri:markdown-fill text-base />
     Export Markdown
-  </UiButton>
+  </Button>
 </template>
 
 <script lang="ts" setup>
-import { downloadFile } from "~/lib/utils";
+import Button from "~/components/ui/button/Button.vue";
 import { useDataStore } from "~/composables/stores/data";
-import UiButton from "~/components/ui/button/Button.vue";
+import { downloadFile } from "~/lib/utils";
 
 const { data } = useDataStore();
 

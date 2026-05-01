@@ -24,7 +24,6 @@
 
   <div flex justify-between text-muted-foreground>
     <span>{{ min }}{{ unit }}</span>
-    <span>{{ middle }}{{ unit }}</span>
     <span>{{ max }}{{ unit }}</span>
   </div>
 </template>
@@ -47,6 +46,5 @@ const forwarded = useForwardPropsEmits(props, emits);
 
 const min = computed(() => props.min || 0);
 const max = computed(() => props.max || 100);
-const middle = computed(() => (min.value + max.value) / 2);
 const unit = computed(() => props.unit || "");
 </script>

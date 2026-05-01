@@ -4,7 +4,7 @@
     border="4 secondary"
   >
     <VueZoom ref="zoom" :scale="scale">
-      <SharedResumeRender
+      <MarkdownRender
         id="preview"
         :markdown="data.markdown"
         :css="data.css"
@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { useElementSize } from "@vueuse/core";
 import { ref, watch } from "vue";
-import SharedResumeRender from "~/components/shared/ResumeRender.vue";
+import MarkdownRender from "~/components/editor/MarkdownRender.vue";
 import { useConstant } from "~/composables/constant";
 import { useDataStore } from "~/composables/stores/data";
 import { useStyleStore } from "~/composables/stores/style";

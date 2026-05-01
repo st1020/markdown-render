@@ -6,7 +6,7 @@
       </div>
 
       <div class="hstack">
-        <UiButton
+        <Button
           variant="ghost-secondary"
           size="round"
           @click="isToolbarOpen = !isToolbarOpen"
@@ -20,7 +20,7 @@
                 : 'i-tabler:layout-sidebar-right-expand'
             ]"
           />
-        </UiButton>
+        </Button>
       </div>
     </header>
 
@@ -29,8 +29,8 @@
         <SplitterPanel id="code-pane">
           <EditorCode v-if="data.loaded" />
           <div v-else class="flex flex-col gap-y-2 h-full">
-            <UiSkeleton class="h-10 bg-secondary" />
-            <UiSkeleton class="flex-1 bg-secondary" />
+            <Skeleton class="h-10 bg-secondary" />
+            <Skeleton class="flex-1 bg-secondary" />
           </div>
         </SplitterPanel>
 
@@ -41,7 +41,7 @@
 
         <SplitterPanel id="preview-pane">
           <EditorPreview v-if="data.loaded" />
-          <UiSkeleton v-else class="size-full bg-secondary" />
+          <Skeleton v-else class="size-full bg-secondary" />
         </SplitterPanel>
       </SplitterGroup>
 
@@ -51,7 +51,7 @@
         lt-lg="fixed z-10 max-w-full h-full right-0 top-12 pb-10"
       >
         <EditorToolbar v-if="data.loaded" />
-        <UiSkeleton v-else class="h-full w-62 bg-secondary mr-3" />
+        <Skeleton v-else class="h-full w-62 bg-secondary mr-3" />
       </div>
     </div>
   </div>
@@ -64,8 +64,8 @@ import { onMounted, ref } from "vue";
 import EditorCode from "~/components/editor/Code.vue";
 import EditorPreview from "~/components/editor/Preview.vue";
 import EditorToolbar from "~/components/editor/toolbar/index.vue";
-import UiButton from "~/components/ui/button/Button.vue";
-import UiSkeleton from "~/components/ui/skeleton/Skeleton.vue";
+import Button from "~/components/ui/button/Button.vue";
+import Skeleton from "~/components/ui/skeleton/Skeleton.vue";
 import { useDataStore } from "~/composables/stores/data";
 import { storageService } from "~/utils/storage";
 

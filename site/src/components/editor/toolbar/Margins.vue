@@ -5,7 +5,7 @@
       Top &amp; Bottom
     </div>
 
-    <SharedUiSlider
+    <Slider
       unit="px"
       :model-value="vModelValue"
       @update:model-value="
@@ -21,7 +21,7 @@
       Left &amp; Right
     </div>
 
-    <SharedUiSlider
+    <Slider
       unit="px"
       :model-value="hModelValue"
       @update:model-value="
@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import SharedUiSlider from "~/components/shared/ui/Slider.vue";
+import Slider from "~/components/common/Slider.vue";
 import { useStyleStore } from "~/composables/stores/style";
 import EditorToolbarBox from "./Box.vue";
 
