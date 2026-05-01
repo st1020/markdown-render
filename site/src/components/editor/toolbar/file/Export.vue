@@ -24,19 +24,15 @@
 import { downloadFile } from "~/lib/utils";
 
 const { data } = useDataStore();
-const saveName = computed(() => data.resumeName.trim().replace(/\s+/g, "_"));
 
-// Export as PDF
 const exportPDF = () => {
   const title = document.title;
-
-  document.title = saveName.value;
+  document.title = "Resume";
   window.print();
   document.title = title;
 };
 
-// Export as Markdown
 const exportMd = () => {
-  downloadFile(`${saveName.value}.md`, data.markdown);
+  downloadFile("Resume.md", data.markdown);
 };
 </script>

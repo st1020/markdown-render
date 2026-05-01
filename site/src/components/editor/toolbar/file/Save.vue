@@ -11,18 +11,5 @@
 </template>
 
 <script lang="ts" setup>
-const { data } = useDataStore();
-const { styles } = useStyleStore();
-
-const save = async () => {
-  if (!data.resumeId) return;
-
-  await storageService.updateResume({
-    id: data.resumeId,
-    name: data.resumeName,
-    markdown: data.markdown,
-    css: data.css,
-    styles: toRaw(styles)
-  });
-};
+const save = () => storageService.save();
 </script>

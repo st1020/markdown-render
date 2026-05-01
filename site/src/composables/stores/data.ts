@@ -1,19 +1,13 @@
 export type SystemData = {
   markdown: string;
   css: string;
-  resumeId: number | null;
-  resumeName: string;
   loaded: boolean;
 };
 
 export const useDataStore = defineStore("data", () => {
-  const { DEFAULT } = useConstant();
-
   const data = reactive<SystemData>({
     markdown: "",
     css: "",
-    resumeId: null,
-    resumeName: DEFAULT.RESUME_NAME,
     loaded: false
   });
 

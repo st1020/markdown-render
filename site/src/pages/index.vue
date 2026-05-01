@@ -57,13 +57,7 @@
 const { data } = useDataStore();
 
 onMounted(async () => {
-  const resumes = await storageService.getResumes();
-  const id =
-    resumes.length > 0 ? resumes[0].id : (await storageService.createResume())?.id;
-
-  if (id !== undefined) {
-    storageService.switchToResume(id);
-  }
+  await storageService.load();
 });
 
 // Toggle toolbar

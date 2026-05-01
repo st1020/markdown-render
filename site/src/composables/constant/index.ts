@@ -42,7 +42,6 @@ export const useConstant = () => {
   };
 
   const DEFAULT = {
-    RESUME_NAME: "New Resume",
     STYLES: V.DEFAULT_STYLES,
     MD_CONTENT: V.DEFAULT_MD_CONTENT,
     CSS_CONTENT: V.DEFAULT_CSS_CONTENT
