@@ -5,7 +5,7 @@
     size="sm"
     @click="save"
   >
-    <span i-ic:baseline-save text-base />
+    <span class="i-ic:baseline-save text-base" />
     Save
   </Button>
 </template>

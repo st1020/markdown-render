@@ -7,7 +7,7 @@
         :items="localCjk"
         :default-value="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
-      <span w-13>CJK</span>
+      <span class="w-13">CJK</span>
     </div>
 
     <div class="hstack gap-x-2 w-full">
@@ -17,7 +17,7 @@
         :items="localEn"
         :default-value="styles.fontEN.fontFamily || styles.fontEN.name"
       />
-      <span w-13>English</span>
+      <span class="w-13">English</span>
     </div>
   </EditorToolbarBox>
 </template>

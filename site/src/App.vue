@@ -3,7 +3,7 @@
     <div id="editor-page" class="flex flex-col">
       <header class="hstack justify-between px-4">
         <div class="hstack gap-x-2">
-          <div text-lg><span text-primary>Markdown</span>Render</div>
+          <div class="text-lg"><span class="text-primary">Markdown</span>Render</div>
         </div>
 
         <div class="hstack">
@@ -49,7 +49,7 @@
         <div
           v-if="isToolbarOpen"
           id="tools-pane"
-          lt-lg="fixed z-10 max-w-full h-full right-0 top-12 pb-10"
+          class="lt-lg:fixed lt-lg:z-10 lt-lg:max-w-full lt-lg:h-full lt-lg:right-0 lt-lg:top-12 lt-lg:pb-10"
         >
           <EditorToolbar v-if="data.loaded" />
           <Skeleton v-else class="h-full w-62 bg-secondary mr-3" />

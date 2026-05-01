@@ -1,7 +1,7 @@
 <template>
   <EditorToolbarBox text="Margins" icon="i-radix-icons:margin">
-    <div hstack text-muted-foreground gap-x-1 justify-end>
-      <span i-icon-park-outline:margin-one />
+    <div class="hstack text-muted-foreground gap-x-1 justify-end">
+      <span class="i-icon-park-outline:margin-one" />
       Top &amp; Bottom
     </div>
 
@@ -16,8 +16,8 @@
       "
     />
 
-    <div mt-4 hstack text-muted-foreground gap-x-1 justify-end>
-      <span i-icon-park-outline:margin />
+    <div class="mt-4 hstack text-muted-foreground gap-x-1 justify-end">
+      <span class="i-icon-park-outline:margin" />
       Left &amp; Right
     </div>
 

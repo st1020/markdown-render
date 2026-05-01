@@ -5,7 +5,7 @@
     size="sm"
     @click="exportPDF"
   >
-    <span i-mdi:file-pdf text-base />
+    <span class="i-mdi:file-pdf text-base" />
     Export PDF
   </Button>
 
@@ -15,7 +15,7 @@
     size="sm"
     @click="exportMd"
   >
-    <span i-ri:markdown-fill text-base />
+    <span class="i-ri:markdown-fill text-base" />
     Export Markdown
   </Button>
 </template>

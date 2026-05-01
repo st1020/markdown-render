@@ -1,11 +1,4 @@
-import {
-  defineConfig,
-  presetAttributify,
-  presetIcons,
-  presetWind4,
-  transformerDirectives,
-  transformerVariantGroup
-} from "unocss";
+import { defineConfig, presetIcons, presetWind4, transformerVariantGroup } from "unocss";
 import presetAnimations from "unocss-preset-animations";
 import { presetShadcn } from "unocss-preset-shadcn";
 
@@ -20,16 +13,8 @@ export default defineConfig({
         "flex-center size-10 text-lg hover:bg-blue-600 focus-visible:bg-blue-600"
     }
   ],
-  theme: {
-    breakpoints: {
-      sm: "641px",
-      md: "769px",
-      lg: "1025px"
-    }
-  },
   presets: [
     presetWind4(),
-    presetAttributify(),
     presetIcons({
       extraProperties: {
         display: "inline-block"
@@ -46,7 +31,7 @@ export default defineConfig({
       }
     )
   ],
-  transformers: [transformerDirectives(), transformerVariantGroup()],
+  transformers: [transformerVariantGroup()],
   content: {
     pipeline: {
       include: [

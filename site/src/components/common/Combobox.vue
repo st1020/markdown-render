@@ -1,5 +1,5 @@
 <template>
-  <div v-bind="api.getRootProps()" relative>
+  <div v-bind="api.getRootProps()" class="relative">
     <div
       v-bind="api.getControlProps()"
       class="group hstack h-9 gap-x-2 px-2 py-1 rounded-md border-1.5 data-[focus]:border-primary"
@@ -8,7 +8,7 @@
         v-bind="api.getInputProps()"
         class="w-full outline-none bg-transparent capitalize"
       />
-      <button v-bind="api.getTriggerProps()" size-5 flex-center>
+      <button v-bind="api.getTriggerProps()" class="size-5 flex-center">
         <span
           class="text-lg i-ic:sharp-arrow-drop-down group-data-[focus]:i-ic:sharp-arrow-drop-up"
         />

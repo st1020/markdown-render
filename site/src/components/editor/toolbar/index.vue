@@ -1,8 +1,7 @@
 <template>
   <div
     id="toolbar"
-    class="pane-container overflow-y-scroll hide-scrollbar bg-background w-62 mr-3"
-    lt-lg="bg-accent rounded-none"
+    class="pane-container overflow-y-scroll hide-scrollbar bg-background w-62 mr-3 lt-lg:bg-accent lt-lg:rounded-none"
   >
     <template v-for="(tool, i) in tools" :key="tool.id">
       <component :is="tool.component" :id="`toolbar-${tool.id}`" />

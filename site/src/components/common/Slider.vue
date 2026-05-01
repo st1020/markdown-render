@@ -14,15 +14,14 @@
       class="group block size-4 rounded-full border-2.5 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
     >
       <span
-        class="hidden group-hover:block group-focus-visible:block p-1 min-w-6 rounded bg-primary absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full after:(absolute content-[''] size-0 border-5 border-transparent border-t-primary top-full inset-x-0 mx-auto)"
-        text="white xs center"
+        class="hidden group-hover:block group-focus-visible:block p-1 min-w-6 rounded bg-primary absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full after:(absolute content-[''] size-0 border-5 border-transparent border-t-primary top-full inset-x-0 mx-auto) text-white text-xs text-center"
       >
         {{ modelValue?.at(0) }}
       </span>
     </SliderThumb>
   </SliderRoot>
 
-  <div flex justify-between text-muted-foreground>
+  <div class="flex justify-between text-muted-foreground">
     <span>{{ min }}{{ unit }}</span>
     <span>{{ max }}{{ unit }}</span>
   </div>
