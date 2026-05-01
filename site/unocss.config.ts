@@ -23,7 +23,15 @@ export default defineConfig({
     presetAnimations(),
     presetShadcn(
       {
-        color: "blue"
+        color: {
+          base: "blue",
+          light: {
+            background: "1 0 0",
+            foreground: "0.45 0.04 257",
+            secondary: "0.92 0.02 255",
+            "secondary-foreground": "0.25 0.05 255"
+          } as any
+        }
       },
       {
         componentLibrary: "reka",

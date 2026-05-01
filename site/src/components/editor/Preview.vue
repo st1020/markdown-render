@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pane-container overflow-scroll hide-scrollbar bg-secondary border-4 border-gray-200"
+    class="pane-container overflow-scroll hide-scrollbar bg-secondary border-4 border-secondary"
   >
     <VueZoom ref="zoom" :scale="scale">
       <MarkdownRender
