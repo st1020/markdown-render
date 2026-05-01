@@ -47,7 +47,7 @@
         lt-lg="fixed z-10 max-w-full h-full right-0 top-12 pb-10"
       >
         <EditorToolbar v-if="data.loaded" />
-        <UiSkeleton v-else class="h-full w-62 bg-secondary mr-10" />
+        <UiSkeleton v-else class="h-full w-62 bg-secondary mr-3" />
       </div>
     </div>
   </div>
