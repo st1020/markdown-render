@@ -1,14 +1,15 @@
-import { onMounted } from "vue";
 import {
   unrefElement,
-  toValue,
   watchThrottled,
-  type WatchThrottledOptions,
-  type MaybeComputedElementRef
+  type MaybeComputedElementRef,
+  type WatchThrottledOptions
 } from "@vueuse/core";
-import type { MaybeRef } from "@vueuse/shared";
+
+import { onMounted, Ref, ShallowRef, toValue, WritableComputedRef } from "vue";
 import { breakPage, setWidthAndMargins } from "./dom";
-import type { PageSize, PageMargins } from "./types";
+import type { PageMargins, PageSize } from "./types";
+
+export type MaybeRef<T> = T | Ref<T> | ShallowRef<T> | WritableComputedRef<T>;
 
 /**
  * Break the content into pages based on the given size and margins.

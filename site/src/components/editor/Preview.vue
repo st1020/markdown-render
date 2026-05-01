@@ -1,7 +1,7 @@
 <template>
   <div
     class="pane-container overflow-scroll hide-scrollbar bg-secondary"
-    border="4 secondary"
+    border="4 gray-200"
   >
     <VueZoom ref="zoom" :scale="scale">
       <MarkdownRender
