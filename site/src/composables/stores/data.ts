@@ -1,3 +1,8 @@
+import { defineStore } from "pinia";
+import { reactive } from "vue";
+import { useMonaco } from "~/composables/monaco";
+import { dynamicCssService } from "~/utils/css";
+
 export type SystemData = {
   markdown: string;
   css: string;

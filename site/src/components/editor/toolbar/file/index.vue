@@ -1,9 +1,12 @@
 <template>
   <EditorToolbarBox text="File" icon="i-carbon:import-export">
     <EditorToolbarFileSave />
-
-    <hr border-dashed my-2 />
-
     <EditorToolbarFileExport />
   </EditorToolbarBox>
 </template>
+
+<script setup lang="ts">
+import EditorToolbarBox from "../Box.vue";
+import EditorToolbarFileExport from "./Export.vue";
+import EditorToolbarFileSave from "./Save.vue";
+</script>

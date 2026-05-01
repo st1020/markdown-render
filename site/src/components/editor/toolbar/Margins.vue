@@ -35,6 +35,11 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
+import SharedUiSlider from "~/components/shared/ui/Slider.vue";
+import { useStyleStore } from "~/composables/stores/style";
+import EditorToolbarBox from "./Box.vue";
+
 const { styles, setStyle } = useStyleStore();
 
 const vModelValue = ref([styles.marginV]);

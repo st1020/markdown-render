@@ -12,33 +12,16 @@
 </template>
 
 <script setup lang="ts">
-import {
-  EditorToolbarFile,
-  EditorToolbarFontFamily,
-  EditorToolbarMargins,
-  EditorToolbarPaper
-} from "#components";
+import UiSeparator from "~/components/ui/separator/Separator.vue";
+import EditorToolbarFile from "./file/index.vue";
+import EditorToolbarFontFamily from "./FontFamily.vue";
+import EditorToolbarMargins from "./Margins.vue";
+import EditorToolbarPaper from "./Paper.vue";
 
 const tools = [
-  {
-    id: "file",
-    icon: "i-carbon:import-export",
-    component: EditorToolbarFile
-  },
-  {
-    id: "paper_size",
-    icon: "i-majesticons:paper-fold-line",
-    component: EditorToolbarPaper
-  },
-  {
-    id: "font_family",
-    icon: "i-material-symbols:font-download-outline",
-    component: EditorToolbarFontFamily
-  },
-  {
-    id: "margins",
-    icon: "i-radix-icons:margin",
-    component: EditorToolbarMargins
-  }
+  { id: "file", component: EditorToolbarFile },
+  { id: "paper_size", component: EditorToolbarPaper },
+  { id: "font_family", component: EditorToolbarFontFamily },
+  { id: "margins", component: EditorToolbarMargins }
 ];
 </script>

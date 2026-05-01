@@ -10,7 +10,11 @@
 </template>
 
 <script lang="ts" setup>
+import SharedUiCombobox from "~/components/shared/ui/Combobox.vue";
 import type { ValidPaperSize } from "~/composables/constant";
+import { useConstant } from "~/composables/constant";
+import { useStyleStore } from "~/composables/stores/style";
+import EditorToolbarBox from "./Box.vue";
 
 const { styles, setStyle } = useStyleStore();
 const { PAPER } = useConstant();

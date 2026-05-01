@@ -1,7 +1,11 @@
 <template>
   <div id="editor-page" class="flex flex-col">
-    <SharedHeader>
-      <template #tail>
+    <header class="hstack justify-between pl-4 pr-1">
+      <div class="hstack gap-x-2">
+        <div text-lg>Oh<span text-primary>My</span>CV</div>
+      </div>
+
+      <div class="hstack">
         <UiButton
           variant="ghost-secondary"
           size="round"
@@ -17,8 +21,8 @@
             ]"
           />
         </UiButton>
-      </template>
-    </SharedHeader>
+      </div>
+    </header>
 
     <div class="workspace flex pb-2">
       <SplitterGroup id="splitter-editor" direction="horizontal" class="px-3">
@@ -54,6 +58,17 @@
 </template>
 
 <script lang="ts" setup>
+import { useWindowSize } from "@vueuse/core";
+import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "reka-ui";
+import { onMounted, ref } from "vue";
+import EditorCode from "~/components/editor/Code.vue";
+import EditorPreview from "~/components/editor/Preview.vue";
+import EditorToolbar from "~/components/editor/toolbar/index.vue";
+import UiButton from "~/components/ui/button/Button.vue";
+import UiSkeleton from "~/components/ui/skeleton/Skeleton.vue";
+import { useDataStore } from "~/composables/stores/data";
+import { storageService } from "~/utils/storage";
+
 const { data } = useDataStore();
 
 onMounted(async () => {

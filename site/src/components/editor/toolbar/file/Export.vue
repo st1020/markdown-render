@@ -22,6 +22,8 @@
 
 <script lang="ts" setup>
 import { downloadFile } from "~/lib/utils";
+import { useDataStore } from "~/composables/stores/data";
+import UiButton from "~/components/ui/button/Button.vue";
 
 const { data } = useDataStore();
 

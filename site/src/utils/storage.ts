@@ -1,6 +1,10 @@
 import * as localForage from "localforage";
 import { toRaw } from "vue";
 import type { ResumeStyles } from "~/composables/stores/style";
+import { useDataStore } from "~/composables/stores/data";
+import { useStyleStore } from "~/composables/stores/style";
+import { useConstant } from "~/composables/constant";
+import { useToast } from "~/composables/toast";
 import { isClient } from "~/lib/utils";
 
 const STORAGE_KEY = "ohmycv_resume";

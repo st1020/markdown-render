@@ -1,7 +1,7 @@
+import type { Font, ValidPaperSize } from "./variables";
 import * as V from "./variables";
-import type { Font, ValidPaperSize, ValidVersion } from "./variables";
 
-export type { Font, ValidPaperSize, ValidVersion };
+export type { Font, ValidPaperSize };
 
 export const useConstant = () => {
   const FONT = {
@@ -37,31 +37,16 @@ export const useConstant = () => {
     PREVIEW_SELECTOR: V.PREVIEW_SELECTOR
   };
 
-  const COLOR = {
-    PRESET: V.PRESET_COLORS
-  };
-
   const DEFAULT = {
     STYLES: V.DEFAULT_STYLES,
     MD_CONTENT: V.DEFAULT_MD_CONTENT,
     CSS_CONTENT: V.DEFAULT_CSS_CONTENT
   };
 
-  const VERSION = {
-    CURRENT: V.CURRENT_VERSION,
-    EMPTY_FALLBACK: V.EMPTY_VERSION_FALLBACK,
-    VERSION_KEY: V.VERSION_STORAGE_KEY,
-    REQUIRED_DATA_TYPES: V.REQUIRED_DATA_TYPES,
-    VALID: V.VALID_VERSIONS,
-    isVersionValid: (version: string) => V.VALID_VERSIONS.includes(version)
-  };
-
   return {
     FONT,
     PAPER,
     RENDER,
-    COLOR,
-    DEFAULT,
-    VERSION
+    DEFAULT
   };
 };

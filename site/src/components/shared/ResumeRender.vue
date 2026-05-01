@@ -3,8 +3,13 @@
 </template>
 
 <script lang="ts" setup>
+import { watchThrottled } from "@vueuse/core";
+import { computed, ref } from "vue";
+import { useConstant } from "~/composables/constant";
 import type { ResumeStyles } from "~/composables/stores/style";
 import { useSmartPages } from "~/lib/vue-smart-pages";
+import { googleFontsService } from "~/utils/font";
+import { markdownService } from "~/utils/markdown";
 
 const props = defineProps<{
   id: string | number;
@@ -43,7 +48,5 @@ watchThrottled(() => [props.css, props.styles.fontCJK, props.styles.fontEN], ren
   leading: false
 });
 
-defineExpose({
-  render
-});
+defineExpose({ render });
 </script>

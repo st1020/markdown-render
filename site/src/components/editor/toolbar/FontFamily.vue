@@ -27,7 +27,14 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted, ref } from "vue";
 import type { ComboboxItem } from "~/components/shared/ui/Combobox.vue";
+import SharedUiCombobox from "~/components/shared/ui/Combobox.vue";
+import UiSkeleton from "~/components/ui/skeleton/Skeleton.vue";
+import { useConstant } from "~/composables/constant";
+import { useStyleStore } from "~/composables/stores/style";
+import { googleFontsService } from "~/utils/font";
+import EditorToolbarBox from "./Box.vue";
 
 const { styles, setStyle } = useStyleStore();
 const { FONT } = useConstant();
@@ -35,7 +42,6 @@ const { FONT } = useConstant();
 const localEn = FONT.LOCAL.EN.map<ComboboxItem>((item) => {
   const family =
     FONT.LOCAL.EN.find((font) => font.name === item.name)?.fontFamily || item.name;
-
   return {
     label: item.name,
     value: family,
@@ -46,7 +52,6 @@ const localEn = FONT.LOCAL.EN.map<ComboboxItem>((item) => {
 const localCjk = FONT.LOCAL.CJK.map<ComboboxItem>((item) => {
   const family =
     FONT.LOCAL.CJK.find((font) => font.name === item.name)?.fontFamily || item.name;
-
   return {
     label: item.name,
     value: family,
@@ -56,7 +61,6 @@ const localCjk = FONT.LOCAL.CJK.map<ComboboxItem>((item) => {
 
 // Setup Google Fonts
 const loaded = ref(false);
-
 const gfEn = ref<ComboboxItem[]>([]);
 const gfCjk = ref<ComboboxItem[]>([]);
 
@@ -73,11 +77,10 @@ onMounted(async () => {
     .map((font) => {
       const family = font.family;
       const name = FONT.GF.CJK_FAMILY_TO_NAME[family] || family;
-
       return {
         label: name,
         value: family,
-        onSelect: () => setStyle("fontCJK", { name: name, fontFamily: family })
+        onSelect: () => setStyle("fontCJK", { name, fontFamily: family })
       };
     })
     .sort(

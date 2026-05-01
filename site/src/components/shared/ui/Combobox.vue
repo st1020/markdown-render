@@ -37,6 +37,7 @@
 <script lang="ts" setup>
 import * as combobox from "@zag-js/combobox";
 import { normalizeProps, useMachine } from "@zag-js/vue";
+import { computed, ref } from "vue";
 
 export interface ComboboxItem {
   label: string;

@@ -11,5 +11,8 @@
 </template>
 
 <script lang="ts" setup>
+import UiButton from "~/components/ui/button/Button.vue";
+import { storageService } from "~/utils/storage";
+
 const save = () => storageService.save();
 </script>

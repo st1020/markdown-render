@@ -1,7 +1,7 @@
-import GoogleFontsLoader from "~/lib/google-fonts-loader";
-import type { Font as GoogleFont, Subset } from "~/lib/google-fonts-loader";
 import { useConstant, type Font } from "~/composables/constant";
 import type { ResumeStyles } from "~/composables/stores/style";
+import type { Font as GoogleFont, Subset } from "~/lib/google-fonts-loader";
+import GoogleFontsLoader from "~/lib/google-fonts-loader";
 
 const { FONT } = useConstant();
 
@@ -28,8 +28,7 @@ export class GoogleFontsService {
    * @returns GoogleFontsLoader instance if successful, null otherwise
    */
   public async loader() {
-    const config = useRuntimeConfig();
-    const key = config.public.googleFontsKey;
+    const key = import.meta.env.VITE_GOOGLE_FONTS_KEY ?? "";
 
     if (!this._loader && key !== "") {
       this._loader = new GoogleFontsLoader(key, {

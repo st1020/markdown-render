@@ -3,21 +3,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt generate",
-    "dev": "nuxt dev",
-    "serve": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "vite build",
+    "dev": "vite",
+    "serve": "vite preview"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.225",
-    "@nuxt/devtools": "latest",
-    "@pinia/nuxt": "^0.5.1",
-    "@unocss/nuxt": "^0.61.2",
+    "@types/markdown-it": "^14.1.0",
+    "@unocss/reset": "^0.61.2",
+    "@vitejs/plugin-vue": "^5.0.4",
     "@vueuse/core": "^10.11.0",
-    "@vueuse/nuxt": "^10.11.0",
     "@zag-js/color-picker": "^0.60.0",
     "@zag-js/combobox": "^0.60.0",
-    "@zag-js/file-upload": "^0.60.0",
     "@zag-js/vue": "^0.60.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -25,13 +22,14 @@
     "lucide-vue-next": "^0.400.0",
     "markdown-it": "^14.1.0",
     "monaco-editor": "^0.50.0",
-    "nuxt": "^3.12.3",
     "pinia": "^2.1.7",
-    "radix-vue": "^1.9.0",
-    "shadcn-nuxt": "^0.10.4",
+    "reka-ui": "^2.9.6",
     "tailwind-merge": "^2.3.0",
+    "unocss": "^0.61.2",
     "unocss-preset-animations": "^1.0.2",
     "unocss-preset-shadcn": "^0.3.1",
+    "vite": "^5.3.3",
+    "vue": "^3.4.31",
     "vue-sonner": "^1.1.3"
   }
 }

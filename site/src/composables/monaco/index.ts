@@ -1,6 +1,8 @@
-import { isClient } from "~/lib/utils";
 import type * as Monaco from "monaco-editor";
-import { setupMonacoModel, setupMonacoEditor, type MonacoModel } from "./setup";
+import { ref, shallowRef } from "vue";
+import { useDataStore } from "~/composables/stores/data";
+import { isClient } from "~/lib/utils";
+import { setupMonacoEditor, setupMonacoModel, type MonacoModel } from "./setup";
 
 type MonacoStates = {
   editor: Monaco.editor.IStandaloneCodeEditor;
@@ -8,17 +10,14 @@ type MonacoStates = {
   css: MonacoModel;
 };
 
-const useMonacoState = () =>
-  useState<MonacoStates | undefined>("monacoStates", shallowRef);
+const monacoStates = shallowRef<MonacoStates | undefined>(undefined);
+const monacoLoading = ref(false);
 
 export const useMonaco = () => {
-  const states = useMonacoState();
-  const loading = useState<boolean>("monacoLoading", () => false);
-
   const setup = async (container?: HTMLElement) => {
     if (!isClient || !container) return;
 
-    loading.value = true;
+    monacoLoading.value = true;
 
     try {
       const { editor } = await setupMonacoEditor(container);
@@ -34,30 +33,30 @@ export const useMonaco = () => {
         setData("css", css.get().getValue())
       );
 
-      states.value = { editor, markdown, css };
+      monacoStates.value = { editor, markdown, css };
     } catch (error) {
       // TODO: use toast to show error
       console.error("Failed to initialize the editor: ", error);
     } finally {
-      loading.value = false;
+      monacoLoading.value = false;
     }
   };
 
   const dispose = () => {
-    states.value?.editor.dispose();
-    states.value?.markdown.dispose();
-    states.value?.css.dispose();
+    monacoStates.value?.editor.dispose();
+    monacoStates.value?.markdown.dispose();
+    monacoStates.value?.css.dispose();
 
-    states.value = undefined;
-    loading.value = false;
+    monacoStates.value = undefined;
+    monacoLoading.value = false;
   };
 
   const activateModel = (model: "markdown" | "css") => {
-    states.value?.editor.setModel(states.value[model].get());
+    monacoStates.value?.editor.setModel(monacoStates.value[model].get());
   };
 
   const setContent = (model: "markdown" | "css", content: string) => {
-    states.value?.[model].get().setValue(content);
+    monacoStates.value?.[model].get().setValue(content);
   };
 
   return {
@@ -65,6 +64,6 @@ export const useMonaco = () => {
     dispose,
     activateModel,
     setContent,
-    loading
+    loading: monacoLoading
   };
 };

@@ -30,21 +30,23 @@
 </template>
 
 <script lang="ts" setup>
-import type { SliderRootEmits, SliderRootProps } from "radix-vue";
-import { useForwardPropsEmits } from "radix-vue";
+import {
+  SliderRange,
+  SliderRoot,
+  SliderThumb,
+  SliderTrack,
+  useForwardPropsEmits,
+  type SliderRootEmits,
+  type SliderRootProps
+} from "reka-ui";
+import { computed } from "vue";
 
-const props = defineProps<
-  SliderRootProps & {
-    unit?: string;
-  }
->();
+const props = defineProps<SliderRootProps & { unit?: string }>();
 const emits = defineEmits<SliderRootEmits>();
-
 const forwarded = useForwardPropsEmits(props, emits);
 
 const min = computed(() => props.min || 0);
 const max = computed(() => props.max || 100);
 const middle = computed(() => (min.value + max.value) / 2);
-
 const unit = computed(() => props.unit || "");
 </script>
