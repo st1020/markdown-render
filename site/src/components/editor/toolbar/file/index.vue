@@ -6,9 +6,5 @@
     <hr border-dashed my-2 />
 
     <EditorToolbarFileExport />
-
-    <hr border-dashed my-2 />
-
-    <EditorToolbarFileImport />
   </EditorToolbarBox>
 </template>
