@@ -76,10 +76,7 @@ export class MigrateService {
         // Dark mode
         .replace(
           /\.dark\s+#vue-smart-pages-preview\s*{\s*background-color:\s*#334155\s*;\s*color:\s*#e5e7eb\s*;\s*}/,
-          `.dark #resume-preview [data-scope="vue-smart-pages"][data-part="page"] {
-  background-color: hsl(213, 12%, 15%);
-  color: hsl(216, 12%, 84%);
-}`
+          ""
         )
         .replace(/\s+\.dark\s+#vue-smart-pages-preview\s+a\s*{[^}]*}/g, "")
         // Basic

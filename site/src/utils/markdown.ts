@@ -9,18 +9,6 @@ import MarkdownItDeflist from "markdown-it-deflist";
 import LinkAttributes from "markdown-it-link-attributes";
 import MarkdownItCite from "~/lib/markdown-it-cross-ref";
 import MarkdownItLatexCmds from "~/lib/markdown-it-latex-cmds";
-import { FrontMatterParser } from "~/lib/front-matter";
-
-type ResumeHeaderItem = {
-  readonly text: string;
-  readonly link?: string;
-  readonly newLine?: boolean;
-};
-
-type ResumeFrontMatter = {
-  readonly name?: string;
-  readonly header?: Array<ResumeHeaderItem>;
-};
 
 type MarkdownItPlugins = Array<
   PluginSimple | PluginWithOptions | [PluginWithOptions, any]
@@ -33,13 +21,9 @@ type MarkdownServiceOptions = {
 
 export class MarkdownService {
   private _md: MarkdownIt;
-  private _frontMatterParser: FrontMatterParser<ResumeFrontMatter>;
 
   constructor(opt: MarkdownServiceOptions = {}) {
     this._md = this._setupMarkdownIt(opt);
-    this._frontMatterParser = new FrontMatterParser<ResumeFrontMatter>({
-      errorBehavior: "last"
-    });
   }
 
   private _setupMarkdownIt({ plugins = [], options = {} }: MarkdownServiceOptions) {
@@ -51,10 +35,6 @@ export class MarkdownService {
     });
 
     return md;
-  }
-
-  private _renderMarkdown(md: string) {
-    return this._md.render(md);
   }
 
   /**
@@ -77,9 +57,6 @@ export class MarkdownService {
    *   <dt>...</dt>
    *   <dd>...</dd>
    * </dl>
-   *
-   * @param html HTML string
-   * @returns HTML string with resolved deflists
    */
   private _resolveDeflist(html: string) {
     return html.replace(/<dl>([\s\S]*?)<\/dl>/g, (match) =>
@@ -87,38 +64,8 @@ export class MarkdownService {
     );
   }
 
-  private _renderHeaderItem(item: ResumeHeaderItem, hasSeparator: boolean) {
-    const content = item.link
-      ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.text}</a>`
-      : item.text;
-
-    const element = `<span class="resume-header-item ${hasSeparator ? "" : "no-separator"}">
-      ${content}
-    </span>`;
-
-    return item.newLine ? `<br>\n${element}` : element;
-  }
-
-  public renderHeader(frontMatter: ResumeFrontMatter) {
-    const content = [
-      frontMatter.name ? `<h1>${frontMatter.name}</h1>\n` : "",
-      (frontMatter.header ?? [])
-        .map((item, i, array) =>
-          this._renderHeaderItem(item, i !== array.length - 1 && !array[i + 1].newLine)
-        )
-        .join("\n")
-    ].join("");
-
-    return `<div class="resume-header">${content}</div>`;
-  }
-
   public renderResume(md: string) {
-    const { body, frontMatter } = this._frontMatterParser.parse(md);
-
-    const content = this._resolveDeflist(this._renderMarkdown(body));
-    const header = this.renderHeader(frontMatter);
-
-    return header + content;
+    return this._resolveDeflist(this._md.render(md));
   }
 }
 

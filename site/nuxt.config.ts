@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@unocss/nuxt",
     "@pinia/nuxt",
-    "@nuxtjs/color-mode",
     "radix-vue/nuxt",
     "shadcn-nuxt"
   ],
@@ -22,10 +21,6 @@ export default defineNuxtConfig({
     public: {
       googleFontsKey: ""
     }
-  },
-
-  colorMode: {
-    classSuffix: ""
   },
 
   app: {
@@ -44,5 +39,7 @@ export default defineNuxtConfig({
         { property: "og:type", content: "website" }
       ]
     }
-  }
+  },
+
+  compatibilityDate: "2026-05-01"
 });

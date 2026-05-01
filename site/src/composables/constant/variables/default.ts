@@ -1,5 +1,5 @@
-import { PREVIEW_SELECTOR } from "./render";
 import type { ResumeStyles } from "../../stores/style";
+import { PREVIEW_SELECTOR } from "./render";
 
 export const DEFAULT_STYLES = {
   marginV: 50,
@@ -18,24 +18,17 @@ export const DEFAULT_STYLES = {
   paper: "A4"
 } as ResumeStyles;
 
-export const DEFAULT_MD_CONTENT = `---
-name: Haha Ha
-header:
-  - text: |
-      <span style="font-size: 1.2em; font-weight: bold;">Applying for: Cooking Engineer</span>
-  - text: <span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
-    newLine: true
-  - text: <span class="iconify" data-icon="tabler:mail"></span> icancook@email.com
-    link: mailto:icancook@email.com
-  - text: <span class="iconify" data-icon="tabler:brand-github"></span> Renovamen
-    link: https://github.com/Renovamen
-  - text: <span class="iconify" data-icon="charm:person"></span> zxh.me
-    link: https://zxh.me
----
+export const DEFAULT_MD_CONTENT = `# Haha Ha
+
+<div style="text-align:center">
+<span style="font-size:1.2em;font-weight:bold;">Applying for: Cooking Engineer</span><br>
+<span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
+| <span class="iconify" data-icon="tabler:mail"></span> icancook@email.com
+| <span class="iconify" data-icon="tabler:brand-github"></span> Renovamen
+| <span class="iconify" data-icon="charm:person"></span> zxh.me
+</div>
 
 <!-- Important: Replace all template content, especially contact details, with your own information. -->
-
-<!-- Important: When updating your email address, remember to change both the "text" (visible text) and the "link" (underlying hyperlink) fields. -->
 
 
 ## Education
@@ -205,22 +198,6 @@ ${PREVIEW_SELECTOR} img {
   max-width: 100%;
 }
 
-/* Header */
-
-${PREVIEW_SELECTOR} .resume-header {
-  text-align: center;
-}
-
-${PREVIEW_SELECTOR} .resume-header h1 {
-  text-align: center;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-${PREVIEW_SELECTOR} .resume-header-item:not(.no-separator)::after {
-  content: " | ";
-}
-
 /* Citations */
 
 ${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="definitions"] {
@@ -240,18 +217,4 @@ ${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="reference"] {
   top: 0;
 }
 
-/* Dark & print mode */
-/* You might want to comment out the following lines if you change the background or text color. */
-
-.dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
-  background-color: hsl(213, 12%, 15%);
-  color: hsl(216, 12%, 84%);
-}
-
-@media print {
-  .dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
-    background-color: white;
-    color: black;
-  }
-}
 `;

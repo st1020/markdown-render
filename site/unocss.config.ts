@@ -82,22 +82,6 @@ export default defineConfig({
             "accent-foreground": "220.9 39.3% 11%", // gray
             border: "216 12% 85%",
             input: "216 12% 85%"
-          },
-          dark: {
-            background: "213 12% 15%",
-            foreground: "0 0% 90%",
-            card: "213 12% 15%",
-            "card-foreground": "0 0% 90%",
-            popover: "213 12% 15%",
-            "popover-foreground": "0 0% 90%",
-            secondary: "230 5% 36%",
-            "secondary-foreground": "0 0% 98%", // neutral
-            muted: "220 10% 21%",
-            "muted-foreground": "0 0% 63.9%", // neutral
-            accent: "220 10% 21%",
-            "accent-foreground": "0 0% 98%", // neutral
-            border: "0 0% 45%",
-            input: "0 0% 45%"
           }
         }
       },

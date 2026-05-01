@@ -49,7 +49,7 @@ export const setupMonaco = async () => {
   };
 
   // Theme
-  setupMonacoTheme(monaco);
+  monaco.editor.setTheme("vs");
 
   return { monaco };
 };
@@ -85,29 +85,4 @@ export const setupMonacoEditor = async (container: HTMLElement) => {
   });
 
   return { editor };
-};
-
-export const setupMonacoTheme = async (monaco: typeof Monaco) => {
-  // Custom dark theme
-  monaco.editor.defineTheme("vs-dark-dimmed", {
-    base: "vs-dark",
-    inherit: true,
-    rules: [],
-    colors: {
-      "editor.background": "#22262B",
-      "editor.lineHighlightBorder": "#4b5563",
-      "dropdown.background": "#4b5563",
-      "menu.separatorBackground": "#6b7280"
-    }
-  });
-
-  // Watch color mode changes and set theme
-  const setTheme = (theme: string) => {
-    monaco.editor.setTheme(theme === "dark" ? "vs-dark-dimmed" : "vs");
-  };
-
-  const colorMode = useColorMode();
-
-  setTheme(colorMode.value);
-  watch(() => colorMode.value, setTheme);
 };

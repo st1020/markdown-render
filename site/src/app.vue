@@ -6,9 +6,6 @@
 </template>
 
 <script setup lang="ts">
-const colorMode = useColorMode();
-const preferredDark = usePreferredDark();
-
 useHead({
   title: "Oh My CV! - Free Online Resume Maker",
   meta: [
@@ -28,18 +25,9 @@ useHead({
         "Free online resume maker, allows you to create your resume in minutes with Markdown!"
     },
     { property: "og:locale", content: "en" },
-    {
-      name: "theme-color",
-      content: () => (colorMode.value === "dark" ? "#30343A" : "#F3F4F6")
-    }
+    { name: "theme-color", content: "#F3F4F6" }
   ],
-  link: [
-    {
-      rel: "icon",
-      type: "image/svg+xml",
-      href: () => (preferredDark.value ? "/favicon-dark.svg" : "/favicon.svg")
-    }
-  ],
+  link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
   script: [
     {
       src: "https://code.iconify.design/2/2.2.1/iconify.min.js",

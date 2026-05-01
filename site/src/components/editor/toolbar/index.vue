@@ -44,8 +44,7 @@ import {
   EditorToolbarFontSize,
   EditorToolbarMargins,
   EditorToolbarParagraphSpace,
-  EditorToolbarLineHeight,
-  EditorToolbarCorrectCase
+  EditorToolbarLineHeight
 } from "#components";
 
 const tools = [
@@ -88,11 +87,6 @@ const tools = [
     id: "line_height",
     icon: "i-ic:round-format-line-spacing",
     component: EditorToolbarLineHeight
-  },
-  {
-    id: "correct_case",
-    icon: "i-icon-park-outline:check-correct",
-    component: EditorToolbarCorrectCase
   }
 ];
 
@@ -117,8 +111,7 @@ const tooltips: Record<string, string> = {
   font_size: "Font Size",
   margins: "Margins",
   paragraph_spacing: "Paragraph Spacing",
-  line_height: "Line Spacing",
-  correct_case: "Correct Case"
+  line_height: "Line Spacing"
 };
 
 const getTooltip = (id: string) => tooltips[id] || id;
