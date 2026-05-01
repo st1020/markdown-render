@@ -1,5 +1,4 @@
 @import "./fonts.css";
-@import "./editor.css";
 
 /* Variables have been injected via `unocss-preset-shadcn` (https://github.com/hyoban/unocss-preset-shadcn) */
 * {
@@ -34,4 +33,65 @@ svg.iconify {
 .hide-scrollbar::-webkit-scrollbar {
   /* Safari and Chrome */
   display: none;
+}
+
+/* Editor styles */
+#editor-page {
+  height: 100vh;
+  height: 100dvh;
+}
+
+#resume-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Print mode */
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  #editor-page {
+    height: auto;
+  }
+
+  .workspace,
+  [data-panel-group-id="splitter-editor"] {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  header,
+  .toaster.group,
+  #zoom-bar,
+  #code-pane,
+  #code-preview-handle,
+  #tools-pane,
+  #nuxt-devtools-container,
+  [data-radix-popper-content-wrapper] {
+    display: none !important;
+  }
+
+  .pane-container {
+    border: none;
+    border-radius: 0;
+  }
+
+  .vue-zoom {
+    transform: scale(1) !important;
+    margin: 0 !important;
+  }
+
+  #resume-preview {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    gap: 0;
+  }
+
+  #resume-preview [data-scope="vue-smart-pages"][data-part="page"] {
+    break-before: page;
+    height: 100vh !important;
+  }
 }

@@ -42,12 +42,8 @@ const { RENDER } = useConstant();
 export class DynamicCssService {
   constructor() {}
 
-  private _selector = (id?: string | number) => {
-    return `#resume-${id ?? RENDER.PREVIEW_ID}`;
-  };
-
-  private _injectedCssId = (type: "toolbar" | "css-editor", id?: string | number) => {
-    return `ohmycv-${type}-${id ?? RENDER.PREVIEW_ID}`;
+  private _injectedCssId = (type: "toolbar" | "css-editor") => {
+    return `ohmycv-${type}-preview`;
   };
 
   private fontFamily = (selector: string, styles: ResumeStyles) => {
@@ -67,15 +63,13 @@ export class DynamicCssService {
    * @param id Element ID of the corresponding resume element (dashboard). If not
    * provided, it will be set to "preview", which is the preview view in the editor.
    */
-  public injectToolbar(styles: ResumeStyles, id?: string | number) {
-    const selector = this._selector(id);
-
+  public injectToolbar(styles: ResumeStyles) {
     const css =
-      this.fontFamily(selector, styles) +
+      this.fontFamily(RENDER.PREVIEW_SELECTOR, styles) +
       // We only need to set paper size for the preview view in the editor
-      (id === undefined ? this.paperSize(styles) : "");
+      this.paperSize(styles);
 
-    injectCss(this._injectedCssId("toolbar", id), css);
+    injectCss(this._injectedCssId("toolbar"), css);
   }
 
   /**
@@ -85,13 +79,8 @@ export class DynamicCssService {
    * @param id Element ID of the corresponding resume element (dashboard). If not
    * provided, it will be set to "preview", which is the preview view in the editor.
    */
-  public injectCssEditor(css: string, id?: string | number) {
-    if (id !== undefined) {
-      // To control each resume element (dashboard) separately
-      css = css.replaceAll(RENDER.PREVIEW_SELECTOR, this._selector(id));
-    }
-
-    injectCss(this._injectedCssId("css-editor", id), css);
+  public injectCssEditor(css: string) {
+    injectCss(this._injectedCssId("css-editor"), css);
   }
 }
 

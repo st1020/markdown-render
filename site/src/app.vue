@@ -1,7 +1,7 @@
 <template>
   <div class="font-ui">
     <div id="editor-page" class="flex flex-col">
-      <header class="hstack justify-between pl-4 pr-1">
+      <header class="hstack justify-between px-4">
         <div class="hstack gap-x-2">
           <div text-lg>Oh<span text-primary>My</span>CV</div>
         </div>

@@ -27,7 +27,6 @@ export const useConstant = () => {
 
   const RENDER = {
     PRINT_BOTTOM: V.PRINT_BOTTOM,
-    PREVIEW_ID: V.PREVIEW_ID,
     PREVIEW_SELECTOR: V.PREVIEW_SELECTOR
   };
 

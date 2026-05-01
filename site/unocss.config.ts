@@ -20,7 +20,10 @@ export default defineConfig({
         "ring-offset-background focus-visible:(outline-none ring-2 ring-ring ring-offset-2)",
       "shadow-c": "shadow shadow-gray-300 dark:shadow-neutral-900",
       "resume-card":
-        "relative mx-auto rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
+        "relative mx-auto rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)",
+      "pane-container": "h-full rounded-xl",
+      "zoom-button":
+        "flex-center size-10 text-lg hover:bg-blue-600 focus-visible:bg-blue-600"
     }
   ],
   preflights: [
