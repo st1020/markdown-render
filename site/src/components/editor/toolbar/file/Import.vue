@@ -3,13 +3,13 @@
     <UiDialogTrigger as-child>
       <UiButton class="gap-x-1.5 w-full h-8 justify-start" variant="ghost" size="sm">
         <span i-mdi:upload text-base />
-        {{ $t("toolbar.file.import.trigger") }}
+        Import Markdown
       </UiButton>
     </UiDialogTrigger>
 
     <UiDialogContent class="sm:max-w-110">
       <UiDialogHeader>
-        <UiDialogTitle>{{ $t("toolbar.file.import.dialog.header") }}</UiDialogTitle>
+        <UiDialogTitle>Import a Markdown file</UiDialogTitle>
       </UiDialogHeader>
 
       <div class="pt-2 space-y-6 text-sm">
@@ -20,7 +20,7 @@
             border="~ dashed rounded"
           >
             <input v-bind="api.getHiddenInputProps()" />
-            <div text-center>{{ $t("toolbar.file.import.dialog.from_local") }}</div>
+            <div text-center>Drag your file here, or click here to choose a file</div>
           </div>
 
           <div v-if="localFile" class="bg-muted text-muted-foreground rounded p-2 mt-2">
@@ -37,7 +37,7 @@
         <div class="flex gap-x-2">
           <UiInput
             v-model="pastedURL"
-            :placeholder="$t('toolbar.file.import.dialog.from_url')"
+            placeholder="Paste file URL"
             @keyup.enter="uploadFileFromURL"
           />
 
@@ -60,7 +60,7 @@
 <script lang="ts" setup>
 import * as fileUpload from "@zag-js/file-upload";
 import { normalizeProps, useMachine } from "@zag-js/vue";
-import { fetchFile } from "@renovamen/utils";
+import { fetchFile } from "~/lib/utils";
 
 const { setAndSyncToMonaco } = useDataStore();
 

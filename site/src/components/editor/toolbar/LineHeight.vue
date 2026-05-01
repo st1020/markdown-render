@@ -1,8 +1,5 @@
 <template>
-  <EditorToolbarBox
-    :text="$t('toolbar.line_height')"
-    icon="i-ic:round-format-line-spacing"
-  >
+  <EditorToolbarBox text="Line Spacing" icon="i-ic:round-format-line-spacing">
     <SharedUiSlider
       :model-value="modelValue"
       :min="1"

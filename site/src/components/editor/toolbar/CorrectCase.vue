@@ -1,33 +1,29 @@
 <template>
-  <EditorToolbarBox
-    :text="$t('toolbar.correct_case.title')"
-    icon="i-icon-park-outline:check-correct"
-  >
+  <EditorToolbarBox text="Correct Case" icon="i-icon-park-outline:check-correct">
     <UiAlert>
-      <UiAlertTitle>{{ $t("toolbar.correct_case.example.title") }}</UiAlertTitle>
-      <UiAlertDescription>
-        {{ $t("toolbar.correct_case.example.content") }}
-      </UiAlertDescription>
+      <UiAlertTitle>Example</UiAlertTitle>
+      <UiAlertDescription> "Github" → "GitHub" </UiAlertDescription>
     </UiAlert>
 
     <UiAlert variant="info" class="mt-3">
-      <UiAlertTitle>{{ $t("toolbar.correct_case.note.title") }}</UiAlertTitle>
+      <UiAlertTitle>Note</UiAlertTitle>
       <UiAlertDescription>
-        {{ $t("toolbar.correct_case.note.content") }}
+        Words that are only in uppercase or lowercase ("GITHUB" or "github") will be left
+        untouched.
       </UiAlertDescription>
     </UiAlert>
 
     <div class="mt-3 text-right">
       <UiButton @click="correct" size="sm">
         <span i-carbon:rocket mr-1 />
-        {{ $t("toolbar.correct_case.btn") }}
+        Correct it!
       </UiButton>
     </div>
   </EditorToolbarBox>
 </template>
 
 <script lang="ts" setup>
-import { replace } from "@ohmycv/case-police";
+import { replace } from "~/lib/case-police";
 
 const { data, setAndSyncToMonaco } = useDataStore();
 const toast = useToast();

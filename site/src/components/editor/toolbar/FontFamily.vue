@@ -1,8 +1,5 @@
 <template>
-  <EditorToolbarBox
-    :text="$t('toolbar.font_family.title')"
-    icon="i-material-symbols:font-download-outline"
-  >
+  <EditorToolbarBox text="Font Family" icon="i-material-symbols:font-download-outline">
     <div class="w-full hstack gap-x-2 mb-2">
       <SharedUiCombobox
         v-if="loaded"
@@ -12,7 +9,7 @@
         :default-value="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
       <UiSkeleton v-else class="flex-1 h-9" />
-      <span w-13>{{ $t("toolbar.font_family.cjk") }}</span>
+      <span w-13>CJK</span>
     </div>
 
     <div class="hstack gap-x-2 w-full">
@@ -24,7 +21,7 @@
         :default-value="styles.fontEN.fontFamily || styles.fontEN.name"
       />
       <UiSkeleton v-else class="flex-1 h-9" />
-      <span w-13>{{ $t("toolbar.font_family.en") }}</span>
+      <span w-13>English</span>
     </div>
   </EditorToolbarBox>
 </template>

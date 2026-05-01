@@ -2,7 +2,7 @@
   <UiButton
     variant="ghost-secondary"
     size="round"
-    :aria-label="$t('toggle_theme')"
+    :aria-label="'Toggle theme'"
     @click="switchMode"
   >
     <div

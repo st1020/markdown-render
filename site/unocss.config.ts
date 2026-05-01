@@ -7,7 +7,6 @@ import {
   transformerDirectives,
   transformerVariantGroup
 } from "unocss";
-import { i18n } from "./configs/i18n";
 import presetAnimations from "unocss-preset-animations";
 import { presetShadcn } from "unocss-preset-shadcn";
 
@@ -111,7 +110,5 @@ export default defineConfig({
       // https://github.com/fisand/unocss-preset-shadcn
       include: [/\.ts/, /\.vue$/, /\.vue\?vue/]
     }
-  },
-  // @ts-expect-error icon is a customized key
-  safelist: i18n.locales.map((item) => item.icon)
+  }
 });

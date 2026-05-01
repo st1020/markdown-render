@@ -1,6 +1,3 @@
-import { pwa } from "./configs/pwa";
-import { i18n } from "./configs/i18n";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: "src/",
@@ -9,21 +6,12 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@unocss/nuxt",
     "@pinia/nuxt",
-    "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
-    "@vite-pwa/nuxt",
-    "nuxt-simple-sitemap",
     "radix-vue/nuxt",
     "shadcn-nuxt"
   ],
 
-  css: [
-    "@unocss/reset/tailwind.css",
-    "katex/dist/katex.min.css",
-    "~/assets/css/index.css"
-  ],
-
-  i18n,
+  css: ["@unocss/reset/tailwind.css", "~/assets/css/index.css"],
 
   shadcn: {
     prefix: "Ui",
@@ -56,11 +44,5 @@ export default defineNuxtConfig({
         { property: "og:type", content: "website" }
       ]
     }
-  },
-
-  site: {
-    url: "https://ohmycv.app"
-  },
-
-  pwa
+  }
 });

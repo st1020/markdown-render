@@ -1,4 +1,4 @@
-import type { Subset } from "@ohmycv/google-fonts-loader";
+import type { Subset } from "~/lib/google-fonts-loader";
 
 export type Font = {
   readonly name: string;

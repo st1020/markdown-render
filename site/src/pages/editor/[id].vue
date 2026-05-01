@@ -6,7 +6,7 @@
           variant="ghost-secondary"
           size="round"
           @click="isToolbarOpen = !isToolbarOpen"
-          :aria-label="isToolbarOpen ? $t('close_toolbar') : $t('open_toolbar')"
+          :aria-label="isToolbarOpen ? 'Close toolbar' : 'Open toolbar'"
         >
           <span
             :class="[
@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-import { isInteger } from "@renovamen/utils";
+import { isInteger } from "~/lib/utils";
 
 const route = useRoute();
 const { data } = useDataStore();

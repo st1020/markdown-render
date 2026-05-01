@@ -6,14 +6,12 @@ So, why not write it in Markdown?
 
 Have fun: [ohmycv.app](https://ohmycv.app/)
 
-
 &nbsp;
 
 ## Important Notice
 
 - Highly recommend using **Chromium-based browsers**, e.g., [Chrome](https://www.google.com/chrome/) and [Microsoft Edge](https://www.microsoft.com/en-us/edge).
 - **Backup your data**: Cloud backup is coming soon, but isn't available yet. For now, please regularly export and back up your data by clicking the `Save As` button.
-
 
 &nbsp;
 
@@ -38,20 +36,17 @@ Have fun: [ohmycv.app](https://ohmycv.app/)
   - No user tracking or ads
 - Dark mode
 
-
 &nbsp;
 
 ## Contribution
 
 Contributions are welcome. Please read this [Contributing Guide](.github/CONTRIBUTING.md) before getting started. Thanks!
 
-
 &nbsp;
 
 ## Credits
 
 - [billryan/resume](https://github.com/billryan/resume)
-
 
 &nbsp;
 

@@ -1,25 +1,33 @@
 <template>
   <div class="font-ui">
-    <VitePwaManifest />
     <NuxtPage />
     <UiToaster close-button />
   </div>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n();
-
 const colorMode = useColorMode();
 const preferredDark = usePreferredDark();
 
 useHead({
-  title: t("head.title"),
+  title: "Oh My CV! - Free Online Resume Maker",
   meta: [
-    { name: "keywords", content: t("head.keywords") },
-    { name: "description", content: t("head.desc") },
-    { property: "og:title", content: t("head.title") },
-    { property: "og:description", content: t("head.desc") },
-    { property: "og:locale", content: locale },
+    {
+      name: "keywords",
+      content: "resume maker, cv maker, curriculum vitae maker, markdown resume"
+    },
+    {
+      name: "description",
+      content:
+        "Free online resume maker, allows you to create your resume in minutes with Markdown!"
+    },
+    { property: "og:title", content: "Oh My CV! - Free Online Resume Maker" },
+    {
+      property: "og:description",
+      content:
+        "Free online resume maker, allows you to create your resume in minutes with Markdown!"
+    },
+    { property: "og:locale", content: "en" },
     {
       name: "theme-color",
       content: () => (colorMode.value === "dark" ? "#30343A" : "#F3F4F6")

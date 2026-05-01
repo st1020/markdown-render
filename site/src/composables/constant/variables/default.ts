@@ -195,12 +195,6 @@ ${PREVIEW_SELECTOR} dl dd:not(:last-child) {
   flex: 1;
 }
 
-/* Tex */
-
-${PREVIEW_SELECTOR} :not(span.katex-display) > span.katex {
-  font-size: 1em !important;
-}
-
 /* SVG & Images */
 
 ${PREVIEW_SELECTOR} svg.iconify {

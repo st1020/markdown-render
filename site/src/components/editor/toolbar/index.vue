@@ -109,12 +109,17 @@ const scrollTo = (id: string) => {
   });
 };
 
-const { t } = useI18n();
-
-const getTooltip = (id: string) => {
-  const key = `toolbar.${id}`;
-  return ["file", "correct_case", "font_family", "margins"].includes(id)
-    ? t(`${key}.title`)
-    : t(key);
+const tooltips: Record<string, string> = {
+  file: "File",
+  paper_size: "Paper Size",
+  theme_color: "Theme Color",
+  font_family: "Font Family",
+  font_size: "Font Size",
+  margins: "Margins",
+  paragraph_spacing: "Paragraph Spacing",
+  line_height: "Line Spacing",
+  correct_case: "Correct Case"
 };
+
+const getTooltip = (id: string) => tooltips[id] || id;
 </script>

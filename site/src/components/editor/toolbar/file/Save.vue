@@ -6,14 +6,11 @@
     @click="save"
   >
     <span i-ic:baseline-save text-base />
-    {{ $t("toolbar.file.save") }}
-    <span class="flex-1 tracking-widest" text="xs right muted-foreground">⌘ S</span>
+    Save
   </UiButton>
 </template>
 
 <script lang="ts" setup>
-import { useShortcuts } from "@ohmycv/vue-shortcuts";
-
 const { data } = useDataStore();
 const { styles } = useStyleStore();
 
@@ -28,7 +25,4 @@ const save = async () => {
     styles: toRaw(styles)
   });
 };
-
-// Use the shortcut to save the current resume
-useShortcuts("ctrl+s", save);
 </script>

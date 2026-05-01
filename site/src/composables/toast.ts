@@ -1,34 +1,25 @@
 import { toast } from "vue-sonner";
-import type { ChangedCase } from "@ohmycv/case-police";
+import type { ChangedCase } from "~/lib/case-police";
 
 export const useToast = () => {
-  const {
-    $i18n: { t }
-  } = useNuxtApp();
-
   const save = () => {
-    toast.success(t("notification.save"));
+    toast.success("Your changes have been saved");
   };
 
   const onSwitch = (msg: string) => {
-    toast.info(t("notification.switch", { msg }));
+    toast.info(`Switched to resume "${msg}"`);
   };
 
   const onDelete = (msg: string) => {
-    toast.error(t("notification.delete", { msg }));
+    toast.error(`Resume "${msg}" has been deleted`);
   };
 
   const onNew = () => {
-    toast.success(t("notification.new"));
+    toast.success("New resume created");
   };
 
   const duplicate = (msg: string) => {
-    toast.success(
-      t("notification.duplicate", {
-        old: msg,
-        new: msg + " Copy"
-      })
-    );
+    toast.success(`Created resume "${msg}"'s duplication "${msg} Copy"`);
   };
 
   const correct = (msg?: ChangedCase[]) => {
@@ -43,19 +34,17 @@ export const useToast = () => {
         .map(([key, count]) => `${key}${count > 1 ? ` (x${count})` : ""}`)
         .join(", ");
 
-      toast.success(t("notification.correct.yes", { num: msg.length }), {
-        description
-      });
+      toast.success(`Corrected ${msg.length} words`, { description });
     } else {
-      toast.info(t("notification.correct.no"));
+      toast.info("All cases are correct!");
     }
   };
 
   const onImport = (msg: boolean) => {
     if (msg) {
-      toast.success(t("notification.import.yes"));
+      toast.success("Data has been successfully imported!");
     } else {
-      toast.error(t("notification.import.no"));
+      toast.error("Data format is invalid.");
     }
   };
 

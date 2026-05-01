@@ -1,8 +1,5 @@
 <template>
-  <EditorToolbarBox
-    :text="$t('toolbar.theme_color')"
-    icon="i-material-symbols:palette-outline"
-  >
+  <EditorToolbarBox text="Theme Color" icon="i-material-symbols:palette-outline">
     <!-- Color presets -->
     <div class="flex justify-between mb-4">
       <button
