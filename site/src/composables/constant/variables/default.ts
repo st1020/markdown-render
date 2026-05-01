@@ -44,17 +44,17 @@ B.Eng. in Salad Engineering
 
 ## Publications
 
-[~P1]: **Eating is All You Need**
+**Eating is All You Need**
 
-    <u>Haha Ha</u>, San Zhang
+<u>Haha Ha</u>, San Zhang
 
-    *Conference on Nutritional Ingredients Processing Systems (NIPS), 2099*
+*Conference on Nutritional Ingredients Processing Systems (NIPS), 2099*
 
-[~P2]: **You Only Cook Once: Unified, Real-Time Mapo Tofu Recipe**
+**You Only Cook Once: Unified, Real-Time Mapo Tofu Recipe**
 
-    <u>Haha Ha</u>, San Zhang, Si Li, Wu Wang
+<u>Haha Ha</u>, San Zhang, Si Li, Wu Wang
 
-    *Culinary Visualization and Potato Roasting Conference (CVPR), 2077 **(Best Paper Honorable Mention)***
+*Culinary Visualization and Potato Roasting Conference (CVPR), 2077 **(Best Paper Honorable Mention)***
 
 
 ## Experience
