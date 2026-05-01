@@ -4,9 +4,6 @@ import { PREVIEW_SELECTOR } from "./render";
 export const DEFAULT_STYLES = {
   marginV: 50,
   marginH: 45,
-  lineHeight: 1.3,
-  paragraphSpace: 5,
-  themeColor: "#377bb5",
   fontCJK: {
     name: "华康宋体",
     fontFamily: "HKST"
@@ -14,7 +11,6 @@ export const DEFAULT_STYLES = {
   fontEN: {
     name: "Minion Pro"
   },
-  fontSize: 15,
   paper: "A4"
 } as ResumeStyles;
 
@@ -132,10 +128,23 @@ ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
   hyphens: auto;
 }
 
+${PREVIEW_SELECTOR} {
+  font-size: 15px;
+}
+
 ${PREVIEW_SELECTOR} p,
 ${PREVIEW_SELECTOR} li,
 ${PREVIEW_SELECTOR} dl {
   margin: 0;
+}
+
+${PREVIEW_SELECTOR} p,
+${PREVIEW_SELECTOR} li {
+  line-height: 1.30;
+}
+
+${PREVIEW_SELECTOR} dl {
+  line-height: 1.35;
 }
 
 /* Headings */
@@ -144,6 +153,7 @@ ${PREVIEW_SELECTOR} h1,
 ${PREVIEW_SELECTOR} h2,
 ${PREVIEW_SELECTOR} h3 {
   font-weight: bold;
+  color: #377bb5;
 }
 
 ${PREVIEW_SELECTOR} h1 {
@@ -154,11 +164,20 @@ ${PREVIEW_SELECTOR} h2,
 ${PREVIEW_SELECTOR} h3 {
   margin-bottom: 5px;
   font-size: 1.2em;
+  line-height: 1.50;
 }
 
 ${PREVIEW_SELECTOR} h2 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  border-bottom-color: #377bb5;
+  margin-top: 5px;
+}
+
+/* Links */
+
+${PREVIEW_SELECTOR} a {
+  color: #377bb5;
 }
 
 /* Lists */

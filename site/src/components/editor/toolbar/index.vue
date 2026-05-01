@@ -30,12 +30,8 @@
 import {
   EditorToolbarFile,
   EditorToolbarFontFamily,
-  EditorToolbarFontSize,
-  EditorToolbarLineHeight,
   EditorToolbarMargins,
-  EditorToolbarPaper,
-  EditorToolbarParagraphSpace,
-  EditorToolbarThemeColor
+  EditorToolbarPaper
 } from "#components";
 
 const tools = [
@@ -50,34 +46,14 @@ const tools = [
     component: EditorToolbarPaper
   },
   {
-    id: "theme_color",
-    icon: "i-material-symbols:palette-outline",
-    component: EditorToolbarThemeColor
-  },
-  {
     id: "font_family",
     icon: "i-material-symbols:font-download-outline",
     component: EditorToolbarFontFamily
   },
   {
-    id: "font_size",
-    icon: "i-ri:font-size-2",
-    component: EditorToolbarFontSize
-  },
-  {
     id: "margins",
     icon: "i-radix-icons:margin",
     component: EditorToolbarMargins
-  },
-  {
-    id: "paragraph_spacing",
-    icon: "i-icon-park-outline:paragraph-break-two",
-    component: EditorToolbarParagraphSpace
-  },
-  {
-    id: "line_height",
-    icon: "i-ic:round-format-line-spacing",
-    component: EditorToolbarLineHeight
   }
 ];
 
@@ -97,12 +73,8 @@ const scrollTo = (id: string) => {
 const tooltips: Record<string, string> = {
   file: "File",
   paper_size: "Paper Size",
-  theme_color: "Theme Color",
   font_family: "Font Family",
-  font_size: "Font Size",
-  margins: "Margins",
-  paragraph_spacing: "Paragraph Spacing",
-  line_height: "Line Spacing"
+  margins: "Margins"
 };
 
 const getTooltip = (id: string) => tooltips[id] || id;

@@ -1,15 +1,11 @@
+import type { Font, ValidPaperSize } from "~/composables/constant";
 import { copy } from "~/lib/utils";
-import type { ValidPaperSize, Font } from "~/composables/constant";
 
 export type ResumeStyles = {
   marginV: number;
   marginH: number;
-  lineHeight: number;
-  paragraphSpace: number;
-  themeColor: string;
   fontCJK: Font;
   fontEN: Font;
-  fontSize: number;
   paper: ValidPaperSize;
 };
 

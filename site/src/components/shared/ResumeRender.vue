@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useSmartPages } from "~/lib/vue-smart-pages";
 import type { ResumeStyles } from "~/composables/stores/style";
+import { useSmartPages } from "~/lib/vue-smart-pages";
 
 const props = defineProps<{
   id: string | number;
@@ -38,21 +38,10 @@ const { render } = useSmartPages(target, html, size, margins, {
   }
 });
 
-watchThrottled(
-  () => [
-    props.styles.lineHeight,
-    props.styles.paragraphSpace,
-    props.styles.fontSize,
-    props.css,
-    props.styles.fontCJK,
-    props.styles.fontEN
-  ],
-  render,
-  {
-    throttle: 200,
-    leading: false
-  }
-);
+watchThrottled(() => [props.css, props.styles.fontCJK, props.styles.fontEN], render, {
+  throttle: 200,
+  leading: false
+});
 
 defineExpose({
   render
