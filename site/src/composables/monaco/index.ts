@@ -1,7 +1,7 @@
 import type * as Monaco from "monaco-editor";
 import { ref, shallowRef } from "vue";
 import { useDataStore } from "~/composables/stores/data";
-import { isClient } from "~/lib/utils";
+
 import { setupMonacoEditor, setupMonacoModel, type MonacoModel } from "./setup";
 
 type MonacoStates = {
@@ -15,7 +15,7 @@ const monacoLoading = ref(false);
 
 export const useMonaco = () => {
   const setup = async (container?: HTMLElement) => {
-    if (!isClient || !container) return;
+    if (!container) return;
 
     monacoLoading.value = true;
 
@@ -35,7 +35,6 @@ export const useMonaco = () => {
 
       monacoStates.value = { editor, markdown, css };
     } catch (error) {
-      // TODO: use toast to show error
       console.error("Failed to initialize the editor: ", error);
     } finally {
       monacoLoading.value = false;

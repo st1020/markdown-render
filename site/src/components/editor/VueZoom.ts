@@ -1,6 +1,6 @@
-import { defineComponent, ref, computed, h } from "vue";
 import { useElementSize } from "@vueuse/core";
 import type { VNode } from "vue";
+import { computed, defineComponent, h, ref } from "vue";
 
 export default defineComponent({
   name: "Zoom",

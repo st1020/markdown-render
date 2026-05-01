@@ -1,6 +1,35 @@
 import { useConstant } from "~/composables/constant";
 import type { ResumeStyles } from "~/composables/stores/style";
-import { injectCss } from "~/lib/dynamic-css";
+
+const sheetsMap = new Map<string, HTMLStyleElement>();
+
+/**
+ * Dynamically injects CSS into the document. Borrowed from Vite:
+ * https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
+ *
+ * This used to be implemented using constructable stylesheets, but that was abandoned
+ * due to low performance, see https://github.com/vitejs/vite/pull/11818.
+ *
+ * @param id To make sure the CSS won't override each other.
+ * @param content A string of CSS to inject.
+ */
+const injectCss = (id: string, content: string) => {
+  let style = sheetsMap.get(id);
+
+  if (!style) {
+    style = document.createElement("style");
+
+    style.setAttribute("type", "text/css");
+    style.setAttribute("data-dynamic-css-id", id);
+    style.textContent = content;
+
+    document.head.appendChild(style);
+  } else {
+    style.textContent = content;
+  }
+
+  sheetsMap.set(id, style);
+};
 
 const { RENDER } = useConstant();
 

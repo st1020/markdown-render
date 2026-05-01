@@ -2,9 +2,7 @@ import { defineStore } from "pinia";
 import { reactive } from "vue";
 import type { Font, ValidPaperSize } from "~/composables/constant";
 import { useConstant } from "~/composables/constant";
-import { copy } from "~/lib/utils";
 import { dynamicCssService } from "~/utils/css";
-import { googleFontsService } from "~/utils/font";
 
 export type ResumeStyles = {
   marginV: number;
@@ -12,6 +10,12 @@ export type ResumeStyles = {
   fontCJK: Font;
   fontEN: Font;
   paper: ValidPaperSize;
+};
+export const isObject = (v: any) => toString.call(v) === "[object Object]";
+
+const copy = <T>(obj: T): T => {
+  if (isObject(obj)) return JSON.parse(JSON.stringify(obj));
+  throw new Error("Input must be a non-null object.");
 };
 
 export const useStyleStore = defineStore("style", () => {
@@ -22,11 +26,6 @@ export const useStyleStore = defineStore("style", () => {
     key: T,
     value: ResumeStyles[T]
   ) => {
-    // handle Google fonts
-    if (["fontCJK", "fontEN"].includes(key)) {
-      await googleFontsService.resolve(value as Font);
-    }
-
     // update styles for the current resume
     styles[key] = value;
 

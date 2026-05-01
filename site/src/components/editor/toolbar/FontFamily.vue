@@ -2,38 +2,31 @@
   <EditorToolbarBox text="Font Family" icon="i-material-symbols:font-download-outline">
     <div class="w-full hstack gap-x-2 mb-2">
       <Combobox
-        v-if="loaded"
         id="font-cjk"
         class="flex-1"
-        :items="localCjk.concat(gfCjk)"
+        :items="localCjk"
         :default-value="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
-      <Skeleton v-else class="flex-1 h-9" />
       <span w-13>CJK</span>
     </div>
 
     <div class="hstack gap-x-2 w-full">
       <Combobox
-        v-if="loaded"
         id="font-en"
         class="flex-1"
-        :items="localEn.concat(gfEn)"
+        :items="localEn"
         :default-value="styles.fontEN.fontFamily || styles.fontEN.name"
       />
-      <Skeleton v-else class="flex-1 h-9" />
       <span w-13>English</span>
     </div>
   </EditorToolbarBox>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
 import type { ComboboxItem } from "~/components/common/Combobox.vue";
 import Combobox from "~/components/common/Combobox.vue";
-import Skeleton from "~/components/ui/skeleton/Skeleton.vue";
 import { useConstant } from "~/composables/constant";
 import { useStyleStore } from "~/composables/stores/style";
-import { googleFontsService } from "~/utils/font";
 import EditorToolbarBox from "./Box.vue";
 
 const { styles, setStyle } = useStyleStore();
@@ -57,38 +50,5 @@ const localCjk = FONT.LOCAL.CJK.map<ComboboxItem>((item) => {
     value: family,
     onSelect: () => setStyle("fontCJK", { name: item.name, fontFamily: family })
   };
-});
-
-// Setup Google Fonts
-const loaded = ref(false);
-const gfEn = ref<ComboboxItem[]>([]);
-const gfCjk = ref<ComboboxItem[]>([]);
-
-onMounted(async () => {
-  const { en, cjk } = await googleFontsService.get();
-
-  gfEn.value = en.map((font) => ({
-    label: font.family,
-    value: font.family,
-    onSelect: () => setStyle("fontEN", { name: font.family })
-  }));
-
-  gfCjk.value = cjk
-    .map((font) => {
-      const family = font.family;
-      const name = FONT.GF.CJK_FAMILY_TO_NAME[family] || family;
-      return {
-        label: name,
-        value: family,
-        onSelect: () => setStyle("fontCJK", { name, fontFamily: family })
-      };
-    })
-    .sort(
-      (a, b) =>
-        Number(FONT.GF.CJK_FIRST.includes(b.label)) -
-        Number(FONT.GF.CJK_FIRST.includes(a.label))
-    );
-
-  loaded.value = true;
 });
 </script>

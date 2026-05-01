@@ -23,7 +23,18 @@
 <script lang="ts" setup>
 import Button from "~/components/ui/button/Button.vue";
 import { useDataStore } from "~/composables/stores/data";
-import { downloadFile } from "~/lib/utils";
+
+const downloadFile = (filename: string, content: string) => {
+  const element = document.createElement("a");
+
+  element.href = "data:text/plain;charset=utf-8," + encodeURIComponent(content);
+  element.download = filename;
+  element.style.display = "none";
+
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+};
 
 const { data } = useDataStore();
 

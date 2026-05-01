@@ -6,9 +6,9 @@
 import { watchThrottled } from "@vueuse/core";
 import { computed, ref } from "vue";
 import { useConstant } from "~/composables/constant";
+import { useSmartPages } from "~/composables/pages";
 import type { ResumeStyles } from "~/composables/stores/style";
-import { useSmartPages } from "~/lib/vue-smart-pages";
-import { googleFontsService } from "~/utils/font";
+import { fontsService } from "~/utils/font";
 import { markdownService } from "~/utils/markdown";
 
 const props = defineProps<{
@@ -36,7 +36,7 @@ const html = computed(() => markdownService.renderResume(props.markdown));
 const { render } = useSmartPages(target, html, size, margins, {
   beforeRender: async () => {
     // Wait for the fonts to be loaded
-    await googleFontsService.presetObserver(props.styles);
+    await fontsService.presetObserver(props.styles);
   },
   watchThrottledOptions: {
     throttle: 200

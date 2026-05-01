@@ -1,11 +1,10 @@
 import * as localForage from "localforage";
 import { toRaw } from "vue";
-import type { ResumeStyles } from "~/composables/stores/style";
-import { useDataStore } from "~/composables/stores/data";
-import { useStyleStore } from "~/composables/stores/style";
 import { useConstant } from "~/composables/constant";
+import { useDataStore } from "~/composables/stores/data";
+import type { ResumeStyles } from "~/composables/stores/style";
+import { useStyleStore } from "~/composables/stores/style";
 import { useToast } from "~/composables/toast";
-import { isClient } from "~/lib/utils";
 
 const STORAGE_KEY = "ohmycv_resume";
 
@@ -16,7 +15,6 @@ type StoredResume = {
 };
 
 async function read(): Promise<StoredResume | null> {
-  if (!isClient) return null;
   try {
     return await localForage.getItem<StoredResume>(STORAGE_KEY);
   } catch {
