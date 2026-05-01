@@ -13,23 +13,14 @@
 
     <div flex="center col none gap-1" border="l dashed lg:none" w-10 bg-accent>
       <template v-for="tool in tools" :key="tool.id">
-        <UiTooltipProvider :delay-duration="0">
-          <UiTooltip>
-            <UiTooltipTrigger as-child>
-              <UiButton
-                size="round"
-                variant="ghost-secondary"
-                @click="scrollTo(tool.id)"
-                :aria-label="getTooltip(tool.id)"
-              >
-                <span :class="[tool.icon, ' size-4']" />
-              </UiButton>
-            </UiTooltipTrigger>
-            <UiTooltipContent side="left">
-              {{ getTooltip(tool.id) }}
-            </UiTooltipContent>
-          </UiTooltip>
-        </UiTooltipProvider>
+        <UiButton
+          size="round"
+          variant="ghost-secondary"
+          @click="scrollTo(tool.id)"
+          :aria-label="getTooltip(tool.id)"
+        >
+          <span :class="[tool.icon, ' size-4']" />
+        </UiButton>
       </template>
     </div>
   </div>
@@ -38,13 +29,13 @@
 <script setup lang="ts">
 import {
   EditorToolbarFile,
-  EditorToolbarPaper,
-  EditorToolbarThemeColor,
   EditorToolbarFontFamily,
   EditorToolbarFontSize,
+  EditorToolbarLineHeight,
   EditorToolbarMargins,
+  EditorToolbarPaper,
   EditorToolbarParagraphSpace,
-  EditorToolbarLineHeight
+  EditorToolbarThemeColor
 } from "#components";
 
 const tools = [
