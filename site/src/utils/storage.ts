@@ -36,18 +36,18 @@ export class StorageService {
     const stored = await read();
     const { DEFAULT } = useConstant();
 
-    const stored_document: StoredDocument = stored ?? {
+    const storedDocument: StoredDocument = stored ?? {
       markdown: DEFAULT.MD_CONTENT,
       css: DEFAULT.CSS_CONTENT,
       styles: DEFAULT.STYLES
     };
 
-    if (!stored) await write(stored_document);
+    if (!stored) await write(storedDocument);
 
-    setData("markdown", stored_document.markdown);
-    setData("css", stored_document.css);
+    setData("markdown", storedDocument.markdown);
+    setData("css", storedDocument.css);
 
-    for (const [key, value] of Object.entries(stored_document.styles)) {
+    for (const [key, value] of Object.entries(storedDocument.styles)) {
       await setStyle(key as keyof DocumentStyles, value);
     }
 

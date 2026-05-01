@@ -40,8 +40,6 @@ const { RENDER } = useConstant();
  * handled by the `vue-smart-pages` package.
  */
 export class DynamicCssService {
-  constructor() {}
-
   private _injectedCssId = (type: "toolbar" | "css-editor") => {
     return `ohmycv-${type}-preview`;
   };

@@ -11,16 +11,10 @@ export type DocumentStyles = {
   fontEN: Font;
   paper: ValidPaperSize;
 };
-export const isObject = (v: any) => toString.call(v) === "[object Object]";
-
-const copy = <T>(obj: T): T => {
-  if (isObject(obj)) return JSON.parse(JSON.stringify(obj));
-  throw new Error("Input must be a non-null object.");
-};
 
 export const useStyleStore = defineStore("style", () => {
   const { DEFAULT } = useConstant();
-  const styles = reactive<DocumentStyles>(copy(DEFAULT.STYLES));
+  const styles = reactive<DocumentStyles>(structuredClone(DEFAULT.STYLES));
 
   const setStyle = async <T extends keyof DocumentStyles>(
     key: T,

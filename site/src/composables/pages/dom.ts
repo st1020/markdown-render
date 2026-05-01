@@ -1,4 +1,4 @@
-import type { PageSize, PageMargins } from "./types";
+import type { PageMargins, PageSize } from "./types";
 
 const NEW_PAGE_CLASS = "md-it-newpage";
 

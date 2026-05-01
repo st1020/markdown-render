@@ -3,8 +3,8 @@ import * as V from "./variables";
 
 export type { Font, ValidPaperSize };
 
-export const useConstant = () => {
-  const FONT = {
+const CONSTANT = {
+  FONT: {
     LOCAL: {
       EN: V.LOCAL_EN_FONTS,
       CJK: V.LOCAL_CJK_FONTS,
@@ -16,30 +16,22 @@ export const useConstant = () => {
         return check(V.LOCAL_EN_FONTS) || check(V.LOCAL_CJK_FONTS);
       }
     }
-  };
-
-  const PAPER = {
+  },
+  PAPER: {
     SIZES: V.PAPER_SIZES,
     MM_TO_PX: V.MM_TO_PX,
     sizeToPx: (size: ValidPaperSize, v: "h" | "w") =>
-      ~~(V.PAPER_SIZES[size][v] * V.MM_TO_PX)
-  };
-
-  const RENDER = {
+      Math.trunc(V.PAPER_SIZES[size][v] * V.MM_TO_PX)
+  },
+  RENDER: {
     PRINT_BOTTOM: V.PRINT_BOTTOM,
     PREVIEW_SELECTOR: V.PREVIEW_SELECTOR
-  };
-
-  const DEFAULT = {
+  },
+  DEFAULT: {
     STYLES: V.DEFAULT_STYLES,
     MD_CONTENT: V.DEFAULT_MD_CONTENT,
     CSS_CONTENT: V.DEFAULT_CSS_CONTENT
-  };
-
-  return {
-    FONT,
-    PAPER,
-    RENDER,
-    DEFAULT
-  };
+  }
 };
+
+export const useConstant = () => CONSTANT;
