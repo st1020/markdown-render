@@ -40,12 +40,12 @@ const { data } = useDataStore();
 
 const exportPDF = () => {
   const title = document.title;
-  document.title = "Resume";
+  document.title = "document";
   window.print();
   document.title = title;
 };
 
 const exportMd = () => {
-  downloadFile("Resume.md", data.markdown);
+  downloadFile("document.md", data.markdown);
 };
 </script>

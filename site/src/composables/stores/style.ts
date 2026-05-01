@@ -4,7 +4,7 @@ import type { Font, ValidPaperSize } from "~/composables/constant";
 import { useConstant } from "~/composables/constant";
 import { dynamicCssService } from "~/utils/css";
 
-export type ResumeStyles = {
+export type DocumentStyles = {
   marginV: number;
   marginH: number;
   fontCJK: Font;
@@ -20,13 +20,13 @@ const copy = <T>(obj: T): T => {
 
 export const useStyleStore = defineStore("style", () => {
   const { DEFAULT } = useConstant();
-  const styles = reactive<ResumeStyles>(copy(DEFAULT.STYLES));
+  const styles = reactive<DocumentStyles>(copy(DEFAULT.STYLES));
 
-  const setStyle = async <T extends keyof ResumeStyles>(
+  const setStyle = async <T extends keyof DocumentStyles>(
     key: T,
-    value: ResumeStyles[T]
+    value: DocumentStyles[T]
   ) => {
-    // update styles for the current resume
+    // update styles for the current document
     styles[key] = value;
 
     // update CSS

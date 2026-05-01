@@ -3,7 +3,6 @@ import {
   presetAttributify,
   presetIcons,
   presetUno,
-  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup
 } from "unocss";
@@ -15,12 +14,7 @@ export default defineConfig({
     {
       "flex-center": "flex items-center justify-center",
       hstack: "flex items-center",
-      "hide-on-mobile": "lt-md:hidden",
-      "ring-when-focus":
-        "ring-offset-background focus-visible:(outline-none ring-2 ring-ring ring-offset-2)",
       "shadow-c": "shadow shadow-gray-300 dark:shadow-neutral-900",
-      "resume-card":
-        "relative mx-auto rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)",
       "pane-container": "h-full rounded-xl",
       "zoom-button":
         "flex-center size-10 text-lg hover:bg-blue-600 focus-visible:bg-blue-600"
@@ -60,11 +54,6 @@ export default defineConfig({
         display: "inline-block"
       }
     }),
-    presetWebFonts({
-      fonts: {
-        ui: "Lato:400,700"
-      }
-    }),
     presetAnimations(),
     presetShadcn(
       {
@@ -94,7 +83,6 @@ export default defineConfig({
   transformers: [transformerDirectives(), transformerVariantGroup()],
   content: {
     pipeline: {
-      // https://github.com/fisand/unocss-preset-shadcn
       include: [/\.ts/, /\.vue$/, /\.vue\?vue/]
     }
   }

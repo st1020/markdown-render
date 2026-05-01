@@ -1,4 +1,4 @@
-import type { ResumeStyles } from "../../stores/style";
+import type { DocumentStyles } from "../../stores/style";
 import { PREVIEW_SELECTOR } from "./render";
 
 export const DEFAULT_STYLES = {
@@ -12,7 +12,7 @@ export const DEFAULT_STYLES = {
     name: "Minion Pro"
   },
   paper: "A4"
-} as ResumeStyles;
+} as DocumentStyles;
 
 export const DEFAULT_MD_CONTENT = `# Haha Ha
 

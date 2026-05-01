@@ -1,13 +1,13 @@
-import type { ResumeStyles } from "~/composables/stores/style";
+import type { DocumentStyles } from "~/composables/stores/style";
 
 export class FontsService {
   /**
-   * Notify when the fonts used in the resume styles are loaded
+   * Notify when the fonts used in the document styles are loaded
    *
-   * @param styles Resume styles
+   * @param styles Document styles
    * @see {@link observer}
    */
-  public presetObserver(styles: ResumeStyles) {
+  public presetObserver(styles: DocumentStyles) {
     const fonts = [
       styles.fontEN.fontFamily || styles.fontEN.name,
       styles.fontCJK.fontFamily || styles.fontCJK.name

@@ -3,7 +3,7 @@
     <div id="editor-page" class="flex flex-col">
       <header class="hstack justify-between px-4">
         <div class="hstack gap-x-2">
-          <div text-lg>Oh<span text-primary>My</span>CV</div>
+          <div text-lg><span text-primary>Markdown</span>Render</div>
         </div>
 
         <div class="hstack">

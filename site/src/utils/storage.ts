@@ -2,27 +2,27 @@ import * as localForage from "localforage";
 import { toRaw } from "vue";
 import { useConstant } from "~/composables/constant";
 import { useDataStore } from "~/composables/stores/data";
-import type { ResumeStyles } from "~/composables/stores/style";
+import type { DocumentStyles } from "~/composables/stores/style";
 import { useStyleStore } from "~/composables/stores/style";
 import { useToast } from "~/composables/toast";
 
-const STORAGE_KEY = "ohmycv_resume";
+const STORAGE_KEY = "stored_document";
 
-type StoredResume = {
+type StoredDocument = {
   markdown: string;
   css: string;
-  styles: ResumeStyles;
+  styles: DocumentStyles;
 };
 
-async function read(): Promise<StoredResume | null> {
+async function read(): Promise<StoredDocument | null> {
   try {
-    return await localForage.getItem<StoredResume>(STORAGE_KEY);
+    return await localForage.getItem<StoredDocument>(STORAGE_KEY);
   } catch {
     return null;
   }
 }
 
-async function write(data: StoredResume): Promise<void> {
+async function write(data: StoredDocument): Promise<void> {
   await localForage.setItem(STORAGE_KEY, data);
 }
 
@@ -36,19 +36,19 @@ export class StorageService {
     const stored = await read();
     const { DEFAULT } = useConstant();
 
-    const resume: StoredResume = stored ?? {
+    const stored_document: StoredDocument = stored ?? {
       markdown: DEFAULT.MD_CONTENT,
       css: DEFAULT.CSS_CONTENT,
       styles: DEFAULT.STYLES
     };
 
-    if (!stored) await write(resume);
+    if (!stored) await write(stored_document);
 
-    setData("markdown", resume.markdown);
-    setData("css", resume.css);
+    setData("markdown", stored_document.markdown);
+    setData("css", stored_document.css);
 
-    for (const [key, value] of Object.entries(resume.styles)) {
-      await setStyle(key as keyof ResumeStyles, value);
+    for (const [key, value] of Object.entries(stored_document.styles)) {
+      await setStyle(key as keyof DocumentStyles, value);
     }
 
     setData("loaded", true);

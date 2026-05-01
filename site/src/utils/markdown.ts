@@ -9,7 +9,7 @@ export class MarkdownService {
     });
   }
 
-  public renderResume(md: string) {
+  public renderDocument(md: string) {
     return this._md.render(md);
   }
 }
