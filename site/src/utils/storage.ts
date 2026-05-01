@@ -31,7 +31,7 @@ export class StorageService {
     const { setData } = useDataStore();
     const { setStyle } = useStyleStore();
 
-    setData("loaded", false);
+    await setData("loaded", false);
 
     const stored = await read();
     const { DEFAULT } = useConstant();
@@ -44,14 +44,14 @@ export class StorageService {
 
     if (!stored) await write(storedDocument);
 
-    setData("markdown", storedDocument.markdown);
-    setData("css", storedDocument.css);
+    await setData("markdown", storedDocument.markdown);
+    await setData("css", storedDocument.css);
 
     for (const [key, value] of Object.entries(storedDocument.styles)) {
       await setStyle(key as keyof DocumentStyles, value);
     }
 
-    setData("loaded", true);
+    await setData("loaded", true);
   }
 
   public async save(): Promise<void> {

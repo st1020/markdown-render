@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { reactive } from "vue";
-import { useMonaco } from "~/composables/monaco";
 import { dynamicCssService } from "~/utils/css";
 
 export type SystemData = {
@@ -16,21 +15,15 @@ export const useDataStore = defineStore("data", () => {
     loaded: false
   });
 
-  const setData = <T extends keyof SystemData>(key: T, value: SystemData[T]) => {
+  const setData = async <T extends keyof SystemData>(key: T, value: SystemData[T]) => {
     data[key] = value;
-    if (key === "css") dynamicCssService.injectCssEditor(value as string);
-  };
-
-  const setAndSyncToMonaco = (key: "markdown" | "css", value: string) => {
-    setData(key, value);
-
-    const { setContent } = useMonaco();
-    setContent(key, value);
+    if (key === "css") {
+      await dynamicCssService.injectCssEditor(value as string);
+    }
   };
 
   return {
     data,
-    setData,
-    setAndSyncToMonaco
+    setData
   };
 });

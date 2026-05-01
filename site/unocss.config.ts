@@ -14,7 +14,12 @@ export default defineConfig({
     }
   ],
   presets: [
-    presetWind4(),
+    presetWind4({
+      preflights: {
+        reset: true,
+        theme: true
+      }
+    }),
     presetIcons({
       extraProperties: {
         display: "inline-block"

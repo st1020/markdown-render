@@ -1,3 +1,12 @@
+import {
+  createGenerator,
+  noop,
+  UnocssPluginContext,
+  type UnoGenerator
+} from "@unocss/core";
+import transformerDirectives from "@unocss/transformer-directives";
+import MagicString from "magic-string";
+import { presetWind4 } from "unocss/preset-wind4";
 import { useConstant } from "~/composables/constant";
 import type { DocumentStyles } from "~/composables/stores/style";
 
@@ -31,7 +40,38 @@ const injectCss = (id: string, content: string) => {
   sheetsMap.set(id, style);
 };
 
-const { RENDER } = useConstant();
+let _generator: UnoGenerator | null = null;
+
+const getGenerator = async (): Promise<UnoGenerator> => {
+  if (_generator) return _generator;
+  _generator = await createGenerator({ presets: [presetWind4()] });
+  return _generator;
+};
+
+/**
+ * Transform UnoCSS directives in a CSS string.
+ * Supports `@apply`, `--at-apply`, `@screen`, and theme functions.
+ * @param css - The input CSS string containing UnoCSS directives.
+ */
+export const applyUno = async (css: string): Promise<string> => {
+  const uno = await getGenerator();
+  const ctx = { uno, invalidate: noop } as UnocssPluginContext;
+
+  const code = new MagicString(css);
+  const transformer = transformerDirectives();
+  await transformer.transform(code, "style.css", ctx);
+  const transformed = code.toString();
+
+  const result = await ctx.uno.generate(transformed, {
+    // We don't need generate preflight, because the preflight is included by `theme: true` in unocss.config.ts.
+    preflights: false
+  });
+
+  console.log(transformed);
+  console.log(result.css);
+
+  return transformed + "\n" + result.css;
+};
 
 /**
  * Service for injecting dynamic CSS into the document.
@@ -58,10 +98,9 @@ export class DynamicCssService {
    * Inject CSS that controlled by the toolbar into the document.
    *
    * @param styles Document styles
-   * @param id Element ID of the corresponding document element (dashboard). If not
-   * provided, it will be set to "preview", which is the preview view in the editor.
    */
-  public injectToolbar(styles: DocumentStyles) {
+  public async injectToolbar(styles: DocumentStyles) {
+    const { RENDER } = useConstant();
     const css =
       this.fontFamily(RENDER.PREVIEW_SELECTOR, styles) +
       // We only need to set paper size for the preview view in the editor
@@ -71,14 +110,14 @@ export class DynamicCssService {
   }
 
   /**
-   * Inject CSS that controlled by the CSS editor into the document.
+   * Inject CSS from the CSS editor into the document.
+   * UnoCSS directives (e.g. `@apply`) are resolved before injection.
    *
    * @param css CSS string
-   * @param id Element ID of the corresponding document element (dashboard). If not
-   * provided, it will be set to "preview", which is the preview view in the editor.
    */
-  public injectCssEditor(css: string) {
-    injectCss(this._injectedCssId("css-editor"), css);
+  public async injectCssEditor(css: string) {
+    const transformed = await applyUno(css);
+    injectCss(this._injectedCssId("css-editor"), transformed);
   }
 }
 
