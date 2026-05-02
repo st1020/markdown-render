@@ -4,7 +4,6 @@
     "lib": ["DOM", "ESNext"],
     "jsx": "preserve",
     "module": "ESNext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowJs": true,
     "isolatedModules": true,
@@ -13,6 +12,12 @@
     "strict": true,
     "strictNullChecks": true,
     "noUnusedLocals": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": ["src/**/*", "vite.config.ts", "unocss.config.ts"]
 }
