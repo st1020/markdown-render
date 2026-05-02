@@ -11,7 +11,7 @@ import {
 } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 
-import { cn } from "~/utils/shadcn"
+import { cn } from "@/utils/shadcn"
 
 const props = defineProps<DialogContentProps & { class?: HTMLAttributes["class"] }>()
 const emits = defineEmits<DialogContentEmits>()

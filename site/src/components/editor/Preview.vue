@@ -2,11 +2,11 @@
 import { useElementSize } from "@vueuse/core"
 import { ref, watch } from "vue"
 
-import MarkdownRender from "~/components/editor/MarkdownRender.vue"
-import VueZoom from "~/components/editor/VueZoom"
-import { useConstant } from "~/composables/constant"
-import { useDataStore } from "~/composables/stores/data"
-import { useStyleStore } from "~/composables/stores/style"
+import MarkdownRender from "@/components/editor/MarkdownRender.vue"
+import VueZoom from "@/components/editor/VueZoom"
+import { useConstant } from "@/composables/constant"
+import { useDataStore } from "@/composables/stores/data"
+import { useStyleStore } from "@/composables/stores/style"
 
 const scale = ref(1)
 const zoom = ref<InstanceType<typeof VueZoom>>()

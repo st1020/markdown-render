@@ -2,10 +2,10 @@ import * as localForage from "localforage"
 import { ref, toRaw } from "vue"
 import { toast } from "vue-sonner"
 
-import { useConstant } from "~/composables/constant"
-import { useDataStore } from "~/composables/stores/data"
-import type { DocumentStyles } from "~/composables/stores/style"
-import { useStyleStore } from "~/composables/stores/style"
+import { useConstant } from "@/composables/constant"
+import { useDataStore } from "@/composables/stores/data"
+import type { DocumentStyles } from "@/composables/stores/style"
+import { useStyleStore } from "@/composables/stores/style"
 
 export const isDirty = ref(false)
 

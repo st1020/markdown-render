@@ -1,4 +1,4 @@
-import type { DocumentStyles } from "~/composables/stores/style"
+import type { DocumentStyles } from "@/composables/stores/style"
 
 export class FontsService {
   /**

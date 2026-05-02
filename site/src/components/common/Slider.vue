@@ -3,7 +3,7 @@ import type { SliderRootEmits, SliderRootProps } from "reka-ui"
 import { useForwardPropsEmits } from "reka-ui"
 import { computed } from "vue"
 
-import { Slider } from "~/components/ui/slider"
+import { Slider } from "@/components/ui/slider"
 
 const props = defineProps<SliderRootProps & { unit?: string }>()
 const emits = defineEmits<SliderRootEmits>()

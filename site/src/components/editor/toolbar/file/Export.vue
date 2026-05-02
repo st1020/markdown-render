@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from "~/components/ui/button/Button.vue"
-import { useDataStore } from "~/composables/stores/data"
+import Button from "@/components/ui/button/Button.vue"
+import { useDataStore } from "@/composables/stores/data"
 
 const downloadFile = (filename: string, content: string) => {
   const element = document.createElement("a")

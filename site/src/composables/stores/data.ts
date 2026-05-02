@@ -1,7 +1,7 @@
 import { defineStore } from "pinia"
 import { reactive } from "vue"
 
-import { dynamicCssService } from "~/utils/css"
+import { dynamicCssService } from "@/utils/css"
 
 export type SystemData = {
   markdown: string

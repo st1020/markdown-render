@@ -2,7 +2,7 @@
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-vue-next"
 import { ref } from "vue"
 
-import { Button } from "~/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -10,9 +10,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "~/components/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
-import { cn } from "~/utils/shadcn"
+} from "@/components/ui/command"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { cn } from "@/utils/shadcn"
 
 export interface ComboboxItem {
   label: string

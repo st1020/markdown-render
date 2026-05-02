@@ -1,9 +1,9 @@
 import { defineStore } from "pinia"
 import { reactive } from "vue"
 
-import type { Font, ValidPaperSize } from "~/composables/constant"
-import { useConstant } from "~/composables/constant"
-import { dynamicCssService } from "~/utils/css"
+import type { Font, ValidPaperSize } from "@/composables/constant"
+import { useConstant } from "@/composables/constant"
+import { dynamicCssService } from "@/utils/css"
 
 export type DocumentStyles = {
   marginV: number

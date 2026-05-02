@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Separator from "~/components/ui/separator/Separator.vue"
+import Separator from "@/components/ui/separator/Separator.vue"
 
 import EditorToolbarFile from "./file/index.vue"
 import EditorToolbarFontFamily from "./FontFamily.vue"

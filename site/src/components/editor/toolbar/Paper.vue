@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Combobox from "~/components/common/Combobox.vue"
-import type { ValidPaperSize } from "~/composables/constant"
-import { useConstant } from "~/composables/constant"
-import { useStyleStore } from "~/composables/stores/style"
+import Combobox from "@/components/common/Combobox.vue"
+import type { ValidPaperSize } from "@/composables/constant"
+import { useConstant } from "@/composables/constant"
+import { useStyleStore } from "@/composables/stores/style"
 
 import EditorToolbarBox from "./Box.vue"
 

@@ -5,7 +5,7 @@ import { ListboxGroup, ListboxGroupLabel, useId } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { computed, onMounted, onUnmounted } from "vue"
 
-import { cn } from "~/utils/shadcn"
+import { cn } from "@/utils/shadcn"
 
 import { provideCommandGroupContext, useCommand } from "."
 

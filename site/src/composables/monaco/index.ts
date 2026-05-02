@@ -1,7 +1,7 @@
 import type * as Monaco from "monaco-editor"
 import { ref, shallowRef } from "vue"
 
-import { useDataStore } from "~/composables/stores/data"
+import { useDataStore } from "@/composables/stores/data"
 
 import { setupMonaco, setupMonacoEditor, setupMonacoModel, type MonacoModel } from "./setup"
 import {

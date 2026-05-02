@@ -1,9 +1,9 @@
 import { useEventListener } from "@vueuse/core"
 import { watch } from "vue"
 
-import { useDataStore } from "~/composables/stores/data"
-import { useStyleStore } from "~/composables/stores/style"
-import { isDirty } from "~/utils/storage"
+import { useDataStore } from "@/composables/stores/data"
+import { useStyleStore } from "@/composables/stores/style"
+import { isDirty } from "@/utils/storage"
 
 export const useUnsavedChanges = () => {
   const { data } = useDataStore()

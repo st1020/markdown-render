@@ -2,7 +2,7 @@
 import { TabsIndicator, TabsList, TabsRoot, TabsTrigger } from "reka-ui"
 import { onBeforeUnmount, onMounted, ref } from "vue"
 
-import { useMonaco } from "~/composables/monaco"
+import { useMonaco } from "@/composables/monaco"
 
 const editor = ref<HTMLDivElement>()
 const { setup, activateModel, dispose, loading } = useMonaco()

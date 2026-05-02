@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from "~/components/ui/button/Button.vue"
-import { storageService } from "~/utils/storage"
+import Button from "@/components/ui/button/Button.vue"
+import { storageService } from "@/utils/storage"
 
 const save = () => storageService.save()
 </script>

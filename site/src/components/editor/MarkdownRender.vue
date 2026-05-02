@@ -2,11 +2,11 @@
 import { watchThrottled } from "@vueuse/core"
 import { computed, ref } from "vue"
 
-import { useConstant } from "~/composables/constant"
-import { useSmartPages } from "~/composables/pages"
-import type { DocumentStyles } from "~/composables/stores/style"
-import { fontsService } from "~/utils/font"
-import { markdownService } from "~/utils/markdown"
+import { useConstant } from "@/composables/constant"
+import { useSmartPages } from "@/composables/pages"
+import type { DocumentStyles } from "@/composables/stores/style"
+import { fontsService } from "@/utils/font"
+import { markdownService } from "@/utils/markdown"
 
 const props = defineProps<{
   id: string | number

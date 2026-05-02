@@ -3,7 +3,7 @@ import { splitWithVariantGroupRE, type UnoGenerator } from "@unocss/core"
 import { arbitraryPropertyRE, quotedArbitraryValuesRE } from "@unocss/extractor-arbitrary-variants"
 import type * as Monaco from "monaco-editor"
 
-import { getUnoGenerator } from "~/utils/css"
+import { getUnoGenerator } from "@/utils/css"
 
 // Ignore `unknownAtRules` option error in Monaco's CSS language service
 // @apply is used in UnoCSS and we don't want to show lint errors for it

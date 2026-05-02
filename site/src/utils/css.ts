@@ -3,8 +3,8 @@ import transformerDirectives from "@unocss/transformer-directives"
 import MagicString from "magic-string"
 import { presetWind4 } from "unocss/preset-wind4"
 
-import { useConstant } from "~/composables/constant"
-import type { DocumentStyles } from "~/composables/stores/style"
+import { useConstant } from "@/composables/constant"
+import type { DocumentStyles } from "@/composables/stores/style"
 
 const sheetsMap = new Map<string, HTMLStyleElement>()
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue"
 
-import Slider from "~/components/common/Slider.vue"
-import { useStyleStore } from "~/composables/stores/style"
+import Slider from "@/components/common/Slider.vue"
+import { useStyleStore } from "@/composables/stores/style"
 
 import EditorToolbarBox from "./Box.vue"
 
