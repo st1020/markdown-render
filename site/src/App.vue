@@ -69,7 +69,7 @@
         </div>
       </div>
     </div>
-    <Toaster close-button />
+    <Sonner close-button />
   </div>
 </template>
 
@@ -84,7 +84,7 @@ import Button from "~/components/ui/button/Button.vue";
 import Skeleton from "~/components/ui/skeleton/Skeleton.vue";
 import { useDataStore } from "~/composables/stores/data";
 import { storageService } from "~/utils/storage";
-import Toaster from "./components/ui/sonner/Sonner.vue";
+import Sonner from "./components/ui/sonner/Sonner.vue";
 
 const { data } = useDataStore();
 

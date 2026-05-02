@@ -1,10 +1,10 @@
 import * as localForage from "localforage";
 import { toRaw } from "vue";
+import { toast } from "vue-sonner";
 import { useConstant } from "~/composables/constant";
 import { useDataStore } from "~/composables/stores/data";
 import type { DocumentStyles } from "~/composables/stores/style";
 import { useStyleStore } from "~/composables/stores/style";
-import { useToast } from "~/composables/toast";
 
 const STORAGE_KEY = "stored_document";
 
@@ -64,7 +64,8 @@ export class StorageService {
       styles: toRaw(styles)
     });
 
-    useToast().save();
+    console.log("Document saved to local storage");
+    toast.success("Your changes have been saved");
   }
 }
 
