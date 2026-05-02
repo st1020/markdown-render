@@ -1,4 +1,6 @@
+import { useColorMode } from "@vueuse/core";
 import type * as Monaco from "monaco-editor";
+import { watch } from "vue";
 
 declare global {
   interface Window {
@@ -49,7 +51,7 @@ export const setupMonaco = async () => {
   };
 
   // Theme
-  monaco.editor.setTheme("vs");
+  setupMonacoTheme(monaco);
 
   return { monaco };
 };
@@ -85,4 +87,16 @@ export const setupMonacoEditor = async (container: HTMLElement) => {
   });
 
   return { editor };
+};
+
+export const setupMonacoTheme = async (monaco: typeof Monaco) => {
+  // Watch color mode changes and set theme
+  const setTheme = (theme: string) => {
+    monaco.editor.setTheme(theme === "dark" ? "vs-dark" : "vs");
+  };
+
+  const colorMode = useColorMode();
+
+  setTheme(colorMode.value);
+  watch(() => colorMode.value, setTheme);
 };

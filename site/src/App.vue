@@ -10,6 +10,19 @@
           <Button
             variant="ghost-secondary"
             size="round"
+            aria-label="Toggle theme"
+            @click="next()"
+          >
+            <i v-if="state === 'dark'" class="i-ph:moon-bold size-4" />
+            <i v-if="state === 'light'" class="i-ph:sun-bold size-4" />
+            <i
+              v-if="state === 'auto'"
+              class="i-material-symbols:night-sight-auto-rounded size-4.5"
+            />
+          </Button>
+          <Button
+            variant="ghost-secondary"
+            size="round"
             @click="isToolbarOpen = !isToolbarOpen"
             :aria-label="isToolbarOpen ? 'Close toolbar' : 'Open toolbar'"
           >
@@ -61,9 +74,9 @@
 </template>
 
 <script setup lang="ts">
-import { useWindowSize } from "@vueuse/core";
+import { useColorMode, useCycleList, useWindowSize } from "@vueuse/core";
 import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "reka-ui";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import EditorCode from "~/components/editor/Code.vue";
 import EditorPreview from "~/components/editor/Preview.vue";
 import EditorToolbar from "~/components/editor/toolbar/index.vue";
@@ -82,4 +95,11 @@ onMounted(async () => {
 // Toggle toolbar
 const { width } = useWindowSize();
 const isToolbarOpen = ref(width.value > 1024);
+
+//  Toggle dark mode
+const mode = useColorMode({ emitAuto: true });
+const { state, next } = useCycleList(["auto", "light", "dark"] as const, {
+  initialValue: mode
+});
+watchEffect(() => (mode.value = state.value));
 </script>

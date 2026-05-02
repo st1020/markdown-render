@@ -236,4 +236,20 @@ ${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="reference"] {
   top: 0;
 }
 
+/* Dark & print mode */
+/* You might want to comment out the following lines if you change the background or text color. */
+
+/*
+.dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
+  background-color: hsl(213, 12%, 15%);
+  color: hsl(216, 12%, 84%);
+}
+
+@media print {
+  .dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
+    background-color: white;
+    color: black;
+  }
+}
+*/
 `;

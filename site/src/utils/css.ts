@@ -67,9 +67,6 @@ export const applyUno = async (css: string): Promise<string> => {
     preflights: false
   });
 
-  console.log(transformed);
-  console.log(result.css);
-
   return transformed + "\n" + result.css;
 };
 
