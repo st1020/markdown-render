@@ -11,6 +11,7 @@
     "@iconify/json": "^2.2.468",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.6.0",
+    "@unocss/autocomplete": "^66.6.8",
     "@unocss/reset": "^66.6.8",
     "@vitejs/plugin-vue": "^6.0.6",
     "@vueuse/core": "^14.3.0",
@@ -28,7 +29,6 @@
     "unocss-preset-shadcn": "^1.0.1",
     "vite": "^8.0.10",
     "vue": "^3.5.33",
-    "vue-sonner": "^2.0.9",
-    "@unocss/autocomplete": "^66.6.8"
+    "vue-sonner": "^2.0.9"
   }
 }

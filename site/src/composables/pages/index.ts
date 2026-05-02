@@ -1,6 +1,6 @@
-import { useSmartPages } from "./useSmartPages";
+import { useSmartPages } from "./useSmartPages"
 
-export type * from "./types";
-export * from "./useSmartPages";
+export type * from "./types"
+export * from "./useSmartPages"
 
-export default useSmartPages;
+export default useSmartPages

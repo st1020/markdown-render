@@ -1,42 +1,36 @@
 <script setup lang="ts">
-import { useElementSize } from "@vueuse/core";
-import { ref, watch } from "vue";
-import MarkdownRender from "~/components/editor/MarkdownRender.vue";
-import VueZoom from "~/components/editor/VueZoom";
-import { useConstant } from "~/composables/constant";
-import { useDataStore } from "~/composables/stores/data";
-import { useStyleStore } from "~/composables/stores/style";
+import { useElementSize } from "@vueuse/core"
+import { ref, watch } from "vue"
 
-const scale = ref(1);
-const zoom = ref<InstanceType<typeof VueZoom>>();
+import MarkdownRender from "~/components/editor/MarkdownRender.vue"
+import VueZoom from "~/components/editor/VueZoom"
+import { useConstant } from "~/composables/constant"
+import { useDataStore } from "~/composables/stores/data"
+import { useStyleStore } from "~/composables/stores/style"
 
-const { width, height } = useElementSize(zoom);
-const { styles } = useStyleStore();
-const { data } = useDataStore();
-const { PAPER } = useConstant();
+const scale = ref(1)
+const zoom = ref<InstanceType<typeof VueZoom>>()
+
+const { width, height } = useElementSize(zoom)
+const { styles } = useStyleStore()
+const { data } = useDataStore()
+const { PAPER } = useConstant()
 
 const fitWidth = () => {
-  scale.value = width.value / PAPER.sizeToPx(styles.paper, "w");
-};
+  scale.value = width.value / PAPER.sizeToPx(styles.paper, "w")
+}
 
 const fitHeight = () => {
-  scale.value = height.value / PAPER.sizeToPx(styles.paper, "h");
-};
+  scale.value = height.value / PAPER.sizeToPx(styles.paper, "h")
+}
 
-watch(width, fitWidth);
+watch(width, fitWidth)
 </script>
 
 <template>
-  <div
-    class="pane-container overflow-scroll hide-scrollbar bg-secondary border-4 border-secondary"
-  >
+  <div class="pane-container overflow-scroll hide-scrollbar bg-secondary border-4 border-secondary">
     <VueZoom ref="zoom" :scale="scale">
-      <MarkdownRender
-        id="preview"
-        :markdown="data.markdown"
-        :css="data.css"
-        :styles="styles"
-      />
+      <MarkdownRender id="preview" :markdown="data.markdown" :css="data.css" :styles="styles" />
     </VueZoom>
 
     <div

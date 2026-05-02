@@ -1,17 +1,17 @@
-import MarkdownIt from "markdown-it";
+import MarkdownIt from "markdown-it"
 
 export class MarkdownService {
-  private _md: MarkdownIt;
+  private _md: MarkdownIt
 
   constructor() {
     this._md = new MarkdownIt({
-      html: true
-    });
+      html: true,
+    })
   }
 
   public renderDocument(md: string) {
-    return this._md.render(md);
+    return this._md.render(md)
   }
 }
 
-export const markdownService = new MarkdownService();
+export const markdownService = new MarkdownService()

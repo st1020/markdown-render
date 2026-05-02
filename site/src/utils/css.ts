@@ -1,16 +1,12 @@
-import {
-  createGenerator,
-  noop,
-  UnocssPluginContext,
-  type UnoGenerator
-} from "@unocss/core";
-import transformerDirectives from "@unocss/transformer-directives";
-import MagicString from "magic-string";
-import { presetWind4 } from "unocss/preset-wind4";
-import { useConstant } from "~/composables/constant";
-import type { DocumentStyles } from "~/composables/stores/style";
+import { createGenerator, noop, UnocssPluginContext, type UnoGenerator } from "@unocss/core"
+import transformerDirectives from "@unocss/transformer-directives"
+import MagicString from "magic-string"
+import { presetWind4 } from "unocss/preset-wind4"
 
-const sheetsMap = new Map<string, HTMLStyleElement>();
+import { useConstant } from "~/composables/constant"
+import type { DocumentStyles } from "~/composables/stores/style"
+
+const sheetsMap = new Map<string, HTMLStyleElement>()
 
 /**
  * Dynamically injects CSS into the document. Borrowed from Vite:
@@ -23,30 +19,30 @@ const sheetsMap = new Map<string, HTMLStyleElement>();
  * @param content A string of CSS to inject.
  */
 const injectCss = (id: string, content: string) => {
-  let style = sheetsMap.get(id);
+  let style = sheetsMap.get(id)
 
   if (!style) {
-    style = document.createElement("style");
+    style = document.createElement("style")
 
-    style.setAttribute("type", "text/css");
-    style.setAttribute("data-dynamic-css-id", id);
-    style.textContent = content;
+    style.setAttribute("type", "text/css")
+    style.setAttribute("data-dynamic-css-id", id)
+    style.textContent = content
 
-    document.head.appendChild(style);
+    document.head.appendChild(style)
   } else {
-    style.textContent = content;
+    style.textContent = content
   }
 
-  sheetsMap.set(id, style);
-};
+  sheetsMap.set(id, style)
+}
 
-let _generator: UnoGenerator | null = null;
+let _generator: UnoGenerator | null = null
 
 export const getUnoGenerator = async (): Promise<UnoGenerator> => {
-  if (_generator) return _generator;
-  _generator = await createGenerator({ presets: [presetWind4()] });
-  return _generator;
-};
+  if (_generator) return _generator
+  _generator = await createGenerator({ presets: [presetWind4()] })
+  return _generator
+}
 
 /**
  * Transform UnoCSS directives in a CSS string.
@@ -54,21 +50,21 @@ export const getUnoGenerator = async (): Promise<UnoGenerator> => {
  * @param css - The input CSS string containing UnoCSS directives.
  */
 export const applyUno = async (css: string): Promise<string> => {
-  const uno = await getUnoGenerator();
-  const ctx = { uno, invalidate: noop } as UnocssPluginContext;
+  const uno = await getUnoGenerator()
+  const ctx = { uno, invalidate: noop } as UnocssPluginContext
 
-  const code = new MagicString(css);
-  const transformer = transformerDirectives();
-  await transformer.transform(code, "style.css", ctx);
-  const transformed = code.toString();
+  const code = new MagicString(css)
+  const transformer = transformerDirectives()
+  await transformer.transform(code, "style.css", ctx)
+  const transformed = code.toString()
 
   const result = await ctx.uno.generate(transformed, {
     // We don't need generate preflight, because the preflight is included by `theme: true` in unocss.config.ts.
-    preflights: false
-  });
+    preflights: false,
+  })
 
-  return transformed + "\n" + result.css;
-};
+  return transformed + "\n" + result.css
+}
 
 /**
  * Service for injecting dynamic CSS into the document.
@@ -78,18 +74,18 @@ export const applyUno = async (css: string): Promise<string> => {
  */
 export class DynamicCssService {
   private _injectedCssId = (type: string) => {
-    return `ohmycv-${type}-preview`;
-  };
+    return `ohmycv-${type}-preview`
+  }
 
   private fontFamily = (selector: string, styles: DocumentStyles) => {
-    const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
-    const fontCJK = styles.fontCJK.fontFamily || styles.fontCJK.name;
-    return `${selector} { font-family: ${fontEN}, ${fontCJK}, Arial, Helvetica, sans-serif; }`;
-  };
+    const fontEN = styles.fontEN.fontFamily || styles.fontEN.name
+    const fontCJK = styles.fontCJK.fontFamily || styles.fontCJK.name
+    return `${selector} { font-family: ${fontEN}, ${fontCJK}, Arial, Helvetica, sans-serif; }`
+  }
 
   private paperSize = (styles: DocumentStyles) => {
-    return `@media print { @page { size: ${styles.paper}; } }`;
-  };
+    return `@media print { @page { size: ${styles.paper}; } }`
+  }
 
   /**
    * Inject CSS that controlled by the toolbar into the document.
@@ -97,13 +93,13 @@ export class DynamicCssService {
    * @param styles Document styles
    */
   public async injectToolbar(styles: DocumentStyles) {
-    const { RENDER } = useConstant();
+    const { RENDER } = useConstant()
     const css =
       this.fontFamily(RENDER.PREVIEW_SELECTOR, styles) +
       // We only need to set paper size for the preview view in the editor
-      this.paperSize(styles);
+      this.paperSize(styles)
 
-    injectCss(this._injectedCssId("toolbar"), css);
+    injectCss(this._injectedCssId("toolbar"), css)
   }
 
   /**
@@ -113,8 +109,8 @@ export class DynamicCssService {
    * @param css CSS string
    */
   public async injectCssEditor(css: string) {
-    const transformed = await applyUno(css);
-    injectCss(this._injectedCssId("css-editor"), transformed);
+    const transformed = await applyUno(css)
+    injectCss(this._injectedCssId("css-editor"), transformed)
   }
 
   /**
@@ -123,12 +119,12 @@ export class DynamicCssService {
    * @param markdown A string of markdown content.
    */
   public async injectMarkdown(markdown: string) {
-    const uno = await getUnoGenerator();
+    const uno = await getUnoGenerator()
     const result = await uno.generate(markdown, {
-      preflights: false
-    });
-    injectCss(this._injectedCssId("markdown"), result.css);
+      preflights: false,
+    })
+    injectCss(this._injectedCssId("markdown"), result.css)
   }
 }
 
-export const dynamicCssService = new DynamicCssService();
+export const dynamicCssService = new DynamicCssService()

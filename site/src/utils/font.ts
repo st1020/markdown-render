@@ -1,4 +1,4 @@
-import type { DocumentStyles } from "~/composables/stores/style";
+import type { DocumentStyles } from "~/composables/stores/style"
 
 export class FontsService {
   /**
@@ -10,15 +10,15 @@ export class FontsService {
   public presetObserver(styles: DocumentStyles) {
     const fonts = [
       styles.fontEN.fontFamily || styles.fontEN.name,
-      styles.fontCJK.fontFamily || styles.fontCJK.name
-    ];
+      styles.fontCJK.fontFamily || styles.fontCJK.name,
+    ]
 
-    const observers = [];
+    const observers = []
 
-    for (const font of fonts) observers.push(document.fonts.load(`12px ${font}`));
+    for (const font of fonts) observers.push(document.fonts.load(`12px ${font}`))
 
-    return Promise.all(observers);
+    return Promise.all(observers)
   }
 }
 
-export const fontsService = new FontsService();
+export const fontsService = new FontsService()

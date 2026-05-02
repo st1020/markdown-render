@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import EditorToolbarBox from "../Box.vue";
-import EditorToolbarFileExport from "./Export.vue";
-import EditorToolbarFileSave from "./Save.vue";
+import EditorToolbarBox from "../Box.vue"
+import EditorToolbarFileExport from "./Export.vue"
+import EditorToolbarFileSave from "./Save.vue"
 </script>
 
 <template>

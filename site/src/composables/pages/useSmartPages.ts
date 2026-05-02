@@ -2,14 +2,14 @@ import {
   unrefElement,
   watchThrottled,
   type MaybeComputedElementRef,
-  type WatchThrottledOptions
-} from "@vueuse/core";
+  type WatchThrottledOptions,
+} from "@vueuse/core"
+import { onMounted, Ref, ShallowRef, toValue, WritableComputedRef } from "vue"
 
-import { onMounted, Ref, ShallowRef, toValue, WritableComputedRef } from "vue";
-import { breakPage, setWidthAndMargins } from "./dom";
-import type { PageMargins, PageSize } from "./types";
+import { breakPage, setWidthAndMargins } from "./dom"
+import type { PageMargins, PageSize } from "./types"
 
-export type MaybeRef<T> = T | Ref<T> | ShallowRef<T> | WritableComputedRef<T>;
+export type MaybeRef<T> = T | Ref<T> | ShallowRef<T> | WritableComputedRef<T>
 
 /**
  * Break the content into pages based on the given size and margins.
@@ -43,48 +43,48 @@ export const useSmartPages = (
   size: MaybeRef<PageSize>,
   margins: MaybeRef<PageMargins> = {},
   options: {
-    beforeRender?: () => void | Promise<void>;
-    afterRender?: () => void | Promise<void>;
-    watchThrottledOptions?: WatchThrottledOptions<Readonly<boolean>>;
-  } = {}
+    beforeRender?: () => void | Promise<void>
+    afterRender?: () => void | Promise<void>
+    watchThrottledOptions?: WatchThrottledOptions<Readonly<boolean>>
+  } = {},
 ) => {
   const render = async () => {
-    const element = unrefElement(target) as HTMLElement | undefined | null;
-    if (!element) return;
+    const element = unrefElement(target) as HTMLElement | undefined | null
+    if (!element) return
 
-    const { width, height } = toValue(size);
-    const { top = 0, bottom = 0, left = 0, right = 0 } = toValue(margins);
+    const { width, height } = toValue(size)
+    const { top = 0, bottom = 0, left = 0, right = 0 } = toValue(margins)
 
-    const _size = { width, height };
-    const _margins = { top, bottom, left, right };
+    const _size = { width, height }
+    const _margins = { top, bottom, left, right }
 
     // To calculate the correct child heights for breaking the page, we first apply the content,
     // size, and margins to a clone of the element, instead of the original element.
     // This is to avoid flickering when the original element is modified.
-    const copy = element.cloneNode(true) as HTMLElement;
+    const copy = element.cloneNode(true) as HTMLElement
 
-    copy.innerHTML = toValue(html);
-    setWidthAndMargins(copy, _size, _margins);
+    copy.innerHTML = toValue(html)
+    setWidthAndMargins(copy, _size, _margins)
 
     // Attach it to the body temporarily to get the correct computed styles
-    document.body.appendChild(copy);
+    document.body.appendChild(copy)
 
-    if (options.beforeRender) await options.beforeRender();
+    if (options.beforeRender) await options.beforeRender()
 
     // Break the page based on the given size and margins
-    breakPage(copy, _size, _margins);
+    breakPage(copy, _size, _margins)
 
     // Replace the original element with the modified copy
-    element.innerHTML = copy.innerHTML;
+    element.innerHTML = copy.innerHTML
 
     // Remove the copy from the body
-    document.body.removeChild(copy);
+    document.body.removeChild(copy)
 
-    if (options.afterRender) await options.afterRender();
-  };
+    if (options.afterRender) await options.afterRender()
+  }
 
-  onMounted(render);
-  watchThrottled([size, margins, html], render, options.watchThrottledOptions);
+  onMounted(render)
+  watchThrottled([size, margins, html], render, options.watchThrottledOptions)
 
-  return { render };
-};
+  return { render }
+}

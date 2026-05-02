@@ -1,32 +1,31 @@
 <script setup lang="ts">
-import type { ComboboxItem } from "~/components/common/Combobox.vue";
-import Combobox from "~/components/common/Combobox.vue";
-import { useConstant } from "~/composables/constant";
-import { useStyleStore } from "~/composables/stores/style";
-import EditorToolbarBox from "./Box.vue";
+import type { ComboboxItem } from "~/components/common/Combobox.vue"
+import Combobox from "~/components/common/Combobox.vue"
+import { useConstant } from "~/composables/constant"
+import { useStyleStore } from "~/composables/stores/style"
 
-const { styles, setStyle } = useStyleStore();
-const { FONT } = useConstant();
+import EditorToolbarBox from "./Box.vue"
+
+const { styles, setStyle } = useStyleStore()
+const { FONT } = useConstant()
 
 const localEn = FONT.LOCAL.EN.map<ComboboxItem>((item) => {
-  const family =
-    FONT.LOCAL.EN.find((font) => font.name === item.name)?.fontFamily || item.name;
+  const family = FONT.LOCAL.EN.find((font) => font.name === item.name)?.fontFamily || item.name
   return {
     label: item.name,
     value: family,
-    onSelect: () => setStyle("fontEN", { name: item.name, fontFamily: family })
-  };
-});
+    onSelect: () => setStyle("fontEN", { name: item.name, fontFamily: family }),
+  }
+})
 
 const localCjk = FONT.LOCAL.CJK.map<ComboboxItem>((item) => {
-  const family =
-    FONT.LOCAL.CJK.find((font) => font.name === item.name)?.fontFamily || item.name;
+  const family = FONT.LOCAL.CJK.find((font) => font.name === item.name)?.fontFamily || item.name
   return {
     label: item.name,
     value: family,
-    onSelect: () => setStyle("fontCJK", { name: item.name, fontFamily: family })
-  };
-});
+    onSelect: () => setStyle("fontCJK", { name: item.name, fontFamily: family }),
+  }
+})
 </script>
 
 <template>

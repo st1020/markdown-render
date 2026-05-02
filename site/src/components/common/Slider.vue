@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import type { SliderRootEmits, SliderRootProps } from "reka-ui";
-import { useForwardPropsEmits } from "reka-ui";
-import { computed } from "vue";
-import { Slider } from "~/components/ui/slider";
+import type { SliderRootEmits, SliderRootProps } from "reka-ui"
+import { useForwardPropsEmits } from "reka-ui"
+import { computed } from "vue"
 
-const props = defineProps<SliderRootProps & { unit?: string }>();
-const emits = defineEmits<SliderRootEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+import { Slider } from "~/components/ui/slider"
 
-const min = computed(() => props.min ?? 0);
-const max = computed(() => props.max ?? 100);
-const unit = computed(() => props.unit ?? "");
+const props = defineProps<SliderRootProps & { unit?: string }>()
+const emits = defineEmits<SliderRootEmits>()
+const forwarded = useForwardPropsEmits(props, emits)
+
+const min = computed(() => props.min ?? 0)
+const max = computed(() => props.max ?? 100)
+const unit = computed(() => props.unit ?? "")
 </script>
 
 <template>

@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { reactiveOmit } from "@vueuse/core";
-import type { DialogTitleProps } from "reka-ui";
-import { DialogTitle, useForwardProps } from "reka-ui";
-import type { HTMLAttributes } from "vue";
-import { cn } from "~/utils/shadcn";
+import { reactiveOmit } from "@vueuse/core"
+import type { DialogTitleProps } from "reka-ui"
+import { DialogTitle, useForwardProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
 
-const props = defineProps<DialogTitleProps & { class?: HTMLAttributes["class"] }>();
+import { cn } from "~/utils/shadcn"
 
-const delegatedProps = reactiveOmit(props, "class");
+const props = defineProps<DialogTitleProps & { class?: HTMLAttributes["class"] }>()
 
-const forwardedProps = useForwardProps(delegatedProps);
+const delegatedProps = reactiveOmit(props, "class")
+
+const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
 <template>

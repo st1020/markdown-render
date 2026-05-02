@@ -1,66 +1,66 @@
 export type Font = {
-  readonly name: string;
-  readonly fontFamily?: string;
-};
+  readonly name: string
+  readonly fontFamily?: string
+}
 
 export const LOCAL_EN_FONTS: Font[] = [
   {
-    name: "Adobe Garamond Pro"
+    name: "Adobe Garamond Pro",
   },
   {
-    name: "Arial"
+    name: "Arial",
   },
   {
-    name: "Arial Black"
+    name: "Arial Black",
   },
   {
-    name: "Arial Narrow"
+    name: "Arial Narrow",
   },
   {
-    name: "CMU Sans Serif"
+    name: "CMU Sans Serif",
   },
   {
-    name: "Courier New"
+    name: "Courier New",
   },
   {
-    name: "Euclid"
+    name: "Euclid",
   },
   {
-    name: "Georgia"
+    name: "Georgia",
   },
   {
-    name: "Minion Pro"
+    name: "Minion Pro",
   },
   {
-    name: "Palatino"
+    name: "Palatino",
   },
   {
-    name: "Tahoma"
+    name: "Tahoma",
   },
   {
-    name: "Tex Gyre Pagella"
+    name: "Tex Gyre Pagella",
   },
   {
-    name: "Times New Roman"
+    name: "Times New Roman",
   },
   {
-    name: "Times Newer Roman"
+    name: "Times Newer Roman",
   },
   {
-    name: "Trebuchet MS"
+    name: "Trebuchet MS",
   },
   {
-    name: "Verdana"
-  }
-];
+    name: "Verdana",
+  },
+]
 
 export const LOCAL_CJK_FONTS: Font[] = [
   {
     name: "华康宋体",
-    fontFamily: "HKST"
+    fontFamily: "HKST",
   },
   {
     name: "霞鹜文楷",
-    fontFamily: "LXGW WenKai"
-  }
-];
+    fontFamily: "LXGW WenKai",
+  },
+]

@@ -1,34 +1,36 @@
 <script setup lang="ts">
-import { useColorMode, useCycleList, useWindowSize } from "@vueuse/core";
-import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "reka-ui";
-import { onMounted, ref, watchEffect } from "vue";
-import EditorCode from "~/components/editor/Code.vue";
-import EditorPreview from "~/components/editor/Preview.vue";
-import EditorToolbar from "~/components/editor/toolbar/index.vue";
-import Button from "~/components/ui/button/Button.vue";
-import Skeleton from "~/components/ui/skeleton/Skeleton.vue";
-import { useDataStore } from "~/composables/stores/data";
-import { useUnsavedChanges } from "~/composables/unsaved/useUnsavedChanges";
-import { storageService } from "~/utils/storage";
-import Sonner from "./components/ui/sonner/Sonner.vue";
+import { useColorMode, useCycleList, useWindowSize } from "@vueuse/core"
+import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "reka-ui"
+import { onMounted, ref, watchEffect } from "vue"
 
-const { data } = useDataStore();
-useUnsavedChanges();
+import EditorCode from "~/components/editor/Code.vue"
+import EditorPreview from "~/components/editor/Preview.vue"
+import EditorToolbar from "~/components/editor/toolbar/index.vue"
+import Button from "~/components/ui/button/Button.vue"
+import Skeleton from "~/components/ui/skeleton/Skeleton.vue"
+import { useDataStore } from "~/composables/stores/data"
+import { useUnsavedChanges } from "~/composables/unsaved/useUnsavedChanges"
+import { storageService } from "~/utils/storage"
+
+import Sonner from "./components/ui/sonner/Sonner.vue"
+
+const { data } = useDataStore()
+useUnsavedChanges()
 
 onMounted(async () => {
-  await storageService.load();
-});
+  await storageService.load()
+})
 
 // Toggle toolbar
-const { width } = useWindowSize();
-const isToolbarOpen = ref(width.value > 1024);
+const { width } = useWindowSize()
+const isToolbarOpen = ref(width.value > 1024)
 
 //  Toggle dark mode
-const mode = useColorMode({ emitAuto: true });
+const mode = useColorMode({ emitAuto: true })
 const { state, next } = useCycleList(["auto", "light", "dark"] as const, {
-  initialValue: mode
-});
-watchEffect(() => (mode.value = state.value));
+  initialValue: mode,
+})
+watchEffect(() => (mode.value = state.value))
 </script>
 
 <template>
@@ -40,12 +42,7 @@ watchEffect(() => (mode.value = state.value));
         </div>
 
         <div class="hstack">
-          <Button
-            variant="ghost-secondary"
-            size="round"
-            aria-label="Toggle theme"
-            @click="next()"
-          >
+          <Button variant="ghost-secondary" size="round" aria-label="Toggle theme" @click="next()">
             <i v-if="state === 'dark'" class="i-ph:moon-bold size-4" />
             <i v-if="state === 'light'" class="i-ph:sun-bold size-4" />
             <i
@@ -64,7 +61,7 @@ watchEffect(() => (mode.value = state.value));
                 'size-4.5',
                 isToolbarOpen
                   ? 'i-tabler:layout-sidebar-right-collapse'
-                  : 'i-tabler:layout-sidebar-right-expand'
+                  : 'i-tabler:layout-sidebar-right-expand',
               ]"
             />
           </Button>

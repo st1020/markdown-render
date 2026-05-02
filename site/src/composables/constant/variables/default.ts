@@ -1,18 +1,18 @@
-import type { DocumentStyles } from "../../stores/style";
-import { PREVIEW_SELECTOR } from "./render";
+import type { DocumentStyles } from "../../stores/style"
+import { PREVIEW_SELECTOR } from "./render"
 
 export const DEFAULT_STYLES = {
   marginV: 50,
   marginH: 45,
   fontCJK: {
     name: "华康宋体",
-    fontFamily: "HKST"
+    fontFamily: "HKST",
   },
   fontEN: {
-    name: "Minion Pro"
+    name: "Minion Pro",
   },
-  paper: "A4"
-} as DocumentStyles;
+  paper: "A4",
+} as DocumentStyles
 
 export const DEFAULT_MD_CONTENT = `<div class="text-center">
 
@@ -112,7 +112,7 @@ B.Eng. in Salad Engineering
 **Tools and Frameworks:** GrillHub, PanFlow, TensorFork, SpiceNet, $\\LaTeX$
 
 **Languages:** Chinese (native), English (proficient)
-`;
+`
 
 export const DEFAULT_CSS_CONTENT = `/* Backbone CSS for Resume Template 1 */
 
@@ -189,4 +189,4 @@ ${PREVIEW_SELECTOR} img {
   }
 }
 */
-`;
+`

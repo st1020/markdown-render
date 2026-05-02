@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import Slider from "~/components/common/Slider.vue";
-import { useStyleStore } from "~/composables/stores/style";
-import EditorToolbarBox from "./Box.vue";
+import { ref } from "vue"
 
-const { styles, setStyle } = useStyleStore();
+import Slider from "~/components/common/Slider.vue"
+import { useStyleStore } from "~/composables/stores/style"
 
-const vModelValue = ref([styles.marginV]);
-const hModelValue = ref([styles.marginH]);
+import EditorToolbarBox from "./Box.vue"
+
+const { styles, setStyle } = useStyleStore()
+
+const vModelValue = ref([styles.marginV])
+const hModelValue = ref([styles.marginH])
 </script>
 
 <template>
@@ -22,8 +24,8 @@ const hModelValue = ref([styles.marginH]);
       :model-value="vModelValue"
       @update:model-value="
         (value) => {
-          vModelValue = value!;
-          setStyle('marginV', value!.at(0)!);
+          vModelValue = value!
+          setStyle('marginV', value!.at(0)!)
         }
       "
     />
@@ -38,8 +40,8 @@ const hModelValue = ref([styles.marginH]);
       :model-value="hModelValue"
       @update:model-value="
         (value) => {
-          hModelValue = value!;
-          setStyle('marginH', value!.at(0)!);
+          hModelValue = value!
+          setStyle('marginH', value!.at(0)!)
         }
       "
     />

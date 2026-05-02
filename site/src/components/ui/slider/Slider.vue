@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { reactiveOmit } from "@vueuse/core";
-import type { SliderRootEmits, SliderRootProps } from "reka-ui";
-import {
-  SliderRange,
-  SliderRoot,
-  SliderThumb,
-  SliderTrack,
-  useForwardPropsEmits
-} from "reka-ui";
-import type { HTMLAttributes } from "vue";
-import { cn } from "~/utils/shadcn";
+import { reactiveOmit } from "@vueuse/core"
+import type { SliderRootEmits, SliderRootProps } from "reka-ui"
+import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from "reka-ui"
+import type { HTMLAttributes } from "vue"
 
-const props = defineProps<SliderRootProps & { class?: HTMLAttributes["class"] }>();
-const emits = defineEmits<SliderRootEmits>();
+import { cn } from "~/utils/shadcn"
 
-const delegatedProps = reactiveOmit(props, "class");
+const props = defineProps<SliderRootProps & { class?: HTMLAttributes["class"] }>()
+const emits = defineEmits<SliderRootEmits>()
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits);
+const delegatedProps = reactiveOmit(props, "class")
+
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
@@ -24,7 +19,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
     :class="
       cn(
         'relative flex w-full touch-none select-none items-center data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-2 data-[orientation=vertical]:h-full',
-        props.class
+        props.class,
       )
     "
     v-bind="forwarded"
@@ -32,9 +27,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
     <SliderTrack
       class="relative h-1 w-full data-[orientation=vertical]:w-2 grow overflow-hidden rounded-full bg-secondary"
     >
-      <SliderRange
-        class="absolute h-full data-[orientation=vertical]:w-full bg-primary"
-      />
+      <SliderRange class="absolute h-full data-[orientation=vertical]:w-full bg-primary" />
     </SliderTrack>
     <SliderThumb
       v-for="(_, key) in modelValue"

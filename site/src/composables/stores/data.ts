@@ -1,32 +1,33 @@
-import { defineStore } from "pinia";
-import { reactive } from "vue";
-import { dynamicCssService } from "~/utils/css";
+import { defineStore } from "pinia"
+import { reactive } from "vue"
+
+import { dynamicCssService } from "~/utils/css"
 
 export type SystemData = {
-  markdown: string;
-  css: string;
-  loaded: boolean;
-};
+  markdown: string
+  css: string
+  loaded: boolean
+}
 
 export const useDataStore = defineStore("data", () => {
   const data = reactive<SystemData>({
     markdown: "",
     css: "",
-    loaded: false
-  });
+    loaded: false,
+  })
 
   const setData = async <T extends keyof SystemData>(key: T, value: SystemData[T]) => {
-    data[key] = value;
+    data[key] = value
     if (key === "css") {
-      await dynamicCssService.injectCssEditor(value as string);
+      await dynamicCssService.injectCssEditor(value as string)
     }
     if (key === "markdown") {
-      await dynamicCssService.injectMarkdown(value as string);
+      await dynamicCssService.injectMarkdown(value as string)
     }
-  };
+  }
 
   return {
     data,
-    setData
-  };
-});
+    setData,
+  }
+})

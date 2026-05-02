@@ -1,27 +1,29 @@
 <script setup lang="ts">
-import { reactiveOmit } from "@vueuse/core";
-import { Search } from "lucide-vue-next";
-import type { ListboxFilterProps } from "reka-ui";
-import { ListboxFilter, useForwardProps } from "reka-ui";
-import type { HTMLAttributes } from "vue";
-import { cn } from "~/utils/shadcn";
-import { useCommand } from ".";
+import { reactiveOmit } from "@vueuse/core"
+import { Search } from "lucide-vue-next"
+import type { ListboxFilterProps } from "reka-ui"
+import { ListboxFilter, useForwardProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
+
+import { cn } from "~/utils/shadcn"
+
+import { useCommand } from "."
 
 defineOptions({
-  inheritAttrs: false
-});
+  inheritAttrs: false,
+})
 
 const props = defineProps<
   ListboxFilterProps & {
-    class?: HTMLAttributes["class"];
+    class?: HTMLAttributes["class"]
   }
->();
+>()
 
-const delegatedProps = reactiveOmit(props, "class");
+const delegatedProps = reactiveOmit(props, "class")
 
-const forwardedProps = useForwardProps(delegatedProps);
+const forwardedProps = useForwardProps(delegatedProps)
 
-const { filterState } = useCommand();
+const { filterState } = useCommand()
 </script>
 
 <template>
@@ -34,7 +36,7 @@ const { filterState } = useCommand();
       :class="
         cn(
           'flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
-          props.class
+          props.class,
         )
       "
     />

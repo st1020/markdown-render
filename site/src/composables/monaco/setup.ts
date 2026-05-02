@@ -1,17 +1,17 @@
-import { useColorMode } from "@vueuse/core";
-import type * as Monaco from "monaco-editor";
-import { watch } from "vue";
+import { useColorMode } from "@vueuse/core"
+import type * as Monaco from "monaco-editor"
+import { watch } from "vue"
 
 declare global {
   interface Window {
-    monaco: typeof Monaco | undefined;
+    monaco: typeof Monaco | undefined
   }
 }
 
 export type MonacoModel = {
-  get: () => Monaco.editor.ITextModel;
-  dispose: () => void;
-};
+  get: () => Monaco.editor.ITextModel
+  dispose: () => void
+}
 
 /**
  * Import Monaco and its workers, avoid SSR/SSG errors.
@@ -23,80 +23,80 @@ export type MonacoModel = {
 export const setupMonaco = async () => {
   if (window.monaco) {
     return {
-      monaco: window.monaco
-    };
+      monaco: window.monaco,
+    }
   }
 
   // Import manaco
-  const monaco = await import("monaco-editor");
-  window.monaco = monaco;
+  const monaco = await import("monaco-editor")
+  window.monaco = monaco
 
   // Import editor and css workers
   const [{ default: EditorWorker }, { default: CssWorker }] = await Promise.all([
     import("monaco-editor/esm/vs/editor/editor.worker?worker"),
-    import("monaco-editor/esm/vs/language/css/css.worker?worker")
-  ]);
+    import("monaco-editor/esm/vs/language/css/css.worker?worker"),
+  ])
 
   window.MonacoEnvironment = {
     getWorker(_moduleId: string, label: string) {
       switch (label) {
         case "editorWorkerService":
-          return new EditorWorker();
+          return new EditorWorker()
         case "css":
-          return new CssWorker();
+          return new CssWorker()
         default:
-          throw new Error(`Unknown label ${label}`);
+          throw new Error(`Unknown label ${label}`)
       }
-    }
-  };
+    },
+  }
 
   // Theme
-  setupMonacoTheme(monaco);
+  setupMonacoTheme(monaco)
 
-  return { monaco };
-};
+  return { monaco }
+}
 
 export const setupMonacoModel = async (
   language: "markdown" | "css",
   content: string,
-  onChange: () => void
+  onChange: () => void,
 ): Promise<MonacoModel> => {
-  const { monaco } = await setupMonaco();
+  const { monaco } = await setupMonaco()
 
-  const disposables: Monaco.IDisposable[] = [];
-  const model = monaco.editor.createModel(content, language);
+  const disposables: Monaco.IDisposable[] = []
+  const model = monaco.editor.createModel(content, language)
 
-  disposables.push(model);
-  disposables.push(model.onDidChangeContent(onChange));
+  disposables.push(model)
+  disposables.push(model.onDidChangeContent(onChange))
 
   return {
     get: () => model,
-    dispose: () => disposables.forEach((disposable) => disposable.dispose())
-  };
-};
+    dispose: () => disposables.forEach((disposable) => disposable.dispose()),
+  }
+}
 
 export const setupMonacoEditor = async (container: HTMLElement) => {
-  const { monaco } = await setupMonaco();
+  const { monaco } = await setupMonaco()
 
   const editor = monaco.editor.create(container, {
     wordWrap: "on",
     fontSize: 13,
     fontFamily: `Menlo, Monaco, "Courier New", monospace`,
     lineHeight: 1.5,
-    automaticLayout: true
-  });
+    automaticLayout: true,
+  })
 
-  return { editor };
-};
+  return { editor }
+}
 
 export const setupMonacoTheme = async (monaco: typeof Monaco) => {
   // Watch color mode changes and set theme
   const setTheme = (theme: string) => {
-    monaco.editor.setTheme(theme === "dark" ? "vs-dark" : "vs");
-  };
+    monaco.editor.setTheme(theme === "dark" ? "vs-dark" : "vs")
+  }
 
-  const colorMode = useColorMode();
+  const colorMode = useColorMode()
 
-  setTheme(colorMode.value);
-  watch(() => colorMode.value, setTheme);
-};
+  setTheme(colorMode.value)
+  watch(() => colorMode.value, setTheme)
+}
