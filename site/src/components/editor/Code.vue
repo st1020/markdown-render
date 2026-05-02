@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { TabsIndicator, TabsList, TabsRoot, TabsTrigger } from "reka-ui";
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import { useMonaco } from "~/composables/monaco";
+
+const editor = ref<HTMLDivElement>();
+const { setup, activateModel, dispose, loading } = useMonaco();
+
+onMounted(async () => {
+  await setup(editor.value);
+  activateModel("markdown");
+});
+
+onBeforeUnmount(dispose);
+</script>
+
 <template>
   <TabsRoot
     class="pane-container overflow-hidden bg-background flex flex-col"
@@ -19,19 +35,3 @@
     <div ref="editor" class="flex-1" />
   </TabsRoot>
 </template>
-
-<script lang="ts" setup>
-import { TabsIndicator, TabsList, TabsRoot, TabsTrigger } from "reka-ui";
-import { onBeforeUnmount, onMounted, ref } from "vue";
-import { useMonaco } from "~/composables/monaco";
-
-const editor = ref<HTMLDivElement>();
-const { setup, activateModel, dispose, loading } = useMonaco();
-
-onMounted(async () => {
-  await setup(editor.value);
-  activateModel("markdown");
-});
-
-onBeforeUnmount(dispose);
-</script>

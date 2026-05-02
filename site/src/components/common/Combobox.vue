@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-vue-next";
+import { ref } from "vue";
+import { Button } from "~/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList
+} from "~/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover";
+import { cn } from "~/utils/shadcn";
+
+export interface ComboboxItem {
+  label: string;
+  value: string;
+  onSelect: () => void;
+}
+
+const props = defineProps<{
+  id: string;
+  items: Array<ComboboxItem>;
+  defaultValue: string;
+}>();
+
+const open = ref(false);
+const value = ref(props.defaultValue);
+</script>
+
 <template>
   <div>
     <Popover v-model:open="open">
@@ -44,34 +75,3 @@
     </Popover>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-vue-next";
-import { ref } from "vue";
-import { Button } from "~/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList
-} from "~/components/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover";
-import { cn } from "~/utils/shadcn";
-
-export interface ComboboxItem {
-  label: string;
-  value: string;
-  onSelect: () => void;
-}
-
-const props = defineProps<{
-  id: string;
-  items: Array<ComboboxItem>;
-  defaultValue: string;
-}>();
-
-const open = ref(false);
-const value = ref(props.defaultValue);
-</script>

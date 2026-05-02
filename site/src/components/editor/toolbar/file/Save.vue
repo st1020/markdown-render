@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import Button from "~/components/ui/button/Button.vue";
+import { storageService } from "~/utils/storage";
+
+const save = () => storageService.save();
+</script>
+
 <template>
   <Button
     class="gap-x-1.5 w-full h-8 justify-start"
@@ -9,10 +16,3 @@
     Save
   </Button>
 </template>
-
-<script lang="ts" setup>
-import Button from "~/components/ui/button/Button.vue";
-import { storageService } from "~/utils/storage";
-
-const save = () => storageService.save();
-</script>

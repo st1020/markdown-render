@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { useElementSize } from "@vueuse/core";
+import { ref, watch } from "vue";
+import MarkdownRender from "~/components/editor/MarkdownRender.vue";
+import VueZoom from "~/components/editor/VueZoom";
+import { useConstant } from "~/composables/constant";
+import { useDataStore } from "~/composables/stores/data";
+import { useStyleStore } from "~/composables/stores/style";
+
+const scale = ref(1);
+const zoom = ref<InstanceType<typeof VueZoom>>();
+
+const { width, height } = useElementSize(zoom);
+const { styles } = useStyleStore();
+const { data } = useDataStore();
+const { PAPER } = useConstant();
+
+const fitWidth = () => {
+  scale.value = width.value / PAPER.sizeToPx(styles.paper, "w");
+};
+
+const fitHeight = () => {
+  scale.value = height.value / PAPER.sizeToPx(styles.paper, "h");
+};
+
+watch(width, fitWidth);
+</script>
+
 <template>
   <div
     class="pane-container overflow-scroll hide-scrollbar bg-secondary border-4 border-secondary"
@@ -30,31 +58,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useElementSize } from "@vueuse/core";
-import { ref, watch } from "vue";
-import MarkdownRender from "~/components/editor/MarkdownRender.vue";
-import VueZoom from "~/components/editor/VueZoom";
-import { useConstant } from "~/composables/constant";
-import { useDataStore } from "~/composables/stores/data";
-import { useStyleStore } from "~/composables/stores/style";
-
-const scale = ref(1);
-const zoom = ref<InstanceType<typeof VueZoom>>();
-
-const { width, height } = useElementSize(zoom);
-const { styles } = useStyleStore();
-const { data } = useDataStore();
-const { PAPER } = useConstant();
-
-const fitWidth = () => {
-  scale.value = width.value / PAPER.sizeToPx(styles.paper, "w");
-};
-
-const fitHeight = () => {
-  scale.value = height.value / PAPER.sizeToPx(styles.paper, "h");
-};
-
-watch(width, fitWidth);
-</script>

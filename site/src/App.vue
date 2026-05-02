@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import { useColorMode, useCycleList, useWindowSize } from "@vueuse/core";
+import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "reka-ui";
+import { onMounted, ref, watchEffect } from "vue";
+import EditorCode from "~/components/editor/Code.vue";
+import EditorPreview from "~/components/editor/Preview.vue";
+import EditorToolbar from "~/components/editor/toolbar/index.vue";
+import Button from "~/components/ui/button/Button.vue";
+import Skeleton from "~/components/ui/skeleton/Skeleton.vue";
+import { useDataStore } from "~/composables/stores/data";
+import { storageService } from "~/utils/storage";
+import Sonner from "./components/ui/sonner/Sonner.vue";
+
+const { data } = useDataStore();
+
+onMounted(async () => {
+  await storageService.load();
+});
+
+// Toggle toolbar
+const { width } = useWindowSize();
+const isToolbarOpen = ref(width.value > 1024);
+
+//  Toggle dark mode
+const mode = useColorMode({ emitAuto: true });
+const { state, next } = useCycleList(["auto", "light", "dark"] as const, {
+  initialValue: mode
+});
+watchEffect(() => (mode.value = state.value));
+</script>
+
 <template>
   <div class="font-ui">
     <div id="editor-page" class="flex flex-col">
@@ -72,34 +103,3 @@
     <Sonner close-button />
   </div>
 </template>
-
-<script setup lang="ts">
-import { useColorMode, useCycleList, useWindowSize } from "@vueuse/core";
-import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "reka-ui";
-import { onMounted, ref, watchEffect } from "vue";
-import EditorCode from "~/components/editor/Code.vue";
-import EditorPreview from "~/components/editor/Preview.vue";
-import EditorToolbar from "~/components/editor/toolbar/index.vue";
-import Button from "~/components/ui/button/Button.vue";
-import Skeleton from "~/components/ui/skeleton/Skeleton.vue";
-import { useDataStore } from "~/composables/stores/data";
-import { storageService } from "~/utils/storage";
-import Sonner from "./components/ui/sonner/Sonner.vue";
-
-const { data } = useDataStore();
-
-onMounted(async () => {
-  await storageService.load();
-});
-
-// Toggle toolbar
-const { width } = useWindowSize();
-const isToolbarOpen = ref(width.value > 1024);
-
-//  Toggle dark mode
-const mode = useColorMode({ emitAuto: true });
-const { state, next } = useCycleList(["auto", "light", "dark"] as const, {
-  initialValue: mode
-});
-watchEffect(() => (mode.value = state.value));
-</script>

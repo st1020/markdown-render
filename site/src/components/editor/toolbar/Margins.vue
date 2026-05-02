@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import Slider from "~/components/common/Slider.vue";
+import { useStyleStore } from "~/composables/stores/style";
+import EditorToolbarBox from "./Box.vue";
+
+const { styles, setStyle } = useStyleStore();
+
+const vModelValue = ref([styles.marginV]);
+const hModelValue = ref([styles.marginH]);
+</script>
+
 <template>
   <EditorToolbarBox text="Margins" icon="i-radix-icons:margin">
     <div class="hstack text-muted-foreground gap-x-1 justify-end">
@@ -33,15 +45,3 @@
     />
   </EditorToolbarBox>
 </template>
-
-<script lang="ts" setup>
-import { ref } from "vue";
-import Slider from "~/components/common/Slider.vue";
-import { useStyleStore } from "~/composables/stores/style";
-import EditorToolbarBox from "./Box.vue";
-
-const { styles, setStyle } = useStyleStore();
-
-const vModelValue = ref([styles.marginV]);
-const hModelValue = ref([styles.marginH]);
-</script>

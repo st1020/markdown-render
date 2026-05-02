@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import type { SliderRootEmits, SliderRootProps } from "reka-ui";
+import { useForwardPropsEmits } from "reka-ui";
+import { computed } from "vue";
+import { Slider } from "~/components/ui/slider";
+
+const props = defineProps<SliderRootProps & { unit?: string }>();
+const emits = defineEmits<SliderRootEmits>();
+const forwarded = useForwardPropsEmits(props, emits);
+
+const min = computed(() => props.min ?? 0);
+const max = computed(() => props.max ?? 100);
+const unit = computed(() => props.unit ?? "");
+</script>
+
 <template>
   <Slider class="py-2" v-bind="forwarded">
     <template #thumb="{ value }">
@@ -14,18 +29,3 @@
     <span>{{ max }}{{ unit }}</span>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { SliderRootEmits, SliderRootProps } from "reka-ui";
-import { useForwardPropsEmits } from "reka-ui";
-import { computed } from "vue";
-import { Slider } from "~/components/ui/slider";
-
-const props = defineProps<SliderRootProps & { unit?: string }>();
-const emits = defineEmits<SliderRootEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
-
-const min = computed(() => props.min ?? 0);
-const max = computed(() => props.max ?? 100);
-const unit = computed(() => props.unit ?? "");
-</script>

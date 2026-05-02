@@ -1,8 +1,4 @@
-<template>
-  <div class="document-render" :id="`document-${id}`" ref="target" />
-</template>
-
-<script lang="ts" setup>
+<script setup lang="ts">
 import { watchThrottled } from "@vueuse/core";
 import { computed, ref } from "vue";
 import { useConstant } from "~/composables/constant";
@@ -50,3 +46,7 @@ watchThrottled(() => [props.css, props.styles.fontCJK, props.styles.fontEN], ren
 
 defineExpose({ render });
 </script>
+
+<template>
+  <div class="document-render" :id="`document-${id}`" ref="target" />
+</template>

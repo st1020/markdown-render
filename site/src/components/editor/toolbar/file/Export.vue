@@ -1,26 +1,4 @@
-<template>
-  <Button
-    class="gap-x-1.5 w-full h-8 justify-start"
-    variant="ghost"
-    size="sm"
-    @click="exportPDF"
-  >
-    <span class="i-mdi:file-pdf text-base" />
-    Export PDF
-  </Button>
-
-  <Button
-    class="gap-x-1.5 w-full h-8 justify-start"
-    variant="ghost"
-    size="sm"
-    @click="exportMd"
-  >
-    <span class="i-ri:markdown-fill text-base" />
-    Export Markdown
-  </Button>
-</template>
-
-<script lang="ts" setup>
+<script setup lang="ts">
 import Button from "~/components/ui/button/Button.vue";
 import { useDataStore } from "~/composables/stores/data";
 
@@ -49,3 +27,25 @@ const exportMd = () => {
   downloadFile("document.md", data.markdown);
 };
 </script>
+
+<template>
+  <Button
+    class="gap-x-1.5 w-full h-8 justify-start"
+    variant="ghost"
+    size="sm"
+    @click="exportPDF"
+  >
+    <span class="i-mdi:file-pdf text-base" />
+    Export PDF
+  </Button>
+
+  <Button
+    class="gap-x-1.5 w-full h-8 justify-start"
+    variant="ghost"
+    size="sm"
+    @click="exportMd"
+  >
+    <span class="i-ri:markdown-fill text-base" />
+    Export Markdown
+  </Button>
+</template>

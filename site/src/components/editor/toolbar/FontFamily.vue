@@ -1,28 +1,4 @@
-<template>
-  <EditorToolbarBox text="Font Family" icon="i-material-symbols:font-download-outline">
-    <div class="w-full hstack gap-x-2 mb-2">
-      <Combobox
-        id="font-cjk"
-        class="flex-1"
-        :items="localCjk"
-        :default-value="styles.fontCJK.fontFamily || styles.fontCJK.name"
-      />
-      <span class="w-13">CJK</span>
-    </div>
-
-    <div class="hstack gap-x-2 w-full">
-      <Combobox
-        id="font-en"
-        class="flex-1"
-        :items="localEn"
-        :default-value="styles.fontEN.fontFamily || styles.fontEN.name"
-      />
-      <span class="w-13">English</span>
-    </div>
-  </EditorToolbarBox>
-</template>
-
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { ComboboxItem } from "~/components/common/Combobox.vue";
 import Combobox from "~/components/common/Combobox.vue";
 import { useConstant } from "~/composables/constant";
@@ -52,3 +28,27 @@ const localCjk = FONT.LOCAL.CJK.map<ComboboxItem>((item) => {
   };
 });
 </script>
+
+<template>
+  <EditorToolbarBox text="Font Family" icon="i-material-symbols:font-download-outline">
+    <div class="w-full hstack gap-x-2 mb-2">
+      <Combobox
+        id="font-cjk"
+        class="flex-1"
+        :items="localCjk"
+        :default-value="styles.fontCJK.fontFamily || styles.fontCJK.name"
+      />
+      <span class="w-13">CJK</span>
+    </div>
+
+    <div class="hstack gap-x-2 w-full">
+      <Combobox
+        id="font-en"
+        class="flex-1"
+        :items="localEn"
+        :default-value="styles.fontEN.fontFamily || styles.fontEN.name"
+      />
+      <span class="w-13">English</span>
+    </div>
+  </EditorToolbarBox>
+</template>

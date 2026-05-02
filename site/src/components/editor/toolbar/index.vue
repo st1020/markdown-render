@@ -1,15 +1,3 @@
-<template>
-  <div
-    id="toolbar"
-    class="pane-container overflow-y-scroll hide-scrollbar bg-background w-62 mr-3 lt-lg:bg-accent lt-lg:rounded-none"
-  >
-    <template v-for="(tool, i) in tools" :key="tool.id">
-      <component :is="tool.component" :id="`toolbar-${tool.id}`" />
-      <Separator v-if="i < tools.length - 1" class="w-[calc(100%-32px)] mx-auto" />
-    </template>
-  </div>
-</template>
-
 <script setup lang="ts">
 import Separator from "~/components/ui/separator/Separator.vue";
 import EditorToolbarFile from "./file/index.vue";
@@ -24,3 +12,15 @@ const tools = [
   { id: "margins", component: EditorToolbarMargins }
 ];
 </script>
+
+<template>
+  <div
+    id="toolbar"
+    class="pane-container overflow-y-scroll hide-scrollbar bg-background w-62 mr-3 lt-lg:bg-accent lt-lg:rounded-none"
+  >
+    <template v-for="(tool, i) in tools" :key="tool.id">
+      <component :is="tool.component" :id="`toolbar-${tool.id}`" />
+      <Separator v-if="i < tools.length - 1" class="w-[calc(100%-32px)] mx-auto" />
+    </template>
+  </div>
+</template>
