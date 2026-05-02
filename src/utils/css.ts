@@ -1,4 +1,5 @@
-import { createGenerator, noop, UnocssPluginContext, type UnoGenerator } from "@unocss/core"
+import { createGenerator, noop } from "@unocss/core"
+import type { UnocssPluginContext, UnoGenerator } from "@unocss/core"
 import transformerDirectives from "@unocss/transformer-directives"
 import MagicString from "magic-string"
 import { presetWind4 } from "unocss/preset-wind4"

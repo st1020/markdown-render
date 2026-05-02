@@ -34,19 +34,19 @@ export default defineConfig({
             foreground: "0.45 0.04 257",
             secondary: "0.92 0.02 255",
             "secondary-foreground": "0.25 0.05 255",
-          } as any,
+          } as object,
           dark: {
             background: "0.22 0.02 255",
             foreground: "0.92 0 0",
 
             secondary: "0.45 0.015 255",
             "secondary-foreground": "0.98 0 0",
-          } as any,
+          } as object,
         },
       },
       {
-        componentLibrary: "reka",
         globals: true,
+        componentLibrary: "reka",
       },
     ),
   ],

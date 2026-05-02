@@ -1,5 +1,6 @@
 import { createAutocomplete } from "@unocss/autocomplete"
-import { splitWithVariantGroupRE, type UnoGenerator } from "@unocss/core"
+import { splitWithVariantGroupRE } from "@unocss/core"
+import type { UnoGenerator } from "@unocss/core"
 import { arbitraryPropertyRE, quotedArbitraryValuesRE } from "@unocss/extractor-arbitrary-variants"
 import type * as Monaco from "monaco-editor"
 
@@ -14,6 +15,7 @@ export const setupUnocssCssOptions = (monaco: typeof Monaco) => {
 // Ported from https://github.com/unocss/unocss/blob/main/virtual-shared/integration/src/match-positions.ts
 const defaultIdeMatchInclude: RegExp[] = [
   // String literals
+  // oxlint-disable-next-line no-control-regex
   /(['"`])[^\x01]*?\1/g,
   // HTML tags
   /<[^/?<>0-9$_!"'](?:"[^"]*"|'[^']*'|[^>])+>/g,
@@ -91,7 +93,7 @@ export const setupUnocssCompletion = async (monaco: typeof Monaco) => {
 
       return {
         isIncomplete: true,
-        suggestions: result.suggestions.slice(0, 1000).map(([value, label]) => {
+        suggestions: result.suggestions.slice(0, 1000).map(([value, label]: [string, string]) => {
           const resolved = result.resolveReplacement(value)
           const start = model.getPositionAt(resolved.start)
           const end = model.getPositionAt(resolved.end)
@@ -161,6 +163,7 @@ const injectDecorationStyle = () => {
 }
 
 // Mirror VSCode extension's throttle(updateDecorations, 200)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function throttle<T extends (...args: any[]) => any>(fn: T, ms: number): T {
   let lastTime = 0
   let timer: ReturnType<typeof setTimeout> | undefined

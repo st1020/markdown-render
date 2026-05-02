@@ -1,10 +1,7 @@
-import {
-  unrefElement,
-  watchThrottled,
-  type MaybeComputedElementRef,
-  type WatchThrottledOptions,
-} from "@vueuse/core"
-import { onMounted, Ref, ShallowRef, toValue, WritableComputedRef } from "vue"
+import { unrefElement, watchThrottled } from "@vueuse/core"
+import type { MaybeComputedElementRef, WatchThrottledOptions } from "@vueuse/core"
+import { onMounted, toValue } from "vue"
+import type { Ref, ShallowRef, WritableComputedRef } from "vue"
 
 import { breakPage, setWidthAndMargins } from "./dom"
 import type { PageMargins, PageSize } from "./types"
