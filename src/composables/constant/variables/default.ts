@@ -16,102 +16,92 @@ export const DEFAULT_STYLES = {
 
 export const DEFAULT_MD_CONTENT = `<div class="text-center">
 
-# Haha Ha
+# Eldrin Nightwhisper
 
-<span class="font-bold text-lg">Applying for: Cooking Engineer</span><br>
-<span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
-| <span class="iconify" data-icon="tabler:mail"></span> icancook@email.com
-| <span class="iconify" data-icon="tabler:brand-github"></span> Renovamen
-| <span class="iconify" data-icon="charm:person"></span> zxh.me
+<span class="font-bold text-lg">Applying for: Arcane Research Mage</span><br> <span class="iconify" data-icon="tabler:phone"></span> (+1) 777-888-9999
+| <span class="iconify" data-icon="tabler:mail"></span> [eldrin@arcaneguild.magic](mailto:eldrin@arcaneguild.magic)
+| <span class="iconify" data-icon="tabler:brand-github"></span> SpellForge
+| <span class="iconify" data-icon="charm:person"></span> eldrin.arcana
+
 </div>
-
-<!-- Important: Replace all template content, especially contact details, with your own information. -->
-
 
 ## Education
 
-**Harvest University**
-  ~ Cambridge, MA
+**Grand Academy of Arcane Arts**
+~ Silvermoon City
 
-M.S. in Cooking Science
-  ~ 09/2021 - 01/2023
+M.S. in Elemental Spell Engineering
+~ 09/3021 - 01/3023
 
-**Huangdu Institute of Tofu**
-  ~ Shanghai, China
+**Institute of Mystic Alchemy**
+~ Eldoria, Eastern Realm
 
-B.Eng. in Salad Engineering
-  ~ 09/2016 - 07/2020
-
+B.Eng. in Potion Crafting
+~ 09/3016 - 07/3020
 
 ## Publications
 
-**Eating is All You Need**
+**Magic is All You Need**
 
-<u>Haha Ha</u>, San Zhang
+<u>Eldrin Nightwhisper</u>, Alaric Stormborn
 
-*Conference on Nutritional Ingredients Processing Systems (NIPS), 2099*
+*Symposium on Advanced Arcane Systems (SAAS), 3099*
 
-**You Only Cook Once: Unified, Real-Time Mapo Tofu Recipe**
+**You Only Cast Once: Unified, Real-Time Fireball Control System**
 
-<u>Haha Ha</u>, San Zhang, Si Li, Wu Wang
+<u>Eldrin Nightwhisper</u>, Alaric Stormborn, Lyra Moonshade, Thorne Blackwood
 
-*Culinary Visualization and Potato Roasting Conference (CVPR), 2077 **(Best Paper Honorable Mention)***
-
+*Conference on Practical Rune Visualization (CPRV), 3077 **(Best Spell Honorable Mention)***
 
 ## Experience
 
-**Cooking Engineer Intern**
-  ~ Microwavesoft
-  ~ 07/2021 - Present
+**Arcane Research Intern**
+~ WizardrySoft Guild
+~ 07/3021 - Present
 
-- Developed an innovative, versatile cooking methodology applicable across diverse ingredients, incorporating and improving upon recent culinary trends
-- Created a streamlined cream of mushroom soup recipe, achieving results comparable to complex state-of-the-art techniques through a novel mushroom-cutting approach; published in NIPS 2099
-- Designed a specialized cooking pan that enhanced research efficiency for team members
+* Developed an innovative, versatile spellcasting framework applicable across multiple elemental schools, enhancing casting stability and efficiency
+* Created a simplified mana-efficient invisibility spell, achieving results comparable to complex high-tier illusions through a novel rune compression technique; published in SAAS 3099
+* Designed a modular spellcasting staff that significantly improved research productivity for guild members
 
+**Spell Engineering Apprentice**
+~ University of Mystical Sciences, Spellifornia
+~ 08/3020 - Present
 
-**Engineering Chef Intern**
-  ~ University of California, Berkebake
-  ~ 08/2020 - Present
+* Developed a precise fireball potency evaluation technique using mana resonance measurements
+* Invented a rapid incantation algorithm, replacing vague spell chanting with quantifiable rune sequences; published in CPRV 3077
+* Outperformed state-of-the-art spellcasting methods in both efficiency and destructive accuracy across various elemental tests
 
-- Developed a precise mapo tofu quality assessment technique using thermometer-based measurements
-- Invented a rapid stir-frying algorithm for tofu cooking, replacing vague instructions like "add as much as you can" with specific hot sauce measurements; published in CVPR 2077
-- Outperformed SOTA cooking methods in both efficiency and quality across experiments with popular tofu types
+**Student Mage**
+~ Academy of Arcane Vegetation
+~ 03/3020 - 06/3020
 
+* Developed an innovative dual-wand casting system utilizing synchronized gestures
+* Engineered a filtering method for magical creature data collection inspired by ancient summoning rituals
+* Established two new metrics for evaluating spell originality and mana diversity
 
-**Student Chef**
-  ~ Cabbage Melon University
-  ~ 03/2020 - 06/2020
+**Alchemy Research Intern**
+~ SnapSpell Inc.
+~ 07/3018 - 08/3018
 
-- Developed an innovative mapo tofu consumption framework utilizing a spoon-chopstick combination
-- Engineered a filtering method for tofu dataset creation, inspired by bean grinding techniques
-- Established two new metrics for evaluating eating plan novelty and diversity
-
-
-**Research Chef Intern**
-  ~ Snapchopstick
-  ~ 07/2018 - 08/2018
-
-- Designed two novel sandwiches by repurposing breads and meat from traditional bacon cheeseburgers, maximizing resource efficiency
-- Leveraged structure duality to boost cooking speed for two complementary tasks based on shared ingredients
-- Surpassed strong baselines on QWE'15 and ASDF'14 dataset
-
+* Designed two novel potions by recombining ingredients from traditional healing and stamina brews, maximizing alchemical efficiency
+* Leveraged ingredient duality to accelerate potion brewing for complementary effects
+* Surpassed strong baselines on QWE'15 and ASDF'14 magical datasets
 
 ## Awards and Honors
 
-**Gold**, International Collegiate Catching Fish Contest (ICCFC)
-  ~ 2018
+**Gold**, International Wizard Duel Championship (IWDC)
+~ 3018
 
-**First Prize**, China National Scholarship for Outstanding Dragon Killers
-  ~ 2017, 2018
-
+**First Prize**, Royal Scholarship for Outstanding Archmages
+~ 3017, 3018
 
 ## Skills
 
-**Programming Languages:** <span class="iconify" data-icon="vscode-icons:file-type-python"></span> Frython, <span class="iconify" data-icon="vscode-icons:file-type-js-official"></span> JavaSauce / <span class="iconify" data-icon="vscode-icons:file-type-typescript-official"></span> TypeSauce, <span class="iconify" data-icon="vscode-icons:file-type-cpp2"></span> Cheese++, <span class="iconify" data-icon="logos:java" data-inline="false"></span> Java Bean
+**Programming Languages:** <span class="iconify" data-icon="vscode-icons:file-type-python"></span> Pyromancy, <span class="iconify" data-icon="vscode-icons:file-type-js-official"></span> JavaSpell / <span class="iconify" data-icon="vscode-icons:file-type-typescript-official"></span> TypeRune, <span class="iconify" data-icon="vscode-icons:file-type-cpp2"></span> Crystal++, <span class="iconify" data-icon="logos:rust" data-inline="false"></span> Shiny
 
-**Tools and Frameworks:** GrillHub, PanFlow, TensorFork, SpiceNet, $\\LaTeX$
+**Tools and Frameworks:** SpellHub, RuneFlow, TensorMagic, ArcaneNet
 
-**Languages:** Chinese (native), English (proficient)
+**Languages:** Common Language (native), Elvish (proficient)
 `
 
 export const DEFAULT_CSS_CONTENT = `/* Backbone CSS for Resume Template 1 */

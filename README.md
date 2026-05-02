@@ -1,54 +1,28 @@
-# Oh My CV!
+# Markdown Render
 
-Microsoft Word and LaTeX are too overkill for a resume.
+Edit Markdown and CSS styles online, preview in real time, and export to PDF.
 
-So, why not write it in Markdown?
-
-Have fun: [ohmycv.app](https://ohmycv.app/)
-
-&nbsp;
-
-## Important Notice
-
-- Highly recommend using **Chromium-based browsers**, e.g., [Chrome](https://www.google.com/chrome/) and [Microsoft Edge](https://www.microsoft.com/en-us/edge).
-- **Backup your data**: Cloud backup is coming soon, but isn't available yet. For now, please regularly export and back up your data by clicking the `Save As` button.
-
-&nbsp;
+Try Online: [md.st1020.com](https://md.st1020.com/)
 
 ## Features
 
-- Write your resume in Markdown and enjoy a real-time preview — it's smooth!
+- Write Markdown and enjoy a real-time preview — it's smooth!
 - Export to PDF in A4 and US Letter sizes
-- Automatically paginate your resume like in Microsoft Word
-- Customize page margins, theme colors, line heights, fonts, and more
-- Pick any fonts from [Google Fonts](https://fonts.google.com/)
+- Automatically paginate your Markdown like in Microsoft Word
+- Customize page margins, fonts and more
 - Easily add icons using [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
-- Tex support ([KaTeX](https://github.com/KaTeX/KaTeX))
-- Add cross-references (ideal for academic CVs)
-- Correct casing automatically (e.g., 'Github' to 'GitHub')
-- Insert line breaks (`\\[10px]`) or start a new page (`\newpage`) just as you would in LaTeX
-- Customize CSS
-- Manage multiple resumes
-- It works offline ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps))
+- [UnoCSS](https://unocss.dev/) / [Tailwind CSS](https://tailwindcss.com/) support for utility-first styling
 - Your data in your hands:
-  - All data is saved locally in your browser (see [here](https://localforage.github.io/localForage/) for details)
-  - Hosted on [Github Pages](https://pages.github.com/) as an open-source static website, which doesn't (have the ability to) collect your data
+  - All data is saved locally in your browser (see [localForage](https://localforage.github.io/localForage/) for details)
+  - Hosted on [Cloudflare Pages](https://pages.cloudflare.com/) as an open-source static website, which doesn't (have the ability to) collect your data
   - No user tracking or ads
 - Dark mode
 
-&nbsp;
-
-## Contribution
-
-Contributions are welcome. Please read this [Contributing Guide](.github/CONTRIBUTING.md) before getting started. Thanks!
-
-&nbsp;
-
 ## Credits
 
-- [billryan/resume](https://github.com/billryan/resume)
+This is a fork of [Renovamen/oh-my-cv](https://github.com/Renovamen/oh-my-cv), which is a resume builder.
 
-&nbsp;
+I have removed the resume-specific features and added some more functionality to make it a general-purpose Markdown renderer.
 
 ## License
 

@@ -51,6 +51,16 @@ watchEffect(() => (mode.value = state.value))
             />
           </Button>
           <Button
+            as="a"
+            variant="ghost-secondary"
+            size="round"
+            href="https://github.com/st1020/markdown-render"
+            target="_blank"
+            rel="nofollow noopener"
+          >
+            <span class="i-simple-icons:github text-lg" />
+          </Button>
+          <Button
             variant="ghost-secondary"
             size="round"
             @click="isToolbarOpen = !isToolbarOpen"
