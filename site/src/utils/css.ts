@@ -77,7 +77,7 @@ export const applyUno = async (css: string): Promise<string> => {
  * handled by the `vue-smart-pages` package.
  */
 export class DynamicCssService {
-  private _injectedCssId = (type: "toolbar" | "css-editor") => {
+  private _injectedCssId = (type: string) => {
     return `ohmycv-${type}-preview`;
   };
 
@@ -115,6 +115,19 @@ export class DynamicCssService {
   public async injectCssEditor(css: string) {
     const transformed = await applyUno(css);
     injectCss(this._injectedCssId("css-editor"), transformed);
+  }
+
+  /**
+   * Generate CSS from markdown content and inject it into the document.
+   *
+   * @param markdown A string of markdown content.
+   */
+  public async injectMarkdown(markdown: string) {
+    const uno = await getUnoGenerator();
+    const result = await uno.generate(markdown, {
+      preflights: false
+    });
+    injectCss(this._injectedCssId("markdown"), result.css);
   }
 }
 

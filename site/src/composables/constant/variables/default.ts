@@ -14,10 +14,11 @@ export const DEFAULT_STYLES = {
   paper: "A4"
 } as DocumentStyles;
 
-export const DEFAULT_MD_CONTENT = `# Haha Ha
+export const DEFAULT_MD_CONTENT = `<div class="text-center">
 
-<div style="text-align:center">
-<span style="font-size:1.2em;font-weight:bold;">Applying for: Cooking Engineer</span><br>
+# Haha Ha
+
+<span class="font-bold text-lg">Applying for: Cooking Engineer</span><br>
 <span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
 | <span class="iconify" data-icon="tabler:mail"></span> icancook@email.com
 | <span class="iconify" data-icon="tabler:brand-github"></span> Renovamen
@@ -64,7 +65,7 @@ B.Eng. in Salad Engineering
   ~ 07/2021 - Present
 
 - Developed an innovative, versatile cooking methodology applicable across diverse ingredients, incorporating and improving upon recent culinary trends
-- Created a streamlined cream of mushroom soup recipe, achieving results comparable to complex state-of-the-art techniques through a novel mushroom-cutting approach; published in NIPS 2099 (see [~P1])
+- Created a streamlined cream of mushroom soup recipe, achieving results comparable to complex state-of-the-art techniques through a novel mushroom-cutting approach; published in NIPS 2099
 - Designed a specialized cooking pan that enhanced research efficiency for team members
 
 
@@ -73,7 +74,7 @@ B.Eng. in Salad Engineering
   ~ 08/2020 - Present
 
 - Developed a precise mapo tofu quality assessment technique using thermometer-based measurements
-- Invented a rapid stir-frying algorithm for tofu cooking, replacing vague instructions like "add as much as you can" with specific hot sauce measurements; published in CVPR 2077 (see [~P2])
+- Invented a rapid stir-frying algorithm for tofu cooking, replacing vague instructions like "add as much as you can" with specific hot sauce measurements; published in CVPR 2077
 - Outperformed SOTA cooking methods in both efficiency and quality across experiments with popular tofu types
 
 
@@ -84,7 +85,6 @@ B.Eng. in Salad Engineering
 - Developed an innovative mapo tofu consumption framework utilizing a spoon-chopstick combination
 - Engineered a filtering method for tofu dataset creation, inspired by bean grinding techniques
 - Established two new metrics for evaluating eating plan novelty and diversity
-- Significantly surpassed existing methods and baselines in diversity, novelty, and coherence
 
 
 **Research Chef Intern**
@@ -118,137 +118,74 @@ export const DEFAULT_CSS_CONTENT = `/* Backbone CSS for Resume Template 1 */
 
 /* Basic */
 
+:root {
+  --md-accent: #377bb5;
+}
+
 ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
-  background-color: white;
-  color: black;
-  text-align: justify;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  @apply bg-white text-black text-justify hyphens-auto;
 }
 
 ${PREVIEW_SELECTOR} {
-  font-size: 15px;
-}
-
-${PREVIEW_SELECTOR} p,
-${PREVIEW_SELECTOR} li,
-${PREVIEW_SELECTOR} dl {
-  margin: 0;
+  @apply text-base;
 }
 
 ${PREVIEW_SELECTOR} p,
 ${PREVIEW_SELECTOR} li {
-  line-height: 1.30;
-}
-
-${PREVIEW_SELECTOR} dl {
-  line-height: 1.35;
+  @apply m-0 leading-tight;
 }
 
 /* Headings */
 
-${PREVIEW_SELECTOR} h1,
-${PREVIEW_SELECTOR} h2,
-${PREVIEW_SELECTOR} h3 {
-  font-weight: bold;
-  color: #377bb5;
-}
-
 ${PREVIEW_SELECTOR} h1 {
-  font-size: 2.13em;
-}
-
-${PREVIEW_SELECTOR} h2,
-${PREVIEW_SELECTOR} h3 {
-  margin-bottom: 5px;
-  font-size: 1.2em;
-  line-height: 1.50;
+  @apply font-bold text-4xl text-[--md-accent];
 }
 
 ${PREVIEW_SELECTOR} h2 {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #377bb5;
-  margin-top: 5px;
+  @apply font-bold text-lg leading-normal my-1 text-[--md-accent];
+  @apply border-b-solid border-b-1 border-b-[--md-accent];
+}
+
+${PREVIEW_SELECTOR} h3 {
+  @apply font-bold text-lg leading-normal my-1 text-[--md-accent];
 }
 
 /* Links */
 
 ${PREVIEW_SELECTOR} a {
-  color: #377bb5;
+  @apply text-[--md-accent];
 }
 
 /* Lists */
 
-${PREVIEW_SELECTOR} ul,
-${PREVIEW_SELECTOR} ol {
-  padding-left: 1.5em;
-  margin: 0.2em 0;
-}
-
 ${PREVIEW_SELECTOR} ul {
-  list-style-type: circle;
+  @apply pl-6 my-1 list-circle;
 }
 
 ${PREVIEW_SELECTOR} ol {
-  list-style-type: decimal;
-}
-
-/* Definition Lists */
-
-${PREVIEW_SELECTOR} dl {
-  display: flex;
-}
-
-${PREVIEW_SELECTOR} dl dt,
-${PREVIEW_SELECTOR} dl dd:not(:last-child) {
-  flex: 1;
+  @apply pl-6 my-1 list-decimal;
 }
 
 /* SVG & Images */
 
 ${PREVIEW_SELECTOR} svg.iconify {
-  vertical-align: -0.2em;
+  @apply align-[-4px];
 }
 
 ${PREVIEW_SELECTOR} img {
-  max-width: 100%;
-}
-
-/* Citations */
-
-${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="definitions"] {
-  padding-left: 1.2em;
-}
-
-${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="definition"] p {
-  margin-left: 0.5em;
-}
-
-${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="definition"]::marker {
-  content: attr(data-label);
-}
-
-${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="reference"] {
-  font-size: 100%;
-  top: 0;
+  @apply max-w-full;
 }
 
 /* Dark & print mode */
-/* You might want to comment out the following lines if you change the background or text color. */
 
 /*
 .dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
-  background-color: hsl(213, 12%, 15%);
-  color: hsl(216, 12%, 84%);
+  @apply bg-neutral-900 text-neutral-200;
 }
 
 @media print {
   .dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
-    background-color: white;
-    color: black;
+    @apply bg-white text-black;
   }
 }
 */

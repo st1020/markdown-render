@@ -20,6 +20,9 @@ export const useDataStore = defineStore("data", () => {
     if (key === "css") {
       await dynamicCssService.injectCssEditor(value as string);
     }
+    if (key === "markdown") {
+      await dynamicCssService.injectMarkdown(value as string);
+    }
   };
 
   return {
