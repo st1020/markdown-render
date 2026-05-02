@@ -2,7 +2,18 @@ import type * as Monaco from "monaco-editor";
 import { ref, shallowRef } from "vue";
 import { useDataStore } from "~/composables/stores/data";
 
-import { setupMonacoEditor, setupMonacoModel, type MonacoModel } from "./setup";
+import {
+  setupMonaco,
+  setupMonacoEditor,
+  setupMonacoModel,
+  type MonacoModel
+} from "./setup";
+import {
+  setupUnocssCompletion,
+  setupUnocssCssOptions,
+  setupUnocssDecorations,
+  setupUnocssHover
+} from "./unocss";
 
 type MonacoStates = {
   editor: Monaco.editor.IStandaloneCodeEditor;
@@ -20,6 +31,7 @@ export const useMonaco = () => {
     monacoLoading.value = true;
 
     try {
+      const { monaco } = await setupMonaco();
       const { editor } = await setupMonacoEditor(container);
       const { data, setData } = useDataStore();
 
@@ -32,6 +44,12 @@ export const useMonaco = () => {
       const css = await setupMonacoModel("css", data.css, () =>
         setData("css", css.get().getValue())
       );
+
+      // Setup UnoCSS features
+      setupUnocssCssOptions(monaco);
+      setupUnocssCompletion(monaco);
+      setupUnocssHover(monaco);
+      setupUnocssDecorations(monaco, editor, css.get());
 
       monacoStates.value = { editor, markdown, css };
     } catch (error) {

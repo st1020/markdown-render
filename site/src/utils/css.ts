@@ -42,7 +42,7 @@ const injectCss = (id: string, content: string) => {
 
 let _generator: UnoGenerator | null = null;
 
-const getGenerator = async (): Promise<UnoGenerator> => {
+export const getUnoGenerator = async (): Promise<UnoGenerator> => {
   if (_generator) return _generator;
   _generator = await createGenerator({ presets: [presetWind4()] });
   return _generator;
@@ -54,7 +54,7 @@ const getGenerator = async (): Promise<UnoGenerator> => {
  * @param css - The input CSS string containing UnoCSS directives.
  */
 export const applyUno = async (css: string): Promise<string> => {
-  const uno = await getGenerator();
+  const uno = await getUnoGenerator();
   const ctx = { uno, invalidate: noop } as UnocssPluginContext;
 
   const code = new MagicString(css);
