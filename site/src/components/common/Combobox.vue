@@ -1,43 +1,64 @@
 <template>
-  <div v-bind="api.getRootProps()" class="relative">
-    <div
-      v-bind="api.getControlProps()"
-      class="group hstack h-9 gap-x-2 px-2 py-1 rounded-md border-1.5 data-[focus]:border-primary"
-    >
-      <input
-        v-bind="api.getInputProps()"
-        class="w-full outline-none bg-transparent capitalize"
-      />
-      <button v-bind="api.getTriggerProps()" class="size-5 flex-center">
-        <span
-          class="text-lg i-ic:sharp-arrow-drop-down group-data-[focus]:i-ic:sharp-arrow-drop-up"
-        />
-      </button>
-    </div>
-
-    <div v-bind="api.getPositionerProps()">
-      <ul
-        v-if="options.length > 0"
-        v-bind="api.getContentProps()"
-        class="z-20 max-h-60 -mt-1 p-1 bg-background border rounded-md shadow-c overflow-y-scroll"
-      >
-        <li
-          v-for="item in options"
-          :key="item.value"
-          v-bind="api.getItemProps({ item })"
-          class="px-2 py-1.5 rounded-sm truncate cursor-pointer data-[highlighted]:(bg-accent text-accent-foreground) data-[state=checked]:(bg-accent text-accent-foreground)"
+  <div>
+    <Popover v-model:open="open">
+      <PopoverTrigger as-child>
+        <Button
+          variant="outline"
+          role="combobox"
+          :aria-expanded="open"
+          class="w-full justify-between capitalize"
         >
-          {{ item.label }}
-        </li>
-      </ul>
-    </div>
+          {{ items.find((item) => item.value === value)?.label ?? value }}
+          <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent class="w-full p-0">
+        <Command>
+          <CommandInput placeholder="Search..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup>
+              <CommandItem
+                v-for="item in items"
+                :key="item.value"
+                :value="item.value"
+                @select="
+                  () => {
+                    value = item.value;
+                    item.onSelect();
+                    open = false;
+                  }
+                "
+              >
+                <CheckIcon
+                  :class="
+                    cn('mr-2 h-4 w-4', value === item.value ? 'opacity-100' : 'opacity-0')
+                  "
+                />
+                <span class="capitalize">{{ item.label }}</span>
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   </div>
 </template>
 
 <script lang="ts" setup>
-import * as combobox from "@zag-js/combobox";
-import { normalizeProps, useMachine } from "@zag-js/vue";
-import { computed, ref } from "vue";
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-vue-next";
+import { ref } from "vue";
+import { Button } from "~/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList
+} from "~/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover";
+import { cn } from "~/utils/shadcn";
 
 export interface ComboboxItem {
   label: string;
@@ -51,43 +72,6 @@ const props = defineProps<{
   defaultValue: string;
 }>();
 
-const options = ref(props.items);
-
-const collectionRef = computed(() =>
-  combobox.collection({
-    items: options.value,
-    itemToValue: (item) => item.value,
-    itemToString: (item) => item.label
-  })
-);
-
-const [state, send] = useMachine(
-  combobox.machine({
-    id: props.id,
-    collection: collectionRef.value,
-    value: [props.defaultValue],
-    openOnClick: true,
-    closeOnSelect: false,
-    onOpenChange: () => {
-      options.value = props.items;
-    },
-    onInputValueChange: ({ inputValue }) => {
-      const filtered = props.items.filter((item) =>
-        item.label.toLowerCase().includes(inputValue.toLowerCase())
-      );
-      options.value = filtered.length > 0 ? filtered : props.items;
-    },
-    onValueChange: ({ value }) => {
-      const item = props.items.find((i) => i.value === value[0]);
-      item?.onSelect();
-    }
-  }),
-  {
-    context: computed(() => ({
-      collection: collectionRef.value
-    }))
-  }
-);
-
-const api = computed(() => combobox.connect(state.value, send, normalizeProps));
+const open = ref(false);
+const value = ref(props.defaultValue);
 </script>

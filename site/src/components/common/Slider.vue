@@ -1,25 +1,13 @@
 <template>
-  <SliderRoot
-    class="relative flex w-full touch-none select-none items-center py-2"
-    v-bind="forwarded"
-  >
-    <SliderTrack
-      class="relative h-1 w-full grow overflow-hidden rounded-full bg-secondary"
-    >
-      <SliderRange class="absolute h-full bg-primary" />
-    </SliderTrack>
-    <SliderThumb
-      v-for="(_, key) in modelValue"
-      :key="key"
-      class="group block size-4 rounded-full border-2.5 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-    >
+  <Slider class="py-2" v-bind="forwarded">
+    <template #thumb="{ value }">
       <span
         class="hidden group-hover:block group-focus-visible:block p-1 min-w-6 rounded bg-primary absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full after:(absolute content-[''] size-0 border-5 border-transparent border-t-primary top-full inset-x-0 mx-auto) text-white text-xs text-center"
       >
-        {{ modelValue?.at(0) }}
+        {{ value }}
       </span>
-    </SliderThumb>
-  </SliderRoot>
+    </template>
+  </Slider>
 
   <div class="flex justify-between text-muted-foreground">
     <span>{{ min }}{{ unit }}</span>
@@ -28,22 +16,16 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  SliderRange,
-  SliderRoot,
-  SliderThumb,
-  SliderTrack,
-  useForwardPropsEmits,
-  type SliderRootEmits,
-  type SliderRootProps
-} from "reka-ui";
+import type { SliderRootEmits, SliderRootProps } from "reka-ui";
+import { useForwardPropsEmits } from "reka-ui";
 import { computed } from "vue";
+import { Slider } from "~/components/ui/slider";
 
 const props = defineProps<SliderRootProps & { unit?: string }>();
 const emits = defineEmits<SliderRootEmits>();
 const forwarded = useForwardPropsEmits(props, emits);
 
-const min = computed(() => props.min || 0);
-const max = computed(() => props.max || 100);
-const unit = computed(() => props.unit || "");
+const min = computed(() => props.min ?? 0);
+const max = computed(() => props.max ?? 100);
+const unit = computed(() => props.unit ?? "");
 </script>
