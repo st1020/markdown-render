@@ -14,7 +14,7 @@ const hModelValue = ref([styles.marginH])
 
 <template>
   <EditorToolbarBox text="Margins" icon="i-radix-icons:margin">
-    <div class="hstack text-muted-foreground gap-x-1 justify-end">
+    <div class="text-muted-foreground hstack gap-x-1 justify-end">
       <span class="i-icon-park-outline:margin-one" />
       Top &amp; Bottom
     </div>
@@ -30,7 +30,7 @@ const hModelValue = ref([styles.marginH])
       "
     />
 
-    <div class="mt-4 hstack text-muted-foreground gap-x-1 justify-end">
+    <div class="text-muted-foreground mt-4 hstack gap-x-1 justify-end">
       <span class="i-icon-park-outline:margin" />
       Left &amp; Right
     </div>

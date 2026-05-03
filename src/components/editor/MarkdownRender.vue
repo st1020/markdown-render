@@ -49,5 +49,5 @@ defineExpose({ render })
 </script>
 
 <template>
-  <div class="document-render" :id="`document-${id}`" ref="target" />
+  <div :id="`document-${id}`" ref="target" class="document-render" />
 </template>

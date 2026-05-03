@@ -25,14 +25,14 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     v-bind="forwarded"
   >
     <SliderTrack
-      class="relative h-1 w-full data-[orientation=vertical]:w-2 grow overflow-hidden rounded-full bg-secondary"
+      class="rounded-full bg-secondary grow h-1 w-full relative overflow-hidden data-[orientation=vertical]:w-2"
     >
-      <SliderRange class="absolute h-full data-[orientation=vertical]:w-full bg-primary" />
+      <SliderRange class="bg-primary h-full absolute data-[orientation=vertical]:w-full" />
     </SliderTrack>
     <SliderThumb
       v-for="(_, key) in modelValue"
       :key="key"
-      class="group block h-4 w-4 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+      class="group border-2 border-primary rounded-full bg-background h-4 w-4 block ring-offset-background transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <slot name="thumb" :index="key" :value="modelValue?.[key]" />
     </SliderThumb>

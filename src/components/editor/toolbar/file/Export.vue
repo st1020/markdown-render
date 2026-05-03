@@ -29,12 +29,12 @@ const exportMd = () => {
 </script>
 
 <template>
-  <Button class="gap-x-1.5 w-full h-8 justify-start" variant="ghost" size="sm" @click="exportPDF">
+  <Button class="gap-x-1.5 h-8 w-full justify-start" variant="ghost" size="sm" @click="exportPDF">
     <span class="i-mdi:file-pdf text-base" />
     Export PDF
   </Button>
 
-  <Button class="gap-x-1.5 w-full h-8 justify-start" variant="ghost" size="sm" @click="exportMd">
+  <Button class="gap-x-1.5 h-8 w-full justify-start" variant="ghost" size="sm" @click="exportMd">
     <span class="i-ri:markdown-fill text-base" />
     Export Markdown
   </Button>

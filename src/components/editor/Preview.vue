@@ -28,25 +28,25 @@ watch(width, fitWidth)
 </script>
 
 <template>
-  <div class="pane-container overflow-scroll hide-scrollbar bg-secondary border-4 border-secondary">
+  <div class="hide-scrollbar border-4 border-secondary pane-container bg-secondary overflow-scroll">
     <VueZoom ref="zoom" :scale="scale">
       <MarkdownRender id="preview" :markdown="data.markdown" :css="data.css" :styles="styles" />
     </VueZoom>
 
     <div
       id="zoom-bar"
-      class="hstack fixed bottom-4 ml-2 shadow-c rounded-full overflow-hidden text-primary-foreground bg-blue-500 lg:bottom-auto lg:top-15 lg:opacity-0 lg:hover:opacity-100 lg:focus-within:opacity-100"
+      class="text-primary-foreground ml-2 rounded-full bg-blue-500 hstack shadow-c bottom-4 fixed overflow-hidden lg:opacity-0 lg:bottom-auto lg:top-15 lg:focus-within:opacity-100 lg:hover:opacity-100"
     >
-      <button @click="scale *= 1.1" aria-label="Zoom in" class="zoom-button">
+      <button aria-label="Zoom in" class="zoom-button" @click="scale *= 1.1">
         <span class="i-lucide:zoom-in" />
       </button>
-      <button @click="scale /= 1.1" aria-label="Zoom out" class="zoom-button">
+      <button aria-label="Zoom out" class="zoom-button" @click="scale /= 1.1">
         <span class="i-lucide:zoom-out" />
       </button>
-      <button @click="fitWidth" aria-label="Fit width" class="zoom-button">
+      <button aria-label="Fit width" class="zoom-button" @click="fitWidth">
         <span class="i-fluent:arrow-autofit-width-20-filled" />
       </button>
-      <button @click="fitHeight" aria-label="Fit height" class="zoom-button">
+      <button aria-label="Fit height" class="zoom-button" @click="fitHeight">
         <span class="i-fluent:arrow-autofit-height-20-filled" />
       </button>
     </div>

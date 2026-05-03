@@ -5,8 +5,8 @@ const NEW_PAGE_CLASS = "newpage"
 const _elementHeight = (element: Element) => {
   const style = window.getComputedStyle(element)
 
-  const marginTop = parseInt(style.marginTop) || 0
-  const marginBottom = parseInt(style.marginBottom) || 0
+  const marginTop = Number.parseInt(style.marginTop) || 0
+  const marginBottom = Number.parseInt(style.marginBottom) || 0
 
   return element.clientHeight + marginTop + marginBottom
 }

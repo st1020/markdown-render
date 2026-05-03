@@ -28,6 +28,7 @@ function getMatchedPositions(
   matched: string[],
 ): Array<[start: number, end: number, token: string]> {
   // Build include ranges from @apply / --at-apply / --uno directives
+  /* oxlint-disable no-shadow, no-array-sort */
   const includeRanges: [number, number][] = []
   for (const regex of defaultIdeMatchInclude) {
     for (const match of code.matchAll(regex))

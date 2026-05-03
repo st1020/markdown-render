@@ -36,7 +36,7 @@ watchEffect(() => (mode.value = state.value))
 <template>
   <div class="font-ui">
     <div id="editor-page" class="flex flex-col">
-      <header class="hstack justify-between px-4">
+      <header class="px-4 hstack justify-between">
         <div class="hstack gap-x-2">
           <div class="text-lg"><span class="text-primary">Markdown</span>Render</div>
         </div>
@@ -63,8 +63,8 @@ watchEffect(() => (mode.value = state.value))
           <Button
             variant="ghost-secondary"
             size="round"
-            @click="isToolbarOpen = !isToolbarOpen"
             :aria-label="isToolbarOpen ? 'Close toolbar' : 'Open toolbar'"
+            @click="isToolbarOpen = !isToolbarOpen"
           >
             <span
               :class="[
@@ -78,34 +78,34 @@ watchEffect(() => (mode.value = state.value))
         </div>
       </header>
 
-      <div class="workspace flex pb-2">
+      <div class="workspace pb-2 flex">
         <SplitterGroup id="splitter-editor" direction="horizontal" class="px-3">
           <SplitterPanel id="code-pane">
             <EditorCode v-if="data.loaded" />
             <div v-else class="flex flex-col gap-y-2 h-full">
-              <Skeleton class="h-10 bg-secondary" />
-              <Skeleton class="flex-1 bg-secondary" />
+              <Skeleton class="bg-secondary h-10" />
+              <Skeleton class="bg-secondary flex-1" />
             </div>
           </SplitterPanel>
 
           <SplitterResizeHandle
             id="code-preview-handle"
-            class="w-3 relative after:(content-[''] absolute bg-gray-400/40 w-1 h-10 rounded-full inset-0 m-auto)"
+            class="w-3 relative after:(m-auto rounded-full bg-gray-400/40 h-10 w-1 content-[''] inset-0 absolute)"
           />
 
           <SplitterPanel id="preview-pane">
             <EditorPreview v-if="data.loaded" />
-            <Skeleton v-else class="size-full bg-secondary" />
+            <Skeleton v-else class="bg-secondary size-full" />
           </SplitterPanel>
         </SplitterGroup>
 
         <div
           v-if="isToolbarOpen"
           id="tools-pane"
-          class="lt-lg:fixed lt-lg:z-10 lt-lg:max-w-full lt-lg:h-full lt-lg:right-0 lt-lg:top-12 lt-lg:pb-10"
+          class="lt-lg:pb-10 lt-lg:h-full lt-lg:max-w-full lt-lg:right-0 lt-lg:top-12 lt-lg:fixed lt-lg:z-10"
         >
           <EditorToolbar v-if="data.loaded" />
-          <Skeleton v-else class="h-full w-62 bg-secondary mr-3" />
+          <Skeleton v-else class="mr-3 bg-secondary h-full w-62" />
         </div>
       </div>
     </div>

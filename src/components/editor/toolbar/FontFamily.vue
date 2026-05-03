@@ -30,7 +30,7 @@ const localCjk = FONT.LOCAL.CJK.map<ComboboxItem>((item) => {
 
 <template>
   <EditorToolbarBox text="Font Family" icon="i-material-symbols:font-download-outline">
-    <div class="w-full hstack gap-x-2 mb-2">
+    <div class="mb-2 hstack gap-x-2 w-full">
       <Combobox
         id="font-cjk"
         class="flex-1"

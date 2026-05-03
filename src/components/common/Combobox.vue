@@ -38,13 +38,13 @@ const value = ref(props.defaultValue)
           variant="outline"
           role="combobox"
           :aria-expanded="open"
-          class="w-full justify-between capitalize"
+          class="w-full capitalize justify-between"
         >
           {{ items.find((item) => item.value === value)?.label ?? value }}
-          <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDownIcon class="ml-2 opacity-50 shrink-0 h-4 w-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent class="w-full p-0">
+      <PopoverContent class="p-0 w-full">
         <Command>
           <CommandInput placeholder="Search..." />
           <CommandList>

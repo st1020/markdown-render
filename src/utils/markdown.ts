@@ -1,16 +1,16 @@
 import MarkdownIt from "markdown-it"
 
 export class MarkdownService {
-  private _md: MarkdownIt
+  private md: MarkdownIt
 
   constructor() {
-    this._md = new MarkdownIt({
+    this.md = new MarkdownIt({
       html: true,
     })
   }
 
   public renderDocument(md: string) {
-    return this._md.render(md)
+    return this.md.render(md)
   }
 }
 

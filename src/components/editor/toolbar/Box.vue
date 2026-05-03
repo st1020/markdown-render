@@ -12,7 +12,7 @@ const props = defineProps<{
 
 <template>
   <div :class="cn('px-4 py-6 text-sm', props.class)">
-    <div class="hstack gap-x-2 mb-4 text-base">
+    <div class="text-base mb-4 hstack gap-x-2">
       <span v-if="icon" :class="icon" />
       {{ text }}
     </div>

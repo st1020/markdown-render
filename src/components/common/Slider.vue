@@ -18,14 +18,14 @@ const unit = computed(() => props.unit ?? "")
   <Slider class="py-2" v-bind="forwarded">
     <template #thumb="{ value }">
       <span
-        class="hidden group-hover:block group-focus-visible:block p-1 min-w-6 rounded bg-primary absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full after:(absolute content-[''] size-0 border-5 border-transparent border-t-primary top-full inset-x-0 mx-auto) text-white text-xs text-center"
+        class="text-xs text-white p-1 text-center rounded bg-primary min-w-6 hidden left-1/2 absolute after:(mx-auto border-5 border-transparent border-t-primary size-0 content-[''] inset-x-0 top-full absolute) group-focus-visible:block group-hover:block -translate-x-2/4 -translate-y-full -top-2"
       >
         {{ value }}
       </span>
     </template>
   </Slider>
 
-  <div class="flex justify-between text-muted-foreground">
+  <div class="text-muted-foreground flex justify-between">
     <span>{{ min }}{{ unit }}</span>
     <span>{{ max }}{{ unit }}</span>
   </div>

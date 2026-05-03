@@ -1,3 +1,4 @@
+import unocss from "@unocss/eslint-config/flat"
 import { defineConfigWithVueTs, vueTsConfigs } from "@vue/eslint-config-typescript"
 import skipFormatting from "eslint-config-prettier/flat"
 import pluginOxlint from "eslint-plugin-oxlint"
@@ -17,16 +18,20 @@ export default defineConfigWithVueTs(
 
   globalIgnores(["**/dist/**", "**/dist-ssr/**", "**/coverage/**"]),
 
-  ...pluginVue.configs["flat/essential"],
+  ...pluginVue.configs["flat/recommended"],
   vueTsConfigs.recommended,
 
   ...pluginOxlint.buildFromOxlintConfigFile(".oxlintrc.json"),
 
   skipFormatting,
 
+  unocss,
+
   {
-    rules: {
-      "vue/multi-word-component-names": "off",
-    },
+    rules: { "vue/multi-word-component-names": "off" },
+  },
+  {
+    files: ["src/components/ui/**"],
+    rules: { "vue/require-default-prop": "off" },
   },
 )

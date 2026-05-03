@@ -3,7 +3,8 @@ import { ref, shallowRef } from "vue"
 
 import { useDataStore } from "@/composables/stores/data"
 
-import { setupMonaco, setupMonacoEditor, setupMonacoModel, type MonacoModel } from "./setup"
+import { setupMonaco, setupMonacoEditor, setupMonacoModel } from "./setup"
+import type { MonacoModel } from "./setup"
 import {
   setupUnocssCompletion,
   setupUnocssCssOptions,
@@ -17,7 +18,7 @@ type MonacoStates = {
   css: MonacoModel
 }
 
-const monacoStates = shallowRef<MonacoStates | undefined>(undefined)
+const monacoStates = shallowRef<MonacoStates | undefined>()
 const monacoLoading = ref(false)
 
 export const useMonaco = () => {

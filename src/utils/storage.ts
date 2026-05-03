@@ -51,6 +51,7 @@ export class StorageService {
     await setData("css", storedDocument.css)
 
     for (const [key, value] of Object.entries(storedDocument.styles)) {
+      // oxlint-disable-next-line no-await-in-loop
       await setStyle(key as keyof DocumentStyles, value)
     }
 

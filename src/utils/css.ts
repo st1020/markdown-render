@@ -1,5 +1,5 @@
 import { createGenerator, noop } from "@unocss/core"
-import type { UnocssPluginContext, UnoGenerator } from "@unocss/core"
+import type { UnoGenerator, UnocssPluginContext } from "@unocss/core"
 import transformerDirectives from "@unocss/transformer-directives"
 import MagicString from "magic-string"
 import { presetWind4 } from "unocss/preset-wind4"
@@ -37,7 +37,7 @@ const injectCss = (id: string, content: string) => {
   sheetsMap.set(id, style)
 }
 
-let _generator: UnoGenerator | null = null
+let _generator: UnoGenerator | undefined
 
 export const getUnoGenerator = async (): Promise<UnoGenerator> => {
   if (_generator) return _generator
@@ -74,7 +74,7 @@ export const applyUno = async (css: string): Promise<string> => {
  * handled by the `vue-smart-pages` package.
  */
 export class DynamicCssService {
-  private _injectedCssId = (type: string) => {
+  private injectedCssId = (type: string) => {
     return `ohmycv-${type}-preview`
   }
 
@@ -100,7 +100,7 @@ export class DynamicCssService {
       // We only need to set paper size for the preview view in the editor
       this.paperSize(styles)
 
-    injectCss(this._injectedCssId("toolbar"), css)
+    injectCss(this.injectedCssId("toolbar"), css)
   }
 
   /**
@@ -111,7 +111,7 @@ export class DynamicCssService {
    */
   public async injectCssEditor(css: string) {
     const transformed = await applyUno(css)
-    injectCss(this._injectedCssId("css-editor"), transformed)
+    injectCss(this.injectedCssId("css-editor"), transformed)
   }
 
   /**
@@ -124,7 +124,7 @@ export class DynamicCssService {
     const result = await uno.generate(markdown, {
       preflights: false,
     })
-    injectCss(this._injectedCssId("markdown"), result.css)
+    injectCss(this.injectedCssId("markdown"), result.css)
   }
 }
 

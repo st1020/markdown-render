@@ -17,11 +17,11 @@ const tools = [
 <template>
   <div
     id="toolbar"
-    class="pane-container overflow-y-scroll hide-scrollbar bg-background w-62 mr-3 lt-lg:bg-accent lt-lg:rounded-none"
+    class="hide-scrollbar mr-3 pane-container bg-background w-62 overflow-y-scroll lt-lg:rounded-none lt-lg:bg-accent"
   >
     <template v-for="(tool, i) in tools" :key="tool.id">
       <component :is="tool.component" :id="`toolbar-${tool.id}`" />
-      <Separator v-if="i < tools.length - 1" class="w-[calc(100%-32px)] mx-auto" />
+      <Separator v-if="i < tools.length - 1" class="mx-auto w-[calc(100%-32px)]" />
     </template>
   </div>
 </template>
