@@ -1,6 +1,6 @@
 import type { PageMargins, PageSize } from "./types"
 
-const NEW_PAGE_CLASS = "md-it-newpage"
+const NEW_PAGE_CLASS = "newpage"
 
 const _elementHeight = (element: Element) => {
   const style = window.getComputedStyle(element)

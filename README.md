@@ -12,6 +12,7 @@ Try Online: [md.st1020.com](https://md.st1020.com/)
 - Customize page margins, fonts and more
 - Easily add icons using [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
 - [UnoCSS](https://unocss.dev/) / [Tailwind CSS](https://tailwindcss.com/) support for utility-first styling
+- Start a new page with `<div class="newpage"></div>`
 - Your data in your hands:
   - All data is saved locally in your browser (see [localForage](https://localforage.github.io/localForage/) for details)
   - Hosted on [Cloudflare Pages](https://pages.cloudflare.com/) as an open-source static website, which doesn't (have the ability to) collect your data
