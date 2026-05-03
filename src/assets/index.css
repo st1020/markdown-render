@@ -14,9 +14,11 @@ header {
   height: calc(100% - 48px);
 }
 
-/* For icons used in documents */
-svg.iconify {
+/* Avoid layout shift when iconify icons web components loading */
+iconify-icon {
   display: inline-block;
+  width: 1em;
+  height: 1em;
 }
 
 /* Utility for hiding scrollbar */

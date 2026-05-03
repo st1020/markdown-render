@@ -18,10 +18,12 @@ export const DEFAULT_MD_CONTENT = `<div class="text-center">
 
 # Eldrin Nightwhisper
 
-<span class="font-bold text-lg">Applying for: Arcane Research Mage</span><br> <span class="iconify" data-icon="tabler:phone"></span> (+1) 777-888-9999
-| <span class="iconify" data-icon="tabler:mail"></span> [eldrin@arcaneguild.magic](mailto:eldrin@arcaneguild.magic)
-| <span class="iconify" data-icon="tabler:brand-github"></span> SpellForge
-| <span class="iconify" data-icon="charm:person"></span> eldrin.arcana
+<span class="font-bold text-lg">Applying for: Arcane Research Mage</span>
+
+<iconify-icon icon="tabler:phone"></iconify-icon> (+1) 777-888-9999
+| <iconify-icon icon="tabler:mail"></iconify-icon> [eldrin@arcaneguild.magic](mailto:eldrin@arcaneguild.magic)
+| <iconify-icon icon="tabler:brand-github"></iconify-icon> SpellForge
+| <iconify-icon icon="charm:person"></iconify-icon> eldrin.arcana
 
 </div>
 
@@ -97,7 +99,11 @@ B.Eng. in Potion Crafting
 
 ## Skills
 
-**Programming Languages:** <span class="iconify" data-icon="vscode-icons:file-type-python"></span> Pyromancy, <span class="iconify" data-icon="vscode-icons:file-type-js-official"></span> JavaSpell / <span class="iconify" data-icon="vscode-icons:file-type-typescript-official"></span> TypeRune, <span class="iconify" data-icon="vscode-icons:file-type-cpp2"></span> Crystal++, <span class="iconify" data-icon="logos:rust" data-inline="false"></span> Shiny
+**Programming Languages:**
+<iconify-icon icon="vscode-icons:file-type-python"></iconify-icon> Pyromancy,
+<iconify-icon icon="vscode-icons:file-type-js-official"></iconify-icon> JavaSpell / <iconify-icon icon="vscode-icons:file-type-typescript-official"></iconify-icon> TypeRune,
+<iconify-icon icon="vscode-icons:file-type-cpp2"></iconify-icon> Crystal++,
+<iconify-icon icon="logos:rust"></iconify-icon> Shiny
 
 **Tools and Frameworks:** SpellHub, RuneFlow, TensorMagic, ArcaneNet
 
@@ -158,8 +164,8 @@ ${PREVIEW_SELECTOR} ol {
 
 /* SVG & Images */
 
-${PREVIEW_SELECTOR} svg.iconify {
-  @apply align-[-4px];
+${PREVIEW_SELECTOR} iconify-icon {
+  @apply align-[-0.125em];
 }
 
 ${PREVIEW_SELECTOR} img {
