@@ -9,7 +9,7 @@ import EditorToolbar from "@/components/editor/toolbar/index.vue"
 import Button from "@/components/ui/button/Button.vue"
 import Skeleton from "@/components/ui/skeleton/Skeleton.vue"
 import { useDataStore } from "@/composables/stores/data"
-import { useUnsavedChanges } from "@/composables/unsaved/useUnsavedChanges"
+import { useUnsavedChanges } from "@/composables/unsaved"
 import { storageService } from "@/utils/storage"
 
 import Sonner from "./components/ui/sonner/Sonner.vue"
